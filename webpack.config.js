@@ -2,7 +2,7 @@ var webpack = require('webpack');
 var path = require('path');
 var htmlWebpackPlugin = require('html-webpack-plugin');
 
-var BUILD_DIR = path.join(__dirname, 'public');
+var BUILD_DIR = path.join(__dirname, 'dist');
 var APP_DIR = path.join(__dirname, 'src');
 
 const VENDOR_LIBS = [
@@ -16,16 +16,21 @@ var config = {
     vendor: VENDOR_LIBS
   },
   output: {
-    path: BUILD_DIR,
-    filename: '[name].min.js'
+    path: path.resolve(__dirname, 'public'),
+    filename: '[name].[hash].js',
+    publicPath: '/'
   },
   module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        // include: APP_DIR,
         exclude: /node_modules/,
-        use: 'babel-loader'
+        loader: 'babel-loader',
+        options: {
+          babelrc: false,
+          presets: ["babel-preset-env", "react", "stage-2"],
+          plugins: ['syntax-dynamic-import']
+        }
       },
       {
         test: /\.css$/,
@@ -41,12 +46,24 @@ var config = {
       }
     ]
   },
+  devServer: {
+    contentBase: BUILD_DIR,
+    compress: true,
+    port: 9000,
+    disableHostCheck: false,
+    open: true,
+    hot: true
+  },
   plugins: [
     new htmlWebpackPlugin({
       template: 'index.html'
     }),
     new webpack.optimize.CommonsChunkPlugin({
       names: ['vendor', 'manifest']
+    }),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
     })
   ]
 }
