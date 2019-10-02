@@ -1,19 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1569962470861" clover="3.2.0">
-  <project timestamp="1569962470862" name="All files">
-    <metrics statements="10" coveredstatements="5" conditionals="2" coveredconditionals="1" methods="6" coveredmethods="2" elements="18" coveredelements="8" complexity="0" loc="10" ncloc="10" packages="1" files="1" classes="1"/>
-    <file name="SearchForm.jsx" path="/Users/mihir/Documents/School/Interaction Design/Assignments/front-end-development-mihirsamdarshi/src/SearchForm.jsx">
-      <metrics statements="10" coveredstatements="5" conditionals="2" coveredconditionals="1" methods="6" coveredmethods="2"/>
-      <line num="11" count="1" type="stmt"/>
-      <line num="13" count="1" type="stmt"/>
-      <line num="20" count="1" type="stmt"/>
-      <line num="24" count="1" type="stmt"/>
-      <line num="25" count="0" type="stmt"/>
-      <line num="27" count="0" type="stmt"/>
-      <line num="31" count="0" type="stmt"/>
-      <line num="34" count="0" type="stmt"/>
-      <line num="36" count="0" type="stmt"/>
-      <line num="42" count="1" type="stmt"/>
-    </file>
+<coverage generated="1569988017484" clover="3.2.0">
+  <project timestamp="1569988017484" name="All files">
+    <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0" elements="0" coveredelements="0" complexity="0" loc="0" ncloc="0" packages="0" files="0" classes="0"/>
   </project>
 </coverage>
