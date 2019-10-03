@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should start with a disabled search button 1`] = `
+exports['should start with a disabled search button 1'] = `
 <form
   className="SearchForm"
   onSubmit={[Function]}
@@ -30,7 +30,7 @@ exports[`should start with a disabled search button 1`] = `
 </form>
 `;
 
-exports[`should start with an empty search field 1`] = `
+exports['should start with an empty search field 1'] = `
 <form
   className="SearchForm"
   onSubmit={[Function]}

@@ -2,11 +2,9 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import TestRenderer from 'react-test-renderer'
 import ReactTestUtils from 'react-dom/test-utils'
-
 import sinon from 'sinon'
 
 import SearchForm from './SearchForm'
-
 import * as api from './api'
 
 // This test suite uses a distinct testing technique called _snapshot testing_. Go take

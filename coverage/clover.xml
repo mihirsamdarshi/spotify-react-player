@@ -1,6 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1569988017484" clover="3.2.0">
-  <project timestamp="1569988017484" name="All files">
-    <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0" elements="0" coveredelements="0" complexity="0" loc="0" ncloc="0" packages="0" files="0" classes="0"/>
+<coverage generated="1570083384010" clover="3.2.0">
+  <project timestamp="1570083384010" name="All files">
+    <metrics statements="19" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="14" coveredmethods="0" elements="35" coveredelements="0" complexity="0" loc="19" ncloc="19" packages="1" files="6" classes="6"/>
+    <file name="App.js" path="/Users/mihir/Documents/School/Interaction Design/Assignments/front-end-development-mihirsamdarshi/src/App.js">
+      <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+      <line num="16" count="0" type="stmt"/>
+      <line num="22" count="0" type="stmt"/>
+    </file>
+    <file name="AppHeader.js" path="/Users/mihir/Documents/School/Interaction Design/Assignments/front-end-development-mihirsamdarshi/src/AppHeader.js">
+      <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <line num="7" count="0" type="stmt"/>
+    </file>
+    <file name="GiphyImage.js" path="/Users/mihir/Documents/School/Interaction Design/Assignments/front-end-development-mihirsamdarshi/src/GiphyImage.js">
+      <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+      <line num="7" count="0" type="stmt"/>
+      <line num="8" count="0" type="stmt"/>
+    </file>
+    <file name="SearchForm.js" path="/Users/mihir/Documents/School/Interaction Design/Assignments/front-end-development-mihirsamdarshi/src/SearchForm.js">
+      <metrics statements="10" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="6" coveredmethods="0"/>
+      <line num="11" count="0" type="stmt"/>
+      <line num="13" count="0" type="stmt"/>
+      <line num="20" count="0" type="stmt"/>
+      <line num="24" count="0" type="stmt"/>
+      <line num="25" count="0" type="stmt"/>
+      <line num="27" count="0" type="stmt"/>
+      <line num="31" count="0" type="stmt"/>
+      <line num="34" count="0" type="stmt"/>
+      <line num="36" count="0" type="stmt"/>
+      <line num="42" count="0" type="stmt"/>
+    </file>
+    <file name="SearchResults.js" path="/Users/mihir/Documents/School/Interaction Design/Assignments/front-end-development-mihirsamdarshi/src/SearchResults.js">
+      <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+      <line num="9" count="0" type="stmt"/>
+      <line num="11" count="0" type="stmt"/>
+    </file>
+    <file name="api.js" path="/Users/mihir/Documents/School/Interaction Design/Assignments/front-end-development-mihirsamdarshi/src/api.js">
+      <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+      <line num="1" count="0" type="stmt"/>
+      <line num="3" count="0" type="stmt"/>
+    </file>
   </project>
 </coverage>
