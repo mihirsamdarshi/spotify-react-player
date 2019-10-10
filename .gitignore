@@ -1,2 +1,4 @@
 .DS_STORE
 node_modules
+reactide.config.js
+reactide.js
