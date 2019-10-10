@@ -22,7 +22,9 @@ class App extends Component {
         return (
             <div className="App">
                 <AppHeader />
-                <SearchForm />
+                <div className="app-body">
+                    <SearchForm />
+                </div>
             </div>
         );
     }
