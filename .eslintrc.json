@@ -18,6 +18,13 @@
         "react"
     ],
     "rules": {
+      "max-len": [
+        "error",
+        {
+          "code": 120,
+          "ignoreComments": true
+        }
+      ],
         "react/jsx-indent": [2, 4],
         "indent": ["error", 4],
         "react/prefer-stateless-function": "off",
