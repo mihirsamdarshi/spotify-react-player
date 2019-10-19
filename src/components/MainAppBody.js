@@ -2,9 +2,9 @@ import React, {useState} from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-
 import '../stylesheets/MainAppBody.scss';
-import {fetchUserPlaylists} from './api'
+import {fetchPlaylistTracks, fetchUserPlaylists} from '../scripts/api';
+import Playlists from "./Playlists";
 
 
 const useStyles = makeStyles(theme => ({
@@ -20,9 +20,7 @@ const useStyles = makeStyles(theme => ({
     cards: {
         padding: [0, 15, 0],
     },
-    songs: {
-        display: 'none',
-    }
+    songs: {}
 }));
 
 export default function MainAppBody() {
@@ -52,9 +50,8 @@ export default function MainAppBody() {
         setError(null);
 
         try {
-            const result = await fetchUserPlaylists();
-            setID(result.href);
-            setSongList(result.items);
+            const result = await fetchPlaylistTracks();
+            setSongList(result.tracks);
         } catch (error) {
             setError('Sorry, but something went wrong.')
         }
