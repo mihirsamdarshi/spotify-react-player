@@ -616,7 +616,7 @@ const fetchUserPlaylists = () => Promise.resolve({
     "total": 15
 });
 
-const fetchPlaylistTracks = () => Promise.resolve({
+const fetchPlaylistTracks = (link) => Promise.resolve({
     "collaborative": false,
     "description": "",
     "external_urls": {
@@ -9988,9 +9988,8 @@ const fetchPlaylistTracks = () => Promise.resolve({
         "total": 37
     },
     "type": "playlist",
-    "uri": "spotify:playlist:4bof0ZfFsgSQ9A3519zfvC"
-}
-}
+    "uri": "spotify:playlist:4bof0ZfFsgSQ9A3519zfvC",
+});
 
 export {
     apiHost,

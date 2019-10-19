@@ -1,41 +1,35 @@
-import React, {useState} from 'react';
-import {makeStyles} from '@material-ui/core/styles';
+import React from 'react';
+import PlaylistBox from "./PlaylistBox";
+import makeStyles from "@material-ui/core/styles/makeStyles";
 
-const useStyles = makeStyles(theme => ({
-    root: {
-        flexGrow: 1,
-    },
-}));
-
-export default Playlist = props => {
-
-    const getIndividualItems = data => {
-        data.forEach(function (element) {
-            return <PlaylistBox
-                name={element.name}
-                link={element.link}
-
-            />
-        })
+const useStyles = makeStyles({
+    cardPad: {
+        marginBottom: 2000,
     }
-    const classes = useStyles();
-    return (
-        <div className={classes.root}>
-            {getIndividualItems}
-        </div>
-    )
-}
+})
 
-const PlaylistBox = props => {
-    let [state, setState] = useState(
-        {
-            link: props.link,
-        }
-    )
+const Playlists = props => {
+    const classes = useStyles();
+    const getIndividualItems = data => {
+        console.log(data)
+    };
+
     return (
-        <div onClick={}>
-            {props.name}
+        <div>
+            {
+                props.playlists.map(element =>
+                    <PlaylistBox
+                        name={element.name}
+                        link={element.href}
+                        numTracks={element.tracks.total}
+                        img={element.images[0]}
+                        className={classes.cardPad}
+                    />
+                )
+            }
         </div>
     )
-}
+};
+
+export default Playlists;
 

@@ -25,6 +25,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function MainAppBody() {
     const classes = useStyles();
+    const [showPlaylists, setShowPlaylists] = useState(false);
     const [userId, setID] = useState('');
     const [playlistList, setPlaylistList] = useState('');
     const [songList, setSongList] = useState('');
@@ -39,18 +40,19 @@ export default function MainAppBody() {
             const result = await fetchUserPlaylists();
             setID(result.href);
             setPlaylistList(result.items);
+            setShowPlaylists(true);
         } catch (error) {
             setError('Sorry, but something went wrong.')
         }
     };
 
-    const getSongs = async event => {
+    const getSongs = async (link, event) => {
         event.preventDefault();
 
         setError(null);
 
         try {
-            const result = await fetchPlaylistTracks();
+            const result = await fetchPlaylistTracks(link);
             setSongList(result.tracks);
         } catch (error) {
             setError('Sorry, but something went wrong.')
@@ -58,11 +60,11 @@ export default function MainAppBody() {
     };
 
     return (
-        <div className={classes.root}>
+        <div className={classes.root} onClick={getPlaylists}>
             <Grid container spacing={2} className={classes.cards}>
                 <Grid item xs={4}>
                     <Paper className={classes.paper}>
-                        <Playlists data={playlistList} onClick={getSongs}/>
+                        {showPlaylists ? <Playlists playlists={playlistList}/> : null}
                     </Paper>
                 </Grid>
                 <Grid item xs={4} className={classes.songs}>
