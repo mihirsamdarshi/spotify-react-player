@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import GiphyImage from './GiphyImage';
 
-import '../stylesheets/SearchResults.css';
+import '../stylesheets/SearchResults.scss';
 
 class SearchResults extends Component {
     render() {

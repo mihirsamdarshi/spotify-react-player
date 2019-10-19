@@ -1,0 +1,19 @@
+.app_header {
+    height: 60px;
+    width: 100vw;
+    overflow: hidden;
+    position: fixed;
+    background-color: #24292e;
+    padding: 20px;
+    font-size: 14px;
+    left: 0;
+    top: 0;
+}
+
+.settings_drawer {
+    display: inline-block;
+}
+
+.logo_div {
+    display: inline-block;
+}

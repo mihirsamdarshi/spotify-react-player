@@ -1,15 +1,29 @@
-import React, { Component } from 'react';
+import React from 'react';
+import {makeStyles} from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import SettingsButton from './SettingsButton';
 
-import '../stylesheets/AppHeader.css';
+const useStyles = makeStyles(theme => ({
+    title: {
+        flexGrow: 1,
+    },
+}));
 
-class AppHeader extends Component {
-    render() {
-        return (
-            <div className="AppHeader">
-                <h1>Giph Me!</h1>
-            </div>
-        );
-    }
+export default function AppHeader() {
+    const classes = useStyles();
+
+    return (
+        <div className="app_header">
+            <AppBar position="static">
+                <Toolbar>
+                    <Typography variant="h6" className={classes.title}>
+                        Applotify
+                    </Typography>
+                    <SettingsButton/>
+                </Toolbar>
+            </AppBar>
+        </div>
+    );
 }
-
-export default AppHeader;
