@@ -4,7 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import IconButton from '@material-ui/core/IconButton';
 import Toolbar from '@material-ui/core/Toolbar';
 import {makeStyles} from '@material-ui/core/styles';
-import SettingsDrawer from './SettingsDrawer';
+import SettingsButton from './SettingsButton';
 
 const useStyles = makeStyles((theme) => ({
     menuButton: {
@@ -23,7 +23,7 @@ export default function AppHeader() {
                         <img src="/src/assets/logo.png" alt="logo"/>
                     </IconButton>
                     <h2>Applotify</h2>
-                    <SettingsDrawer/>
+                    <SettingsButton/>
                 </Toolbar>
             </AppBar>
         </div>

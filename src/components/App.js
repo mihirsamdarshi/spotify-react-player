@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 import '../stylesheets/App.css';
 
 import AppHeader from './AppHeader';
-import SearchForm from './SearchForm';
+import MainAppBody from './MainAppBody';
 
-import { apiHost } from '../scripts/api';
+import {apiHost} from '../scripts/api';
 
 class App extends Component {
     // Because App is the "uppermost" component (see index.js), code in its componentDidMount
@@ -23,7 +23,7 @@ class App extends Component {
             <div className="App">
                 <AppHeader />
                 <div className="app-body">
-                    <SearchForm />
+                    <MainAppBody/>
                 </div>
             </div>
         );
