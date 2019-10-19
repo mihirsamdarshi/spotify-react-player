@@ -1,14 +1,13 @@
 import React from 'react';
-import '../stylesheets/AppHeader.css';
-import AppBar from '@material-ui/core/AppBar';
-import IconButton from '@material-ui/core/IconButton';
-import Toolbar from '@material-ui/core/Toolbar';
 import {makeStyles} from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
 import SettingsButton from './SettingsButton';
 
-const useStyles = makeStyles((theme) => ({
-    menuButton: {
-        marginRight: theme.spacing(2),
+const useStyles = makeStyles(theme => ({
+    title: {
+        flexGrow: 1,
     },
 }));
 
@@ -17,12 +16,11 @@ export default function AppHeader() {
 
     return (
         <div className="app_header">
-            <AppBar>
+            <AppBar position="static">
                 <Toolbar>
-                    <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-                        <img src="/src/assets/logo.png" alt="logo"/>
-                    </IconButton>
-                    <h2>Applotify</h2>
+                    <Typography variant="h6" className={classes.title}>
+                        Applotify
+                    </Typography>
                     <SettingsButton/>
                 </Toolbar>
             </AppBar>

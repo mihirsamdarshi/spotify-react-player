@@ -26,6 +26,10 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(1),
         minWidth: 120,
     },
+    menuButton: {
+        marginLeft: 20,
+        backgroundColor: "#fff",
+    }
 }));
 
 export default function SettingsButton() {
@@ -54,7 +58,7 @@ export default function SettingsButton() {
 
     return (
         <div>
-            <IconButton onClick={handleClickOpen}>
+            <IconButton className={classes.menuButton} onClick={handleClickOpen}>
                 <SettingsIcon/>
             </IconButton>
             <Dialog open={state.open} onClose={handleClose} className={classes.modal}>

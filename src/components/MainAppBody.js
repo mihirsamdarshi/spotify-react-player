@@ -27,13 +27,19 @@ export default function MainAppBody() {
         <div className={classes.root}>
             <Grid container spacing={2} className={classes.cards}>
                 <Grid item xs={4}>
-                    <Paper className={classes.paper}>xs=4</Paper>
+                    <Paper className={classes.paper}>
+                        xs=4
+                    </Paper>
                 </Grid>
                 <Grid item xs={4}>
-                    <Paper className={classes.paper}>xs4</Paper>
+                    <Paper className={classes.paper}>
+                        xs4
+                    </Paper>
                 </Grid>
                 <Grid item xs={4}>
-                    <Paper className={classes.paper}>xs=4</Paper>
+                    <Paper className={classes.paper}>
+                        xs=4
+                    </Paper>
                 </Grid>
             </Grid>
         </div>
