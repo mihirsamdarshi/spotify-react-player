@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
-import '../stylesheets/GiphyImage.css';
+import '../stylesheets/GiphyImage.scss';
 
 class GiphyImage extends Component {
     render() {
