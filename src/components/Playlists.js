@@ -1,7 +1,6 @@
 import React from 'react';
 import PlaylistBox from "./PlaylistBox";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-import {animated, useSpring} from 'react-spring'
 
 const useStyles = makeStyles({
     cardPad: {
@@ -12,23 +11,19 @@ const useStyles = makeStyles({
 
 const Playlists = props => {
     const classes = useStyles();
-    const animation = useSpring({opacity: 1, from: {opacity: 0}});
 
     return (
         <div>
             {
                 props.playlists.map(element =>
-                    <animated.div style={animation}>
+                    <div onClick={() => props.getSongFunc(element.href)} key={element.id}>
                         <PlaylistBox
                             name={element.name}
-                            link={element.href}
                             numTracks={element.tracks.total}
                             img={element.images[0]}
-                            key={element.id}
                             className={classes.cardPad}
-                            onClick={props.getSongFunc}
                         />
-                    </animated.div>
+                    </div>
                 )
             }
         </div>
