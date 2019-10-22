@@ -40,7 +40,7 @@ PlaylistBox = props => {
                         {props.name}
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
-                        {props.numTracks} tracks available
+                        {props.numTracks ? props.numTracks : "0"} tracks available
                     </Typography>
                 </CardContent>
             </CardActionArea>

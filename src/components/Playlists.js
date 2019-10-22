@@ -20,11 +20,13 @@ const Playlists = props => {
                 props.playlists.map(element =>
                     <animated.div style={animation}>
                         <PlaylistBox
-                        name={element.name}
-                        link={element.href}
-                        numTracks={element.tracks.total}
-                        img={element.images[0]}
-                        className={classes.cardPad}
+                            name={element.name}
+                            link={element.href}
+                            numTracks={element.tracks.total}
+                            img={element.images[0]}
+                            key={element.id}
+                            className={classes.cardPad}
+                            onClick={props.getSongFunc}
                         />
                     </animated.div>
                 )

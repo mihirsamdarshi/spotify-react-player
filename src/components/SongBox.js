@@ -1,5 +1,5 @@
 import React from 'react';
-import {makeStyles, useTheme} from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -23,8 +23,6 @@ const useStyles = makeStyles(theme => ({
 
 export default function SongBox(props) {
     const classes = useStyles();
-    const theme = useTheme();
-    console.log(props.img);
 
     return (
         <Card className={classes.card}>
@@ -43,8 +41,7 @@ export default function SongBox(props) {
             </div>
             <CardMedia
                 className={classes.cover}
-                image={props.img}
-                title="Live from space album cover"
+                image={props.img.url}
             />
         </Card>
     );
