@@ -9,13 +9,16 @@ const useStyles = makeStyles(theme => ({
     title: {
         flexGrow: 1,
     },
+    appHeader: {
+        backgroundColor: theme.palette.common.white,
+    }
 }));
 
 export default function AppHeader() {
     const classes = useStyles();
 
     return (
-        <div className="app_header">
+        <div className={classes.appHeader}>
             <AppBar position="static">
                 <Toolbar>
                     <Typography variant="h6" className={classes.title}>

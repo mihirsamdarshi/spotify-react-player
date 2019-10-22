@@ -10,6 +10,13 @@ const useStyles = makeStyles({
     media: {
         height: 140,
     },
+    card: {
+        display: 'flex',
+    },
+    details: {
+        display: 'flex',
+        flexDirection: 'column',
+    },
 });
 
 let PlaylistBox;
@@ -28,7 +35,7 @@ PlaylistBox = props => {
                     className={classes.media}
                     image={props.img.url}
                 />
-                <CardContent>
+                <CardContent className={classes.details}>
                     <Typography gutterBottom variant="h5" component="h2">
                         {props.name}
                     </Typography>

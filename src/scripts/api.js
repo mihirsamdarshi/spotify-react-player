@@ -616,7 +616,7 @@ const fetchUserPlaylists = () => Promise.resolve({
     "total": 15
 });
 
-const fetchPlaylistTracks = (link) => Promise.resolve({
+const fetchPlaylistTracks = () => Promise.resolve({
     "collaborative": false,
     "description": "",
     "external_urls": {
