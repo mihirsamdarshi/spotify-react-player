@@ -27,7 +27,7 @@ export default function MainAppBody() {
     const classes = useStyles();
     const [showPlaylists, setShowPlaylists] = useState(false);
     const [showSongs, setShowSongs] = useState(false);
-    const [userId, setID] = useState('');
+    const [userId, setUserId] = useState('');
     const [playlistList, setPlaylistList] = useState('');
     const [songList, setSongList] = useState('');
     const [error, setError] = useState(null);
@@ -39,7 +39,7 @@ export default function MainAppBody() {
 
         try {
             const result = await fetchUserPlaylists();
-            setID(result.href);
+            setUserId(result.href);
             setPlaylistList(result.items);
             setShowPlaylists(true);
         } catch (error) {
@@ -67,12 +67,12 @@ export default function MainAppBody() {
             <Grid container spacing={2} className={classes.cards}>
                 <Grid item xs={4}>
                     <Paper className={classes.paper} onClick={getPlaylists}>
-                        {showPlaylists ? <Playlists playlists={playlistList}/> : null}
+                        {showPlaylists ? <Playlists playlists={playlistList} getSongFunc={getSongs}/> : null}
                     </Paper>
                 </Grid>
                 <Grid item xs={4} className={classes.songs}>
                     <Paper className={classes.paper}>
-                        {showSongs ? <Songs songs={songList} getSongFunc={getSongs}/> : null}
+                        {showSongs ? <Songs songs={songList}/> : null}
                     </Paper>
                 </Grid>
                 <Grid item xs={4} className={classes.songs}>
