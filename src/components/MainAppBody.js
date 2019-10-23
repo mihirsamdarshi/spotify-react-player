@@ -30,7 +30,6 @@ export default function MainAppBody() {
     };
 
     const getSongs = async link => {
-        console.log(link);
         setError(null);
 
         try {

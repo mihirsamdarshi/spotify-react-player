@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
     },
     menuButton: {
         marginLeft: 20,
-        backgroundColor: "#fff",
+        backgroundColor: '#fff',
     }
 }));
 
@@ -74,12 +74,12 @@ export default function SettingsButton() {
                             {state.playbackService}
                         </span>
                     </div>
-                    <Button className={classes.handleSwitchButton} onClick={handleSwitch} color="primary">
+                    <Button className={classes.handleSwitchButton} onClick={handleSwitch} color='primary'>
                         Switch Services
                     </Button>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleClose} color="primary">
+                    <Button onClick={handleClose} color='primary'>
                         Exit
                     </Button>
                 </DialogActions>

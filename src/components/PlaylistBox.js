@@ -12,7 +12,7 @@ PlaylistBox = props => {
     const animation = useSpring({opacity: 1, from: {opacity: 0}});
 
     return (
-        <animated.div style={animation} class>
+        <animated.div style={animation}>
             <Card className={'card'}>
                 <CardActionArea>
                     <CardMedia

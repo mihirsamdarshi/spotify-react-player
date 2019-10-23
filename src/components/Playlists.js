@@ -15,8 +15,8 @@ const Playlists = props => {
     return (
         <div>
             {
-                props.playlists.map(element =>
-                    <div onClick={() => props.getSongFunc(element.href)} key={element.id}>
+                props.playlists.map((element, index) =>
+                    <div onClick={() => props.getSongFunc(element.href)} key={index}>
                         <PlaylistBox
                             name={element.name}
                             numTracks={element.tracks.total}

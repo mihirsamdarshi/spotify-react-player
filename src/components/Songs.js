@@ -5,9 +5,9 @@ const Songs = props => {
     return (
         <div>
             {
-                props.songs.map(element =>
+                props.songs.map((element, index) =>
                     <SongBox
-                        key={element.track.id}
+                        key={index}
                         name={element.track.name}
                         artist={element.track.artists}
                         album={element.track.album.name}
