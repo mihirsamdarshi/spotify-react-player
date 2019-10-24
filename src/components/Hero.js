@@ -1,14 +1,13 @@
 import React from 'react';
-import Button from "@material-ui/core/Button";
+import Button from '@material-ui/core/Button';
+import '../stylesheets/Hero.scss';
 
-const Hero = props => {
-    return (
-        <div>
-            <Button onClick={() => props.login(true)}>
+const Hero = (props) => (
+    <div>
+        <Button className="centered" onClick={() => props.login(true)}>
                 Login
-            </Button>
-        </div>
-    )
-};
+        </Button>
+    </div>
+);
 
 export default Hero;

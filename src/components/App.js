@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from 'react'
-import '../stylesheets/App.scss'
+import React, {useEffect, useState} from 'react';
+import '../stylesheets/App.scss';
 
-import AppHeader from './AppHeader'
-import Hero from "./Hero";
-import MainAppBody from "./MainAppBody";
+import AppHeader from './AppHeader';
+import Hero from './Hero';
+import MainAppBody from './MainAppBody';
 
-import {apiHost} from '../scripts/api'
+import {apiHost} from '../scripts/api';
 
 const App = () => {
     // Because App is the "uppermost" component (see index.js), code in the useEffect function
@@ -22,7 +22,7 @@ const App = () => {
             <AppHeader/>
             {loggedIn ? <MainAppBody/> : <Hero login={setClientLoggedIn}/>}
         </div>
-    )
-}
+    );
+};
 
-export default App
+export default App;
