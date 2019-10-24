@@ -1,4 +1,4 @@
 node_modules/
 public/
 src/App.test.js
-src/SearchForm.test.js
+src/MainAppBody.test.js
