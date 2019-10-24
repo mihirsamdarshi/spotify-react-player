@@ -41,7 +41,6 @@ const MainAppBody = () => {
 
     const getSongs = async (link) => {
         setError(null);
-
         try {
             const result = await fetchPlaylistTracks(link);
             setSongList(result.items);
@@ -54,8 +53,7 @@ const MainAppBody = () => {
     const numPlaylists = () => (
         <div className="numTracksWrapper">
             <Typography className="playlistsAvailable">
-                {playlistList.length}
-                playlists available
+                {`${playlistList.length} playlists available`}
             </Typography>
         </div>
     );
@@ -63,8 +61,7 @@ const MainAppBody = () => {
     const numSongs = () => (
         <div className="numTracksWrapper">
             <Typography className="playlistsAvailable">
-                {songList.length}
-                songs available
+                {`${songList.length} songs available`}
             </Typography>
         </div>
     );
@@ -76,7 +73,7 @@ const MainAppBody = () => {
     );
 
     const displayError = () => (
-        <Modal open="true">
+        <Modal open={true}>
             <p>{errorString}</p>
         </Modal>
     );

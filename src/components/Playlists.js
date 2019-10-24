@@ -11,12 +11,14 @@ import { GetSongDispatch } from '../scripts/callbacks';
 const PlaylistBox = (props) => {
     const animation = useSpring({
         opacity: 1,
-        from: { opacity: 0 }
+        from: { opacity: 0 },
     });
+
+    const dispatch = useContext(GetSongDispatch);
 
     return (
         <animated.div style={animation}>
-            <Card className="card">
+            <Card className="card" onClick={dispatch}>
                 <CardActionArea>
                     <CardMedia
                         className="media"
@@ -37,15 +39,12 @@ const PlaylistBox = (props) => {
 };
 
 const Playlists = (props) => {
-    const dispatch = useContext(GetSongDispatch);
-    console.log(dispatch);
 
     return (
         <div>
             {
                 props.playlists.map((element) => (
                     <PlaylistBox
-                        onClick={dispatch}
                         key={element.id}
                         name={element.name}
                         numTracks={element.tracks.total}
