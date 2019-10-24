@@ -9988,9 +9988,8 @@ const fetchPlaylistTracks = () => Promise.resolve({
         "total": 37
     },
     "type": "playlist",
-    "uri": "spotify:playlist:4bof0ZfFsgSQ9A3519zfvC"
-}
-}
+    "uri": "spotify:playlist:4bof0ZfFsgSQ9A3519zfvC",
+});
 
 export {
     apiHost,

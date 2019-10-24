@@ -1,31 +1,15 @@
 import React, {useState} from 'react';
-import {makeStyles} from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import '../stylesheets/MainAppBody.scss';
 import {fetchPlaylistTracks, fetchUserPlaylists} from '../scripts/api';
 import Playlists from "./Playlists";
-
-
-const useStyles = makeStyles(theme => ({
-    root: {
-        flexGrow: 1,
-    },
-    paper: {
-        padding: theme.spacing(2),
-        textAlign: 'center',
-        color: theme.palette.text.secondary,
-        backgroundColor: '#ffffff',
-    },
-    cards: {
-        padding: [0, 15, 0],
-    },
-    songs: {}
-}));
+import Songs from "./Songs"
 
 export default function MainAppBody() {
-    const classes = useStyles();
-    const [userId, setID] = useState('');
+    const [showPlaylists, setShowPlaylists] = useState(false);
+    const [showSongs, setShowSongs] = useState(false);
+    const [userId, setUserId] = useState('');
     const [playlistList, setPlaylistList] = useState('');
     const [songList, setSongList] = useState('');
     const [error, setError] = useState(null);
@@ -37,43 +21,41 @@ export default function MainAppBody() {
 
         try {
             const result = await fetchUserPlaylists();
-            setID(result.href);
+            setUserId(result.href);
             setPlaylistList(result.items);
+            setShowPlaylists(true);
         } catch (error) {
             setError('Sorry, but something went wrong.')
         }
     };
 
-    const getSongs = async event => {
-        event.preventDefault();
-
+    const getSongs = async link => {
         setError(null);
 
         try {
             const result = await fetchPlaylistTracks();
-            setSongList(result.tracks);
+            setSongList(result.tracks.items);
+            setShowSongs(true);
         } catch (error) {
             setError('Sorry, but something went wrong.')
         }
     };
 
     return (
-        <div className={classes.root}>
-            <Grid container spacing={2} className={classes.cards}>
+        <div className={'root'}>
+            <Grid container className={'gridContainer'}>
                 <Grid item xs={4}>
-                    <Paper className={classes.paper}>
-                        <Playlists data={playlistList} onClick={getSongs}/>
+                    <Paper className={'paper'} onClick={getPlaylists}>
+                        {showPlaylists ? <Playlists playlists={playlistList} getSongFunc={getSongs}/> : null}
                     </Paper>
                 </Grid>
-                <Grid item xs={4} className={classes.songs}>
-                    <Paper className={classes.paper}>
-                        xs4
+                <Grid item xs={4}>
+                    <Paper className={'paper'}>
+                        {showSongs ? <Songs songs={songList}/> : null}
                     </Paper>
                 </Grid>
-                <Grid item xs={4} className={classes.songs}>
-                    <Paper className={classes.paper}>
-                        xs=4
-                    </Paper>
+                <Grid item xs={4}>
+                    <Paper className='paper nowPlaying'></Paper>
                 </Grid>
             </Grid>
         </div>

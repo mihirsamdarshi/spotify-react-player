@@ -1,0 +1,16 @@
+.root {
+  flex-grow: 1;
+}
+
+.paper {
+  padding: 16px;
+  text-align: center;
+  overflow: auto;
+  height: 22%;
+  margin-left: 1vw;
+  margin-right: 1vw;
+}
+
+.paper.nowPlaying {
+  height: 30vh;
+}
