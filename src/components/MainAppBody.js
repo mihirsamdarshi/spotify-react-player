@@ -27,7 +27,8 @@ export default function MainAppBody() {
     const numPlaylists = () => (
         <div className="numTracksWrapper">
             <Typography className="playlistsAvailable">
-                {playlistList.length} {' '} playlists available
+                {playlistList.length}
+                {' '} playlists available
             </Typography>
         </div>
     );
@@ -35,7 +36,8 @@ export default function MainAppBody() {
     const numSongs = () => (
         <div className="numTracksWrapper">
             <Typography className="playlistsAvailable">
-                {songList.length} {' '} songs available
+                {songList.length}
+                {' '} songs available
             </Typography>
         </div>
     );
