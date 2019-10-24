@@ -68,7 +68,7 @@ const MainAppBody = () => {
 
     const displayPlaylists = () => (
         <GetSongDispatch.Provider value={getSongs}>
-            <Playlists playlists={playlistList}/>
+            <Playlists playlists={playlistList} />
         </GetSongDispatch.Provider>
     );
 
@@ -80,12 +80,12 @@ const MainAppBody = () => {
 
     const displaySongs = () => (
         <Paper className="paper">
-            <Songs songs={songList}/>
+            <Songs songs={songList} />
         </Paper>
     );
 
     const displayNowPlaying = () => (
-        <Paper className="paper nowPlaying"/>
+        <Paper className="paper nowPlaying" />
     );
 
     useEffect(() => {

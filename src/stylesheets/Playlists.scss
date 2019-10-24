@@ -1,5 +1,5 @@
 .media {
-  height: 140px;
+  width: 100%;
 }
 
 .card {
@@ -11,3 +11,7 @@
   display: flex;
   flex-direction: column;
 }
+
+.content {
+  flex: 1 0 auto;
+};

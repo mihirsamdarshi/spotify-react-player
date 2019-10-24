@@ -5,7 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import SettingsButton from './SettingsButton';
 import '../stylesheets/AppHeader.scss';
 
-export default function AppHeader() {
+const AppHeader = () => {
     return (
         <div className="appHeader">
             <AppBar position="static" color="primary">
@@ -19,3 +19,5 @@ export default function AppHeader() {
         </div>
     );
 }
+
+export default AppHeader

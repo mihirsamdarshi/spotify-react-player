@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
+import Image from 'react-bootstrap/Image';
 import Typography from '@material-ui/core/Typography';
 import { animated, useSpring } from 'react-spring';
 import '../stylesheets/Playlists.scss';
@@ -20,9 +20,9 @@ const PlaylistBox = (props) => {
         <animated.div style={animation}>
             <Card className="card" onClick={dispatch}>
                 <CardActionArea>
-                    <CardMedia
+                    <Image
                         className="media"
-                        image={props.img.url}
+                        src={props.img.url}
                     />
                     <CardContent className="details">
                         <Typography gutterBottom variant="h5" component="h2">
@@ -38,7 +38,7 @@ const PlaylistBox = (props) => {
     );
 };
 
-const Playlists = props => (
+const Playlists = (props) => (
     <div>
         {
             props.playlists.map((element) => (
