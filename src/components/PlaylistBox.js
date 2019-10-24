@@ -23,7 +23,7 @@ const PlaylistBox = (props) => {
                             {props.name}
                         </Typography>
                         <Typography variant="body2" color="textSecondary" component="p">
-                            {props.numTracks ? (props.numTracks + ' tracks available') : 'No tracks available'}
+                            {props.numTracks ? (`${props.numTracks} tracks available`) : 'No tracks available'}
                         </Typography>
                     </CardContent>
                 </CardActionArea>

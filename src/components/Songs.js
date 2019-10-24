@@ -2,9 +2,10 @@ import React from 'react';
 import SongBox from './SongBox';
 
 const Songs = (props) => {
-    props.songs.forEach(element => {
-        console.log(element.track.name)
+    props.songs.forEach((element) => {
+        console.log(element.track.name); // eslint-disable-line
     });
+
     return (
         <div>
             {
@@ -19,7 +20,7 @@ const Songs = (props) => {
                 ))
             }
         </div>
-    )
+    );
 };
 
 export default Songs;

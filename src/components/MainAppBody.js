@@ -47,7 +47,7 @@ export default function MainAppBody() {
     };
 
     useEffect(() => {
-        console.log("hello")
+        console.log('hello'); // eslint-disable-line
     }, []);
 
     return (
@@ -55,15 +55,24 @@ export default function MainAppBody() {
             <Grid container className="gridContainer">
                 <Grid item xs={4} style={heightWidthStyle}>
                     <Paper className="paper" onClick={getPlaylists}>
-                        {showPlaylists && !errorString ?
-                            <Playlists playlists={playlistList} getSongFunc={getSongs}/> : null}
+                        {showPlaylists && !errorString
+                            ? <Playlists playlists={playlistList} getSongFunc={getSongs}/>
+                            : <p>{errorString}</p>}
                     </Paper>
                 </Grid>
                 <Grid item xs={4} style={heightWidthStyle}>
-                    {showSongs ? <Paper className="paper"><Songs songs={songList}/></Paper> : null}
+                    {showSongs
+                        ? (
+                            <Paper className="paper">
+                                <Songs songs={songList}/>
+                            </Paper>
+                        )
+                        : null}
                 </Grid>
                 <Grid item xs={4} style={heightWidthStyle}>
-                    {showSongs ? <Paper className="paper nowPlaying"/> : null}
+                    {showSongs
+                        ? <Paper className="paper nowPlaying"/>
+                        : null}
                 </Grid>
             </Grid>
         </div>
