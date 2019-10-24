@@ -97,11 +97,11 @@ const setupAndQuerySearchForm = async () => {
 describe('API calls', () => {
     let div;
     beforeEach(async () => {
-        sinon.stub(api, 'searchGifs');
+        sinon.stub(api, 'fetchPlaylistTracks');
 
         // To manage size, we supply a mock response that contains _only_ what the app will need. This does mean
         // that we need to revise the mock response if our app starts using more (or different) data.
-        api.searchGifs.returns(Promise.resolve({
+        api.fetchPlaylistTracks.returns(Promise.resolve({
             data: [
                 {
                     id: 'FiGiRei2ICzzG',
@@ -142,15 +142,16 @@ describe('API calls', () => {
 describe('failed API calls', () => {
     let div;
     beforeEach(async () => {
-        sinon.stub(api, 'searchGifs');
-        = api.searchGifs.returns(Promise.reject(new Error('Mock failure'));
+        sinon.stub(api, 'fetchPlaylistTracks');
+        // eslint-disable-next-line prefer-promise-reject-errors
+        api.fetchPlaylistTracks.returns(Promise.reject('Mock failure'));
 
         div = await setupAndQuerySearchForm();
     });
 
     afterEach(() => {
         ReactDOM.unmountComponentAtNode(div);
-        api.searchGifs.restore();
+        api.fetchPlaylistTracks.restore();
     });
 
     it('should display an alert when the API call fails', () => {
