@@ -143,7 +143,7 @@ describe('failed API calls', () => {
     let div;
     beforeEach(async () => {
         sinon.stub(api, 'searchGifs');
-        api.searchGifs.returns(Promise.reject('Mock failure'));
+        = api.searchGifs.returns(Promise.reject(new Error('Mock failure'));
 
         div = await setupAndQuerySearchForm();
     });
