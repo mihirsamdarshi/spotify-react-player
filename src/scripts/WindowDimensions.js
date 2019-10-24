@@ -1,7 +1,7 @@
-import React, {useEffect, useState} from 'react'; // eslint-disable-line
+import React, { useEffect, useState } from 'react'; // eslint-disable-line
 
 function getWindowDimensions() {
-    const {innerWidth: width, innerHeight: height} = window;
+    const { innerWidth: width, innerHeight: height } = window;
     return {
         width,
         height,

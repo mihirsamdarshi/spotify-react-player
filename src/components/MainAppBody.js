@@ -73,7 +73,7 @@ const MainAppBody = () => {
     );
 
     const displayError = () => (
-        <Modal open={true}>
+        <Modal open>
             <p>{errorString}</p>
         </Modal>
     );
