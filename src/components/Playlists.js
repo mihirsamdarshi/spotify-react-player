@@ -1,15 +1,18 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-import {animated, useSpring} from 'react-spring';
+import { animated, useSpring } from 'react-spring';
 import '../stylesheets/Playlists.scss';
-import {GetSongDispatch} from "../scripts/callbacks";
+import { GetSongDispatch } from '../scripts/callbacks';
 
 const PlaylistBox = (props) => {
-    const animation = useSpring({opacity: 1, from: {opacity: 0}});
+    const animation = useSpring({
+        opacity: 1,
+        from: { opacity: 0 }
+    });
 
     return (
         <animated.div style={animation}>
@@ -35,18 +38,19 @@ const PlaylistBox = (props) => {
 
 const Playlists = (props) => {
     const dispatch = useContext(GetSongDispatch);
+    console.log(dispatch);
 
     return (
         <div>
             {
                 props.playlists.map((element) => (
-                    <div onClick={dispatch} key={element.id}>
-                        <PlaylistBox
-                            name={element.name}
-                            numTracks={element.tracks.total}
-                            img={element.images[0]}
-                        />
-                    </div>
+                    <PlaylistBox
+                        onClick={dispatch}
+                        key={element.id}
+                        name={element.name}
+                        numTracks={element.tracks.total}
+                        img={element.images[0]}
+                    />
                 ))
             }
         </div>

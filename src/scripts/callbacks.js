@@ -1,3 +1,4 @@
-import React, {createContext} from "react";
+import { createContext } from 'react';
 
 export const GetSongDispatch = createContext(null);
+export const SetLogin = createContext(null);
