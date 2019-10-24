@@ -1,0 +1,23 @@
+.card {
+  display: flex;
+},
+.details {
+  display: flex;
+  flexDirection: column;
+},
+.content {
+  flex: 1 0 auto;
+},
+.cover {
+  width: 151px;
+},
+.controls {
+  display: flex;
+  alignItems: center;
+  paddingLeft: 10px;
+  paddingBottom: 10px;
+},
+.playIcon {
+  height: 38px;
+  width: 38px;
+},
