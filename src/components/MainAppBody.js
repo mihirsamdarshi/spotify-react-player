@@ -1,13 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import {Typography} from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import Modal from '@material-ui/core/Modal';
 import Playlists from './Playlists';
 import Songs from './Songs';
-import {fetchPlaylistTracks, fetchUserPlaylists} from '../scripts/api';
+import { fetchPlaylistTracks, fetchUserPlaylists } from '../scripts/api';
 import useWindowDimensions from '../scripts/WindowDimensions';
-import {GetSongDispatch} from "../scripts/callbacks";
+import { GetSongDispatch } from '../scripts/callbacks';
 import '../stylesheets/MainAppBody.scss';
 
 
@@ -20,17 +20,42 @@ const MainAppBody = () => {
     const [songList, setSongList] = useState('');
     const [errorString, setError] = useState(null);
 
-    const {height, width} = useWindowDimensions();
+    const { height, width } = useWindowDimensions();
     // subtract height of header + padding to make web app single page
     const heightWidthStyle = {
         height: height - 84,
         width: width - 84,
     };
 
+    const getPlaylists = async () => {
+        setError(null);
+        try {
+            const result = await fetchUserPlaylists();
+            setUserId(result.href);
+            setPlaylistList(result.items);
+            setShowPlaylists(true);
+        } catch (error) {
+            setError('Sorry, but something went wrong.');
+        }
+    };
+
+    const getSongs = async (link) => {
+        setError(null);
+
+        try {
+            const result = await fetchPlaylistTracks(link);
+            setSongList(result.items);
+            setShowSongs(true);
+        } catch (error) {
+            setError('Sorry, but something went wrong.');
+        }
+    };
+
     const numPlaylists = () => (
         <div className="numTracksWrapper">
             <Typography className="playlistsAvailable">
-                {playlistList.length} {' '} playlists available
+                {playlistList.length}
+                playlists available
             </Typography>
         </div>
     );
@@ -38,7 +63,8 @@ const MainAppBody = () => {
     const numSongs = () => (
         <div className="numTracksWrapper">
             <Typography className="playlistsAvailable">
-                {songList.length} {' '} songs available
+                {songList.length}
+                songs available
             </Typography>
         </div>
     );
@@ -64,30 +90,6 @@ const MainAppBody = () => {
     const displayNowPlaying = () => (
         <Paper className="paper nowPlaying"/>
     );
-
-    const getPlaylists = async () => {
-        setError(null);
-        try {
-            const result = await fetchUserPlaylists();
-            setUserId(result.href);
-            setPlaylistList(result.items);
-            setShowPlaylists(true);
-        } catch (error) {
-            setError('Sorry, but something went wrong.');
-        }
-    };
-
-    const getSongs = async (link) => {
-        setError(null);
-
-        try {
-            const result = await fetchPlaylistTracks(link);
-            setSongList(result.items);
-            setShowSongs(true);
-        } catch (error) {
-            setError('Sorry, but something went wrong.');
-        }
-    };
 
     useEffect(() => {
         getPlaylists();
