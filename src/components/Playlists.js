@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardContent from '@material-ui/core/CardContent';
@@ -6,6 +6,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import {animated, useSpring} from 'react-spring';
 import '../stylesheets/Playlists.scss';
+import {GetSongDispatch} from "../scripts/callbacks";
 
 const PlaylistBox = (props) => {
     const animation = useSpring({opacity: 1, from: {opacity: 0}});
@@ -32,20 +33,24 @@ const PlaylistBox = (props) => {
     );
 };
 
-const Playlists = (props) => (
-    <div>
-        {
-            props.playlists.map((element) => (
-                <div onClick={() => props.getSongFunc(element.href)} key={element.id}>
-                    <PlaylistBox
-                        name={element.name}
-                        numTracks={element.tracks.total}
-                        img={element.images[0]}
-                    />
-                </div>
-            ))
-        }
-    </div>
-);
+const Playlists = (props) => {
+    const dispatch = useContext(GetSongDispatch);
+
+    return (
+        <div>
+            {
+                props.playlists.map((element) => (
+                    <div onClick={dispatch} key={element.id}>
+                        <PlaylistBox
+                            name={element.name}
+                            numTracks={element.tracks.total}
+                            img={element.images[0]}
+                        />
+                    </div>
+                ))
+            }
+        </div>
+    );
+};
 
 export default Playlists;

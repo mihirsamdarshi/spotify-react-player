@@ -3,9 +3,9 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
-import "../stylesheets/Songs.scss";
+import '../stylesheets/Songs.scss';
 
-const SongBox = props => {
+const SongBox = (props) => {
     const returnAllArtists = (args) => {
         const artistArray = args.artist;
         const albumName = args.album;
@@ -45,7 +45,7 @@ const SongBox = props => {
     );
 };
 
-const Songs = props => (
+const Songs = (props) => (
     <div>
         {
             props.songs.map((element) => (

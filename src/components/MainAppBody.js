@@ -1,14 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import '../stylesheets/MainAppBody.scss';
 import {Typography} from '@material-ui/core';
-import {fetchPlaylistTracks, fetchUserPlaylists} from '../scripts/api';
+import Modal from '@material-ui/core/Modal';
 import Playlists from './Playlists';
 import Songs from './Songs';
+import {fetchPlaylistTracks, fetchUserPlaylists} from '../scripts/api';
 import useWindowDimensions from '../scripts/WindowDimensions';
+import {GetSongDispatch} from "../scripts/callbacks";
+import '../stylesheets/MainAppBody.scss';
 
-export default function MainAppBody() {
+
+const MainAppBody = () => {
     const [showPlaylists, setShowPlaylists] = useState(false);
     const [showSongs, setShowSongs] = useState(false);
     const [showNowPlaying, setShowNowPlaying] = useState(false);
@@ -27,8 +30,7 @@ export default function MainAppBody() {
     const numPlaylists = () => (
         <div className="numTracksWrapper">
             <Typography className="playlistsAvailable">
-                {playlistList.length}
-                {' '} playlists available
+                {playlistList.length} {' '} playlists available
             </Typography>
         </div>
     );
@@ -36,10 +38,21 @@ export default function MainAppBody() {
     const numSongs = () => (
         <div className="numTracksWrapper">
             <Typography className="playlistsAvailable">
-                {songList.length}
-                {' '} songs available
+                {songList.length} {' '} songs available
             </Typography>
         </div>
+    );
+
+    const displayPlaylists = () => (
+        <GetSongDispatch.Provider value={getSongs}>
+            <Playlists playlists={playlistList}/>
+        </GetSongDispatch.Provider>
+    );
+
+    const displayError = () => (
+        <Modal>
+            <p>{errorString}</p>
+        </Modal>
     );
 
     const displaySongs = () => (
@@ -85,9 +98,7 @@ export default function MainAppBody() {
             <Grid container className="gridContainer">
                 <Grid item xs={4} style={heightWidthStyle}>
                     <Paper className="paper">
-                        {showPlaylists && !errorString
-                            ? <Playlists playlists={playlistList} getSongFunc={getSongs}/>
-                            : <p>{errorString}</p>}
+                        {showPlaylists && !errorString ? displayPlaylists() : displayError()}
                     </Paper>
                 </Grid>
                 <Grid item xs={4} style={heightWidthStyle}>
@@ -100,4 +111,6 @@ export default function MainAppBody() {
             </Grid>
         </div>
     );
-}
+};
+
+export default MainAppBody;
