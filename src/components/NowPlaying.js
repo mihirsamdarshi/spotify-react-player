@@ -9,7 +9,7 @@ import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
     card: {
         display: 'flex',
     },
@@ -38,7 +38,6 @@ const useStyles = makeStyles(theme => ({
 export default function NowPlaying(props) {
     const classes = useStyles();
     const theme = useTheme();
-    console.log(props.img);
 
     return (
         <Card className={classes.card}>

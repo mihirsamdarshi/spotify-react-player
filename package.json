@@ -19,7 +19,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom --coverage",
     "eject": "react-scripts eject",
-    "lint": "eslint \"**/*.js\""
+    "lint": "eslint \"**/*.js\" --fix"
   },
   "devDependencies": {
     "eslint": "^6.4.0",

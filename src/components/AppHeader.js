@@ -6,10 +6,10 @@ import SettingsButton from './SettingsButton';
 
 export default function AppHeader() {
     return (
-        <div className='appHeader'>
-            <AppBar position="static" color='primary'>
+        <div className="appHeader">
+            <AppBar position="static" color="primary">
                 <Toolbar>
-                    <Typography variant='h6' className='title'>
+                    <Typography variant="h6" className="title">
                         Applotify
                     </Typography>
                     <SettingsButton/>

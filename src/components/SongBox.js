@@ -5,41 +5,39 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 
 export default function SongBox(props) {
-    const returnAllArtists = props => {
-        let artistArray = props.artist;
-        let albumName = props.album;
+    const returnAllArtists = (args) => {
+        const artistArray = args.artist;
+        const albumName = args.album;
         let returnString = '';
-        let editedString;
         if (artistArray.length === 1) {
             returnString = artistArray[0].name;
-            return returnString
-        } else {
-            artistArray.forEach(function (element) {
-                if (element.name) {
-                    returnString += (element.name + ', ');
-                }
-            })
+            return returnString;
         }
-        let len = returnString.length;
+        artistArray.forEach((element) => {
+            if (element.name) {
+                returnString += (`${element.name}, `);
+            }
+        });
+
+        const len = returnString.length;
         returnString = returnString.substring(0, len - 2);
-        editedString = returnString + ' — ' + albumName;
-        return editedString;
-    }
+        return `${returnString} — ${albumName}`;
+    };
 
     return (
-        <Card className='card'>
-            <div className='details'>
-                <CardContent className='content'>
-                    <Typography component='h5' variant='h5'>
+        <Card className="card">
+            <div className="details">
+                <CardContent className="content">
+                    <Typography component="h5" variant="h5">
                         {props.name}
                     </Typography>
-                    <Typography variant='subtitle1' color='textSecondary' noWrap='true'>
+                    <Typography variant="subtitle1" color="textSecondary" noWrap>
                         {returnAllArtists(props)}
                     </Typography>
                 </CardContent>
             </div>
             <CardMedia
-                className='cover'
+                className="cover"
                 image={props.img.url}
             />
         </Card>
