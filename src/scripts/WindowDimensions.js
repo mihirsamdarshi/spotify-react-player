@@ -1,16 +1,16 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useState} from 'react'; // eslint-disable-line
 
 function getWindowDimensions() {
     const {innerWidth: width, innerHeight: height} = window;
     return {
         width,
-        height
+        height,
     };
 }
 
 export default function useWindowDimensions() {
     const [windowDimensions, setWindowDimensions] = useState(
-        getWindowDimensions()
+        getWindowDimensions(),
     );
 
     useEffect(() => {
@@ -18,11 +18,11 @@ export default function useWindowDimensions() {
             setWindowDimensions(getWindowDimensions());
         }
 
-        window.addEventListener("resize", handleResize);
-        return () => window.removeEventListener("resize", handleResize);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
     }, []);
 
     return windowDimensions;
 }
 
-//thank you stack overflow: https://stackoverflow.com/questions/36862334/get-viewport-window-height-in-reactjs
+// thank you stack overflow: https://stackoverflow.com/questions/36862334/get-viewport-window-height-in-reactjs

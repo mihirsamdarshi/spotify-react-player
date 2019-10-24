@@ -3,14 +3,25 @@
 }
 
 .paper {
-  padding: 16px;
+  padding: 15px;
   text-align: center;
   overflow: auto;
-  height: 22%;
+  height: 97%;
   margin-left: 1vw;
   margin-right: 1vw;
 }
 
 .paper.nowPlaying {
   height: 30vh;
+}
+
+.numTracksWrapper {
+  margin-left: 31%;
+}
+
+.playlistsAvailable {
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  color: gray;
 }
