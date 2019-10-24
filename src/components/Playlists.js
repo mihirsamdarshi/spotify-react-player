@@ -38,22 +38,19 @@ const PlaylistBox = (props) => {
     );
 };
 
-const Playlists = (props) => {
-
-    return (
-        <div>
-            {
-                props.playlists.map((element) => (
-                    <PlaylistBox
-                        key={element.id}
-                        name={element.name}
-                        numTracks={element.tracks.total}
-                        img={element.images[0]}
-                    />
-                ))
-            }
-        </div>
-    );
-};
+const Playlists = props => (
+    <div>
+        {
+            props.playlists.map((element) => (
+                <PlaylistBox
+                    key={element.id}
+                    name={element.name}
+                    numTracks={element.tracks.total}
+                    img={element.images[0]}
+                />
+            ))
+        }
+    </div>
+);
 
 export default Playlists;

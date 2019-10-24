@@ -17,16 +17,26 @@ export default function SettingsButton() {
     });
 
     const handleClickOpen = () => {
-        setState({...state, open: true});
+        setState({
+            ...state,
+            open: true
+        });
     };
 
     const handleClose = () => {
-        setState({...state, open: false});
+        setState({
+            ...state,
+            open: false
+        });
     };
 
     const handleSwitch = () => {
         const [newPLS, newPBS] = [state.playbackService, state.playlistService];
-        setState({...state, playbackService: newPBS, playlistService: newPLS});
+        setState({
+            ...state,
+            playbackService: newPBS,
+            playlistService: newPLS
+        });
     };
 
     return (
