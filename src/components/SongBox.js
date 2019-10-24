@@ -28,7 +28,7 @@ export default function SongBox(props) {
         <Card className="card">
             <div className="details">
                 <CardContent className="content">
-                    <Typography component="h5" variant="h5">
+                    <Typography component="h5" variant="h5" className="alignText">
                         {props.name}
                     </Typography>
                     <Typography variant="subtitle1" color="textSecondary" noWrap>

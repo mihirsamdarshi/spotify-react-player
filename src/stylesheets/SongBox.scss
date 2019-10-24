@@ -3,10 +3,6 @@
   @return ($target/$vw-context) * 1vw;
 }
 
-.card {
-  display: flex;
-}
-
 .details {
   display: flex;
   flex-direction: column;
@@ -14,6 +10,7 @@
 
 .content {
   flex: 1 0 auto;
+  text-align: left;
 }
 
 .cover {

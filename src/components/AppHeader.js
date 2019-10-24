@@ -12,7 +12,7 @@ export default function AppHeader() {
                     <Typography variant="h6" className="title">
                         Applotify
                     </Typography>
-                    <SettingsButton/>
+                    <SettingsButton className="settingsButton"/>
                 </Toolbar>
             </AppBar>
         </div>

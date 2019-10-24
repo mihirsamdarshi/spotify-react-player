@@ -40,10 +40,12 @@ export default function SettingsButton() {
                     <div className="serviceDialogContainer">
                         <span>
                             Music Playlists Come From:
+                            {' '}
                             {state.playlistService}
                         </span>
                         <span>
                             Music Plays From:
+                            {' '}
                             {state.playbackService}
                         </span>
                     </div>
