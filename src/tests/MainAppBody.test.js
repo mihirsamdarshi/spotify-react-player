@@ -2,9 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import TestRenderer from 'react-test-renderer';
 import ReactTestUtils from 'react-dom/test-utils';
+
 import sinon from 'sinon';
 
 import MainAppBody from '../components/MainAppBody';
+
 import * as api from '../scripts/api';
 
 // This test suite uses a distinct testing technique called _snapshot testing_. Go take
@@ -35,14 +37,6 @@ it('should start with a disabled search button', () => {
     const component = TestRenderer.create(<MainAppBody/>);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
-});
-
-it('should update its state when the search field value changes', () => {
-    const component = ReactTestUtils.renderIntoDocument(<MainAppBody/>);
-    const input = ReactTestUtils.findRenderedDOMComponentWithTag(component, 'input');
-    input.value = 'presto change-o';
-    ReactTestUtils.Simulate.change(input);
-    expect(component.state.query).toEqual('presto change-o');
 });
 
 describe('search button', () => {
@@ -130,8 +124,8 @@ describe('API calls', () => {
     });
 
     it('should trigger a Giphy search when the search button is clicked', () => {
-    // Note how this _isn’t_ a snapshot test because we’re checking whether a function was called with
-    // the right arguments.
+        // Note how this _isn’t_ a snapshot test because we’re checking whether a function was called with
+        // the right arguments.
         expect(api.searchGifs.firstCall.args[0]).toEqual({
             rating: 'pg-13',
             q: 'hello', // Our test search term.
@@ -139,7 +133,7 @@ describe('API calls', () => {
     });
 
     it('should populate the image container when search results arrive', () => {
-    // Our mock search results yield one image, so we expect our results container to have one child.
+        // Our mock search results yield one image, so we expect our results container to have one child.
         const searchResults = div.querySelector('div.SearchResults');
         expect(searchResults.children.length).toEqual(1);
     });
@@ -149,7 +143,7 @@ describe('failed API calls', () => {
     let div;
     beforeEach(async () => {
         sinon.stub(api, 'searchGifs');
-        api.searchGifs.returns(Promise.error('Mock failure'));
+        api.searchGifs.returns(Promise.reject('Mock failure'));
 
         div = await setupAndQuerySearchForm();
     });
@@ -160,7 +154,7 @@ describe('failed API calls', () => {
     });
 
     it('should display an alert when the API call fails', () => {
-    // The document should contain the error div.
+        // The document should contain the error div.
         const searchError = div.querySelector('div.error');
         expect(searchError.textContent).toEqual('Sorry, but something went wrong.');
     });
