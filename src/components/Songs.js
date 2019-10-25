@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Image from 'react-bootstrap/Image';
 import Typography from '@material-ui/core/Typography';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import '../stylesheets/Songs.scss';
+import { GetNowPlayingDispatch } from '../scripts/callbacks';
 
 const SongBox = (props) => {
     const returnArtistAlbumString = (args) => {
@@ -27,8 +28,10 @@ const SongBox = (props) => {
         return `${returnString} — ${albumName}`;
     };
 
+    const dispatch = useContext(GetNowPlayingDispatch);
+
     return (
-        <Card className="card">
+        <Card className="card" onClick={dispatch}>
             <CardActionArea>
                 <div className="box">
                     <Image

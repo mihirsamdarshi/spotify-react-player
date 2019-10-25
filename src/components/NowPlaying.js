@@ -7,9 +7,8 @@ import Typography from '@material-ui/core/Typography';
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
-import Image from 'react-bootstrap/Image';
 
-export default function NowPlaying(props) {
+const NowPlaying = () => {
     const theme = useTheme();
 
     return (
@@ -35,10 +34,8 @@ export default function NowPlaying(props) {
                     </IconButton>
                 </div>
             </div>
-            <Image
-                className="media"
-                src={props.img.url}
-            />
         </Card>
     );
-}
+};
+
+export default NowPlaying;

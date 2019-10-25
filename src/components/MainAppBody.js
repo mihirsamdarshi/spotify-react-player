@@ -7,8 +7,9 @@ import Playlists from './Playlists';
 import Songs from './Songs';
 import { fetchPlaylistTracks, fetchUserPlaylists } from '../scripts/api';
 import useWindowDimensions from '../scripts/WindowDimensions';
-import { GetSongDispatch } from '../scripts/callbacks';
+import { GetNowPlayingDispatch, GetSongDispatch } from '../scripts/callbacks';
 import '../stylesheets/MainAppBody.scss';
+import NowPlaying from './NowPlaying';
 
 
 const MainAppBody = () => {
@@ -18,6 +19,7 @@ const MainAppBody = () => {
     const [userId, setUserId] = useState('');
     const [playlistList, setPlaylistList] = useState('');
     const [songList, setSongList] = useState('');
+    const [songPlaying, setSongPlaylist] = useState('')
     const [errorString, setError] = useState(null);
 
     const { height, width } = useWindowDimensions();
@@ -50,6 +52,11 @@ const MainAppBody = () => {
         }
     };
 
+    const getNowPlaying = (value) => {
+        setShowNowPlaying(true);
+        console.log(value);
+    };
+
     const numPlaylists = () => (
         <div className="numTracksWrapper">
             <Typography className="playlistsAvailable">
@@ -80,17 +87,27 @@ const MainAppBody = () => {
 
     const displaySongs = () => (
         <Paper className="paper">
-            <Songs songs={songList} />
+            <GetNowPlayingDispatch.Provider value={getNowPlaying}>
+                <Songs songs={songList} />
+            </GetNowPlayingDispatch.Provider>
         </Paper>
     );
 
     const displayNowPlaying = () => (
-        <Paper className="paper nowPlaying" />
+        <div className="paper">
+            <NowPlaying />
+        </div>
     );
 
     useEffect(() => {
         getPlaylists();
     }, []);
+
+    const handleSongListClose = () => {
+        if (showSongs && !showNowPlaying) {
+            setShowSongs(false);
+        }
+    };
 
     return (
         <div className="root">
@@ -103,7 +120,7 @@ const MainAppBody = () => {
                 <Grid item xs={4} style={heightWidthStyle}>
                     {showSongs ? displaySongs() : numPlaylists()}
                 </Grid>
-                <Grid item xs={4} style={heightWidthStyle}>
+                <Grid item xs={4} style={heightWidthStyle} onClick={handleSongListClose}>
                     {showNowPlaying ? displayNowPlaying() : null}
                     {!showNowPlaying && showSongs ? numSongs() : null}
                 </Grid>
