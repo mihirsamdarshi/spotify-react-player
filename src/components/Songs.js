@@ -28,10 +28,10 @@ const SongBox = (props) => {
         return `${returnString} — ${albumName}`;
     };
 
-    const dispatch = useContext(GetNowPlayingDispatch);
+    const GetNowPlaying = useContext(GetNowPlayingDispatch);
 
     return (
-        <Card className="card" onClick={dispatch}>
+        <Card className="card" onClick={() => GetNowPlaying(props)}>
             <CardActionArea>
                 <div className="box">
                     <Image
@@ -52,21 +52,39 @@ const SongBox = (props) => {
     );
 };
 
-const Songs = (props) => (
-    <div>
-        {
-            props.songs.map((element) => (
-                <SongBox
-                    key={element.track.id}
-                    name={element.track.name}
-                    artist={element.track.artists}
-                    album={element.track.album.name}
-                    img={element.track.album.images[0]}
-                    isrc={element.track.external_ids.isrc}
-                />
-            ))
-        }
-    </div>
-);
+const Songs = (props) => {
+    const checkDup = (element, array) => {
+        array.some((arrayElement) => element.track.id !== arrayElement.track.id);
+    };
+
+    const removeDuplicates = (songs) => {
+        const newArray = [];
+        songs.forEach((element) => {
+            if (checkDup) {
+                newArray.push(element);
+            }
+        });
+        return newArray;
+    };
+
+    const editedSongArray = removeDuplicates(props.songs);
+
+    return (
+        <div>
+            {
+                editedSongArray.map((element) => (
+                    <SongBox
+                        key={element.track.id}
+                        name={element.track.name}
+                        artist={element.track.artists}
+                        album={element.track.album.name}
+                        img={element.track.album.images[0]}
+                        isrc={element.track.external_ids.isrc}
+                    />
+                ))
+            }
+        </div>
+    );
+};
 
 export default Songs;

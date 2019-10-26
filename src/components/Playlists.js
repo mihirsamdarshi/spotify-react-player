@@ -6,8 +6,7 @@ import Image from 'react-bootstrap/Image';
 import Typography from '@material-ui/core/Typography';
 import { animated, useSpring } from 'react-spring';
 import '../stylesheets/Playlists.scss';
-import { GetSongDispatch } from '../scripts/callbacks';
-import { createStore } from 'redux';
+import { GetSongListDispatch } from '../scripts/callbacks';
 
 const PlaylistBox = (props) => {
     const animation = useSpring({
@@ -15,26 +14,11 @@ const PlaylistBox = (props) => {
         from: { opacity: 0 },
     });
 
-    function setSelected(state, action) {
-        if (action.type === 'set') {
-            state = action.id;
-        }
-    }
-
-    const store = createStore(setSelected, null);
-
-    const GetSongList = useContext(GetSongDispatch);
-
-    const handleClick = (key) => {
-        GetSongList;
-        store.dispatch({
-            id: key,
-        });
-    };
+    const GetSongList = useContext(GetSongListDispatch);
 
     return (
         <animated.div style={animation}>
-            <Card className={} onClick={handleClick(props.key)}>
+            <Card className="card" onClick={() => GetSongList(props)}>
                 <CardActionArea>
                     <Image
                         className="media"
@@ -55,6 +39,14 @@ const PlaylistBox = (props) => {
 };
 
 const Playlists = (props) => {
+    /*
+    const [activeItem, setActiveItem] = useState(null);
+
+    const handleClick = (key) => {
+        setActiveItem(key);
+    };
+    */
+
     return (
         props.playlists.map((element) => (
             <PlaylistBox

@@ -7,7 +7,7 @@ import Playlists from './Playlists';
 import Songs from './Songs';
 import { fetchPlaylistTracks, fetchUserPlaylists } from '../scripts/api';
 import useWindowDimensions from '../scripts/WindowDimensions';
-import { GetNowPlayingDispatch, GetSongDispatch } from '../scripts/callbacks';
+import { GetNowPlayingDispatch, GetSongListDispatch } from '../scripts/callbacks';
 import '../stylesheets/MainAppBody.scss';
 import NowPlaying from './NowPlaying';
 
@@ -53,8 +53,8 @@ const MainAppBody = () => {
     };
 
     const getNowPlaying = (value) => {
+        setSongPlaying(value);
         setShowNowPlaying(true);
-        console.log(value);
     };
 
     const numPlaylists = () => (
@@ -74,9 +74,9 @@ const MainAppBody = () => {
     );
 
     const displayPlaylists = () => (
-        <GetSongDispatch.Provider value={getSongs}>
+        <GetSongListDispatch.Provider value={getSongs}>
             <Playlists playlists={playlistList} />
-        </GetSongDispatch.Provider>
+        </GetSongListDispatch.Provider>
     );
 
     const displayError = () => (
@@ -95,7 +95,7 @@ const MainAppBody = () => {
 
     const displayNowPlaying = () => (
         <div className="paper">
-            <NowPlaying />
+            <NowPlaying nowPlaying={songPlaying} />
         </div>
     );
 
