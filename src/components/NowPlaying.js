@@ -16,10 +16,10 @@ const NowPlaying = () => {
             <div className="details">
                 <CardContent className="content">
                     <Typography component="h5" variant="h5">
-                        Live From Space
+                        Katana
                     </Typography>
                     <Typography variant="subtitle1" color="textSecondary">
-                        Mac Miller
+                        Ramriddlz, KILLY
                     </Typography>
                 </CardContent>
                 <div className="controls">

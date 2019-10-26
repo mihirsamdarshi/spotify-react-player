@@ -19,7 +19,7 @@ const MainAppBody = () => {
     const [userId, setUserId] = useState('');
     const [playlistList, setPlaylistList] = useState('');
     const [songList, setSongList] = useState('');
-    const [songPlaying, setSongPlaylist] = useState('')
+    const [songPlaying, setSongPlaying] = useState('')
     const [errorString, setError] = useState(null);
 
     const { height, width } = useWindowDimensions();

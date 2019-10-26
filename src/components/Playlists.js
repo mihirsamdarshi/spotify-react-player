@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import { animated, useSpring } from 'react-spring';
 import '../stylesheets/Playlists.scss';
 import { GetSongDispatch } from '../scripts/callbacks';
+import { createStore } from 'redux';
 
 const PlaylistBox = (props) => {
     const animation = useSpring({
@@ -14,11 +15,26 @@ const PlaylistBox = (props) => {
         from: { opacity: 0 },
     });
 
-    const dispatch = useContext(GetSongDispatch);
+    function setSelected(state, action) {
+        if (action.type === 'set') {
+            state = action.id;
+        }
+    }
+
+    const store = createStore(setSelected, null);
+
+    const GetSongList = useContext(GetSongDispatch);
+
+    const handleClick = (key) => {
+        GetSongList;
+        store.dispatch({
+            id: key,
+        });
+    };
 
     return (
         <animated.div style={animation}>
-            <Card className="card" onClick={dispatch}>
+            <Card className={} onClick={handleClick(props.key)}>
                 <CardActionArea>
                     <Image
                         className="media"
@@ -38,19 +54,17 @@ const PlaylistBox = (props) => {
     );
 };
 
-const Playlists = (props) => (
-    <div>
-        {
-            props.playlists.map((element) => (
-                <PlaylistBox
-                    key={element.id}
-                    name={element.name}
-                    numTracks={element.tracks.total}
-                    img={element.images[0]}
-                />
-            ))
-        }
-    </div>
-);
+const Playlists = (props) => {
+    return (
+        props.playlists.map((element) => (
+            <PlaylistBox
+                key={element.id}
+                name={element.name}
+                numTracks={element.tracks.total}
+                img={element.images[0]}
+            />
+        ))
+    );
+};
 
 export default Playlists;
