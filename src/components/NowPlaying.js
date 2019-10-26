@@ -7,46 +7,55 @@ import Typography from '@material-ui/core/Typography';
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
+import '../stylesheets/NowPlaying.scss';
 
 const NowPlaying = (props) => {
     const theme = useTheme();
 
     const returnArtistAlbumString = (args) => {
         const artistArray = args.artist;
-        console.log(artistArray);
+        const albumName = args.album;
+        let returnString = '';
+        if (artistArray.length === 1) {
+            returnString = artistArray[0].name;
+            return returnString;
+        }
 
-        /*
-const albumName = args.album;
-let returnString = '';
-if (artistArray.length === 1) {
-    returnString = artistArray[0].name;
-    return returnString;
-}
+        artistArray.forEach((element) => {
+            if (element.name) {
+                returnString += (`${element.name}, `);
+            }
+        });
 
-artistArray.forEach((element) => {
-    if (element.name) {
-        returnString += (`${element.name}, `);
-    }
-});
+        const len = returnString.length;
+        returnString = returnString.substring(0, len - 2);
+        return `${returnString} — ${albumName}`;
+    };
 
-const len = returnString.length;
-returnString = returnString.substring(0, len - 2);
-return `${returnString} — ${albumName}`;
- */
+    const nowPlayingCard = {
+        backgroundImage: `url(${props.nowPlaying.img.url})`,
+        backgroundPosition: 'center',
+        minHeight: '100px',
+        height: '100%',
+        maxHeight: '400px',
+        //filter: 'blur(8px)',
     };
 
     return (
-        <Card className="card">
-            <div className="details">
-                <CardContent className="content">
+        <Card>
+            <div className="bg-image">
+                <div style={nowPlayingCard} />
+            </div>
+            <div className="nowPlayingDetails">
+                <CardContent className="nowPlayingContent">
                     <Typography component="h5" variant="h5">
-                        {props.name}
+                        {props.nowPlaying.name}
                     </Typography>
                     <Typography variant="subtitle1" color="textSecondary">
-                        {returnArtistAlbumString(props)}
+                        {returnArtistAlbumString(props.nowPlaying)}
                     </Typography>
                 </CardContent>
-                <div className="controls">
+                <div className="nowPlayingControls">
                     <IconButton aria-label="previous">
                         {theme.direction === 'rtl' ? <SkipNextIcon /> : <SkipPreviousIcon />}
                     </IconButton>

@@ -33,12 +33,12 @@ const SongBox = (props) => {
     return (
         <Card className="card" onClick={() => GetNowPlaying(props)}>
             <CardActionArea>
-                <div className="box">
+                <div className="songBox">
                     <Image
-                        className="cover"
+                        className="songCover"
                         src={props.img.url}
                     />
-                    <CardContent className="content">
+                    <CardContent className="songContent">
                         <Typography component="h5" variant="h5" noWrap>
                             {props.name}
                         </Typography>

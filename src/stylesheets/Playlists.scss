@@ -1,5 +1,11 @@
 .media {
   width: 100%;
+  margin-bottom: 10%;
+}
+
+.heightFix {
+  max-height: 300px;
+  text-align: center;
 }
 
 .card {
@@ -7,13 +13,18 @@
   margin-bottom: 10px;
 }
 
-.selected {
+.card.playlist {
+  flex-direction: column;
+}
+
+.card.selected {
   background-color: #007AFF;
 }
 
 .details {
   display: flex;
   flex-direction: column;
+  background-color: #fff;
 }
 
 .content {

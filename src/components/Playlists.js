@@ -1,9 +1,6 @@
 import React, { useContext } from 'react';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardContent from '@material-ui/core/CardContent';
+import { Card, CardActionArea, CardContent, Typography } from '@material-ui/core';
 import Image from 'react-bootstrap/Image';
-import Typography from '@material-ui/core/Typography';
 import { animated, useSpring } from 'react-spring';
 import '../stylesheets/Playlists.scss';
 import { GetSongListDispatch } from '../scripts/callbacks';
@@ -18,12 +15,14 @@ const PlaylistBox = (props) => {
 
     return (
         <animated.div style={animation}>
-            <Card className="card" onClick={() => GetSongList(props)}>
-                <CardActionArea>
+            <Card className="card playlist" onClick={() => GetSongList(props)}>
+                <div className="heightFix">
                     <Image
                         className="media"
-                        src={props.img.url}
+                        src={props.imgSrc.url}
                     />
+                </div>
+                <CardActionArea>
                     <CardContent className="details">
                         <Typography gutterBottom variant="h5" component="h2">
                             {props.name}
@@ -53,7 +52,7 @@ const Playlists = (props) => {
                 key={element.id}
                 name={element.name}
                 numTracks={element.tracks.total}
-                img={element.images[0]}
+                imgSrc={element.images[0]}
             />
         ))
     );

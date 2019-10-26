@@ -1,6 +1,6 @@
 $break-large: 1000px;
 
-.box {
+.songBox {
   display: flex;
   @media screen and (max-width: $break-large - 1) {
     flex-direction: column;
@@ -10,7 +10,7 @@ $break-large: 1000px;
   }
 }
 
-.content {
+.songContent {
   display: flex;
   flex-direction: column;
   text-align: left;
@@ -22,7 +22,7 @@ $break-large: 1000px;
   }
 }
 
-.cover {
+.songCover {
   display: flex;
   @media screen and (max-width: $break-large - 1) {
     width: 100%;
