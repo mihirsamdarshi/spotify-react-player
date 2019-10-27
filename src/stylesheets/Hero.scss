@@ -1,10 +1,31 @@
-.centered {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
 .fillWindow {
   height: 100%;
+  align-items: center;
+}
+
+.heroInfo {
+  text-align: center;
+}
+
+.centeredBtn {
+  margin: 4% auto;
+  width: 25%;
+}
+
+.spotifyLoginBtn {
+  font-size: 30px;
+  border-radius: 500px;
+  padding: 19px 56px 21px;
+  color: #FFF;
+  background-color: #1DB954;
+  min-width: 160px;
+  font-weight: 700;
+  text-align: center;
+  border: 1px solid transparent;
+}
+
+.asterisk {
+  text-align: center;
+  font-size: 0.5em;
+  margin-top: 20%;
 }

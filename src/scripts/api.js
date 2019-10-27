@@ -1,6 +1,5 @@
 /* eslint-disable */
 const apiHost = () => { }; // No-op in our mock version.
-
 const fetchUserPlaylists = () => Promise.resolve({
     href: 'https://api.spotify.com/v1/users/123411097/playlists?offset=0&limit=20',
     items: [
