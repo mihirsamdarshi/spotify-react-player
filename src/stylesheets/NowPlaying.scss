@@ -1,28 +1,24 @@
+$break-large: 1275px;
+
 .bg-image {
-  height: 100%;
-  width: 100%;
+  min-height: 250px;
 }
 .nowPlayingDetails {
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
   display: flex;
-  flex-direction: row;
   z-index: 2;
-  text-align: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 .nowPlayingContent {
   display: flex;
   flex: 1 0 auto;
   flex-direction: column;
+  text-align: center;
 }
 
 .nowPlayingControls {
   display: flex;
   align-items: center;
-}
-
-.playIcon {
-  height: 100px;
-  width: 100px;
+  padding-bottom: 4%;
 }

@@ -5,16 +5,12 @@
 
 .heightFix {
   max-height: 300px;
-  text-align: center;
+  align-items: center;
 }
 
 .card {
   display: flex;
   margin-bottom: 10px;
-}
-
-.card.playlist {
-  flex-direction: column;
 }
 
 .card.selected {

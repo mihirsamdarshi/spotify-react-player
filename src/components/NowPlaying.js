@@ -1,5 +1,4 @@
-import React from 'react';
-import { useTheme } from '@material-ui/core/styles';
+import React, { useEffect } from 'react';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import IconButton from '@material-ui/core/IconButton';
@@ -10,8 +9,6 @@ import SkipNextIcon from '@material-ui/icons/SkipNext';
 import '../stylesheets/NowPlaying.scss';
 
 const NowPlaying = (props) => {
-    const theme = useTheme();
-
     const returnArtistAlbumString = (args) => {
         const artistArray = args.artist;
         const albumName = args.album;
@@ -35,11 +32,22 @@ const NowPlaying = (props) => {
     const nowPlayingCard = {
         backgroundImage: `url(${props.nowPlaying.img.url})`,
         backgroundPosition: 'center',
-        minHeight: '100px',
-        height: '100%',
-        maxHeight: '400px',
-        //filter: 'blur(8px)',
+        minHeight: '100%',
     };
+
+    // load SDK after authentication token was created
+    const loadSpotifySDK = () => {
+        const sdk = document.createElement('script');
+        sdk.src = 'https://sdk.scdn.co/spotify-player.js';
+        document.body.appendChild(sdk);
+    };
+
+    useEffect(() => {
+        loadSpotifySDK();
+        window.onSpotifyWebPlaybackSDKReady = () => {
+            console.log('Player Ready');
+        };
+    }, []);
 
     return (
         <Card>
@@ -57,13 +65,13 @@ const NowPlaying = (props) => {
                 </CardContent>
                 <div className="nowPlayingControls">
                     <IconButton aria-label="previous">
-                        {theme.direction === 'rtl' ? <SkipNextIcon /> : <SkipPreviousIcon />}
+                        {<SkipPreviousIcon fontSize="medium" />}
                     </IconButton>
                     <IconButton aria-label="play/pause">
-                        <PlayArrowIcon className="playIcon" />
+                        <PlayArrowIcon fontSize="large" />
                     </IconButton>
                     <IconButton aria-label="next">
-                        {theme.direction === 'rtl' ? <SkipPreviousIcon /> : <SkipNextIcon />}
+                        {<SkipNextIcon fontSize="medium" />}
                     </IconButton>
                 </div>
             </div>
