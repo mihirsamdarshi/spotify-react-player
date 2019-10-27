@@ -29,6 +29,7 @@ const MainAppBody = () => {
         width: width - 84,
     };
 
+    // Getter Functions
     const getPlaylists = async () => {
         setError(null);
         try {
@@ -57,6 +58,7 @@ const MainAppBody = () => {
         setShowNowPlaying(true);
     };
 
+    // Display Functions
     const numPlaylists = () => (
         <div className="numTracksWrapper">
             <Typography className="playlistsAvailable">
@@ -86,7 +88,7 @@ const MainAppBody = () => {
     );
 
     const displaySongs = () => (
-        <Paper className="paper">
+        <Paper className="paper" style={blackOverride}>
             <GetNowPlayingDispatch.Provider value={getNowPlaying}>
                 <Songs songs={songList} />
             </GetNowPlayingDispatch.Provider>
@@ -99,21 +101,28 @@ const MainAppBody = () => {
         </div>
     );
 
+    // OnLoad Functions
     useEffect(() => {
         getPlaylists();
     }, []);
 
+    // Handler Functions
     const handleSongListClose = () => {
         if (showSongs && !showNowPlaying) {
             setShowSongs(false);
         }
     };
 
+    // Style Override Object
+    const blackOverride = {
+        backgroundColor: '#EEE',
+    };
+
     return (
         <div className="root">
             <Grid container className="gridContainer">
                 <Grid item xs={4} style={heightWidthStyle}>
-                    <Paper className="paper">
+                    <Paper className="paper" style={blackOverride}>
                         {showPlaylists && !errorString ? displayPlaylists() : displayError()}
                     </Paper>
                 </Grid>

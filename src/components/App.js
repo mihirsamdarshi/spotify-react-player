@@ -19,8 +19,8 @@ const App = () => {
     // content (i.e., what the render() method returns for class-based components).
     return (
         <div className="App">
-            <AppHeader/>
-            {loggedIn ? <MainAppBody/> : <Hero login={setClientLoggedIn}/>}
+            <AppHeader />
+            {loggedIn ? <MainAppBody /> : <Hero login={setClientLoggedIn} />}
         </div>
     );
 };

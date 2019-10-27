@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 import '../stylesheets/Hero.scss';
 
 const Hero = (props) => (
-    <div>
+    <div className="fillWindow">
         <Button className="centered" onClick={() => props.login(true)}>
                 Login
         </Button>

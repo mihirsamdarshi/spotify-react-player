@@ -6,18 +6,20 @@ import SettingsButton from './SettingsButton';
 import '../stylesheets/AppHeader.scss';
 
 const AppHeader = () => {
-    return (
-        <div className="appHeader">
-            <AppBar position="static" color="primary">
-                <Toolbar>
-                    <Typography variant="h6" className="title">
-                        Applotify
-                    </Typography>
-                    <SettingsButton className="settingsButton"/>
-                </Toolbar>
-            </AppBar>
-        </div>
-    );
-}
+    const blackOverride = {
+        backgroundColor: 'black',
+    };
 
-export default AppHeader
+    return (
+        <AppBar position="static" style={blackOverride}>
+            <Toolbar>
+                <Typography variant="h6" className="title">
+                    Applotify
+                </Typography>
+                <SettingsButton className="settingsButton" />
+            </Toolbar>
+        </AppBar>
+    );
+};
+
+export default AppHeader;
