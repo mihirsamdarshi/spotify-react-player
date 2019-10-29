@@ -27,6 +27,12 @@ import * as api from '../scripts/api';
 // Handy reference:
 // https://semaphoreci.com/community/tutorials/snapshot-testing-react-components-with-jest
 //
+it('renders the Main App Body component', () => {
+    const div = document.createElement('div');
+    ReactDOM.render(<MainAppBody />, div);
+    ReactDOM.unmountComponentAtNode(div);
+});
+
 it('should start with an empty search field', () => {
     const component = TestRenderer.create(<MainAppBody/>);
     const tree = component.toJSON();
@@ -148,7 +154,7 @@ describe('failed API calls', () => {
 
         div = await setupAndQuerySearchForm();
     });
-
+d
     afterEach(() => {
         ReactDOM.unmountComponentAtNode(div);
         api.fetchPlaylistTracks.restore();

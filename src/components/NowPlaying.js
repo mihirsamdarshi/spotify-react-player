@@ -9,6 +9,7 @@ import SkipNextIcon from '@material-ui/icons/SkipNext';
 import '../stylesheets/NowPlaying.scss';
 
 const NowPlaying = (props) => {
+    console.log(props);
     const returnArtistAlbumString = (args) => {
         const artistArray = args.artist;
         const albumName = args.album;
@@ -65,13 +66,13 @@ const NowPlaying = (props) => {
                 </CardContent>
                 <div className="nowPlayingControls">
                     <IconButton aria-label="previous">
-                        {<SkipPreviousIcon fontSize="medium" />}
+                        {<SkipPreviousIcon />}
                     </IconButton>
                     <IconButton aria-label="play/pause">
-                        <PlayArrowIcon fontSize="large" />
+                        <PlayArrowIcon />
                     </IconButton>
                     <IconButton aria-label="next">
-                        {<SkipNextIcon fontSize="medium" />}
+                        {<SkipNextIcon />}
                     </IconButton>
                 </div>
             </div>
