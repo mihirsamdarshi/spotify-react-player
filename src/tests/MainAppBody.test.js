@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TestRenderer from 'react-test-renderer';
 
 import MainAppBody from '../components/MainAppBody';
 
@@ -26,10 +25,4 @@ it('renders the Main App Body component', () => {
     const div = document.createElement('div');
     ReactDOM.render(<MainAppBody />, div);
     ReactDOM.unmountComponentAtNode(div);
-});
-
-it('should start with a list of playlists', () => {
-    const component = TestRenderer.create(<MainAppBody />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
 });
