@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import TestRenderer from 'react-test-renderer';
 import MainAppBody from '../components/MainAppBody';
+
+const { act } = TestRenderer;
 
 // This test suite uses a distinct testing technique called _snapshot testing_. Go take
 // a peek at the code then come back here for more commentary.
@@ -21,8 +23,27 @@ import MainAppBody from '../components/MainAppBody';
 // Handy reference:
 // https://semaphoreci.com/community/tutorials/snapshot-testing-react-components-with-jest
 //
-it('renders the Main App Body component', () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<MainAppBody />, div);
-    ReactDOM.unmountComponentAtNode(div);
+let container;
+
+beforeEach(() => {
+    container = document.createElement('div');
+    document.body.appendChild(container);
 });
+
+afterEach(() => {
+    document.body.removeChild(container);
+    container = null;
+});
+
+it('renders the Main App Body component', () => {
+    act(() => {
+        ReactDOM.render(<MainAppBody />, container);
+    });
+});
+
+it('should start with a list of playlists', () => {
+    const component = TestRenderer.render(<MainAppBody />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+});
+
