@@ -1,7 +1,4 @@
-let userLoggedInApiUrl = 'https://api.spotify.com/v1/me/'
-
-const apiHost = host => { api = host };
-const urlFor = resource => `${api}${resource}`;
+let userLoggedInApiUrl = 'https://api.spotify.com/v1/me'
 
 const HTTP_OK = 200;
 
@@ -28,7 +25,7 @@ const okCheck = statusCheck([HTTP_OK]);
 const query = (resource, params, token) => fetch(`${userLoggedInApiUrl}/${resource}/${params}`,
     {
         headers: {
-            'Authorization': token,
+            'Authorization': `Bearer ${token}`,
         }
     }).then(okCheck, emitNativeError)
     .then(response => response.json());
@@ -38,7 +35,6 @@ const fetchPlaylistTracks = (params, token) => query('playlists',`${params}/trac
 
 
 export {
-    apiHost,
     fetchUserPlaylists,
     fetchPlaylistTracks
 }
