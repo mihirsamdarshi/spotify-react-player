@@ -15,7 +15,7 @@ const PlaylistBox = (props) => {
 
     return (
         <animated.div style={animation}>
-            <Card className="card playlist" onClick={() => GetSongList(props)}>
+            <Card className="card playlist" onClick={() => GetSongList(props.playlistId, props.token)}>
                 <div className="heightFix">
                     <Image
                         className="media"
@@ -46,13 +46,17 @@ const Playlists = (props) => {
     };
     */
 
+    const accessToken = props.token;
+
     return (
         props.playlists.map((element) => (
             <PlaylistBox
                 key={element.id}
+                playlistId={element.id}
                 name={element.name}
                 numTracks={element.tracks.total}
                 imgSrc={element.images[0]}
+                token={accessToken}
             />
         ))
     );

@@ -1,8 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import { Typography } from '@material-ui/core';
-import Modal from '@material-ui/core/Modal';
+import { Grid, Modal, Paper, Typography } from '@material-ui/core';
 import Playlists from './Playlists';
 import Songs from './Songs';
 import { fetchPlaylistTracks, fetchUserPlaylists } from '../scripts/api';
@@ -12,11 +9,10 @@ import '../stylesheets/MainAppBody.scss';
 import NowPlaying from './NowPlaying';
 
 
-const MainAppBody = () => {
+const MainAppBody = props => {
     const [showPlaylists, setShowPlaylists] = useState(false);
     const [showSongs, setShowSongs] = useState(false);
     const [showNowPlaying, setShowNowPlaying] = useState(false);
-    const [userId, setUserId] = useState('');
     const [playlistList, setPlaylistList] = useState('');
     const [songList, setSongList] = useState('');
     const [songPlaying, setSongPlaying] = useState('')
@@ -30,11 +26,10 @@ const MainAppBody = () => {
     };
 
     // Getter Functions
-    const getPlaylists = async () => {
+    const getPlaylists = async (token) => {
         setError(null);
         try {
-            const result = await fetchUserPlaylists();
-            setUserId(result.href);
+            const result = await fetchUserPlaylists(token);
             setPlaylistList(result.items);
             setShowPlaylists(true);
         } catch (error) {
@@ -42,10 +37,12 @@ const MainAppBody = () => {
         }
     };
 
-    const getSongs = async (link) => {
+    const getSongs = async (link, token) => {
+        console.log(link);
+        console.log(token);
         setError(null);
         try {
-            const result = await fetchPlaylistTracks(link);
+            const result = await fetchPlaylistTracks(link, token);
             setSongList(result.items);
             setShowSongs(true);
         } catch (error) {
@@ -77,7 +74,7 @@ const MainAppBody = () => {
 
     const displayPlaylists = () => (
         <GetSongListDispatch.Provider value={getSongs}>
-            <Playlists playlists={playlistList} />
+            <Playlists playlists={playlistList} token={props.token} />
         </GetSongListDispatch.Provider>
     );
 
@@ -103,8 +100,8 @@ const MainAppBody = () => {
 
     // OnLoad Functions
     useEffect(() => {
-        getPlaylists();
-    }, []);
+        getPlaylists(props.token);
+    }, [props]); //es
 
     // Handler Functions
     const handleSongListClose = () => {

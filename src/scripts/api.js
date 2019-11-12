@@ -1,4 +1,4 @@
-let userLoggedInApiUrl = 'https://api.spotify.com/v1/me'
+const apiUrl = 'https://api.spotify.com/v1';
 
 const HTTP_OK = 200;
 
@@ -22,16 +22,17 @@ const statusCheck = successStatuses => response => {
 
 const okCheck = statusCheck([HTTP_OK]);
 
-const query = (resource, params, token) => fetch(`${userLoggedInApiUrl}/${resource}/${params}`,
+const query = (resource, id, token) => fetch(`${apiUrl}/${resource}/${id}`,
     {
+        method: 'GET',
         headers: {
             'Authorization': `Bearer ${token}`,
         }
     }).then(okCheck, emitNativeError)
     .then(response => response.json());
 
-const fetchUserPlaylists = token => query('playlists', '', token);
-const fetchPlaylistTracks = (params, token) => query('playlists',`${params}/tracks`, token);
+const fetchUserPlaylists = (token) => query('me/playlists', '', token);
+const fetchPlaylistTracks = (id, token) => query('playlists',`${id}/tracks`, token);
 
 
 export {

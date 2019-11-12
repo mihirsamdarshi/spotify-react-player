@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import '../stylesheets/Hero.scss';
-
+import { isEmpty } from 'lodash';
 import { SetLoginDispatch } from '../scripts/callbacks';
 
 const authEndpoint = 'https://accounts.spotify.com/authorize';
@@ -31,7 +31,7 @@ const Hero = props => {
 
     useEffect(() => {
         const token = getHashParams();
-        if (token !== '') {
+        if (!isEmpty(token)) {
             setAccessToken(token);
         }
     }, []);
