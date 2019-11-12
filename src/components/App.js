@@ -14,10 +14,11 @@ const App = () => {
     return (
         <div className="App">
             <AppHeader />
-            { console.log(accessToken)}
-            <SetLoginDispatch.Provider value={setAccessToken}>
-                {accessToken === null ? <Hero setAccessToken={setAccessToken} /> : <MainAppBody token={accessToken.access_token} /> }
-            </SetLoginDispatch.Provider>
+                {accessToken === null
+                    ? <SetLoginDispatch.Provider value={setAccessToken}>
+                        <Hero />
+                    </SetLoginDispatch.Provider>
+                    : <MainAppBody token={accessToken.access_token} /> }
         </div>
     );
 };

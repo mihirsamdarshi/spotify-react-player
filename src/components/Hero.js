@@ -15,6 +15,7 @@ const scopes = [
 ];
 
 const Hero = props => {
+    // from Spotify API example
     const getHashParams = () => {
         var hashParams = {};
         var e, r = /([^&;=]+)=?([^&;]*)/g,
@@ -34,7 +35,7 @@ const Hero = props => {
         if (!isEmpty(token)) {
             setAccessToken(token);
         }
-    }, []);
+    }, [setAccessToken]);
 
     return (
         <div className="fillWindow">

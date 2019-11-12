@@ -68,9 +68,7 @@ const Songs = (props) => {
     };
 
     const editedSongArray = removeDuplicates(props.songs);
-
-    console.log(editedSongArray);
-
+    
     return (
         <div>
             {
