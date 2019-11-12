@@ -23,7 +23,7 @@ const App = () => {
         <div className="App">
             <AppHeader />
             <SetLoginDispatch.Provider value={setAccessToken}>
-                {accessToken ? <MainAppBody /> : <Hero />}
+                {accessToken ? <MainAppBody token={accessToken} /> : <Hero />}
             </SetLoginDispatch.Provider>
         </div>
     );
