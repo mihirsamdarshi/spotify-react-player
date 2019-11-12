@@ -30,7 +30,10 @@ const Hero = props => {
     const setAccessToken = useContext(SetLoginDispatch);
 
     useEffect(() => {
-        () => setAccessToken(getHashParams());
+        const token = getHashParams();
+        if (token !== '') {
+            setAccessToken(token);
+        }
     }, []);
 
     return (

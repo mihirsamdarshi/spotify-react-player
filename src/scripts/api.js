@@ -1,7 +1,7 @@
 let userLoggedInApiUrl = 'https://api.spotify.com/v1/me/'
 
-const apiHost = host => { api = host }
-const urlFor = resource => `${api}${resource}`
+const apiHost = host => { api = host };
+const urlFor = resource => `${api}${resource}`;
 
 const HTTP_OK = 200;
 
