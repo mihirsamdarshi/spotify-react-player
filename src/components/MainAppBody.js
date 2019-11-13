@@ -23,7 +23,6 @@ const MainAppBody = props => {
     const token = useContext(GlobalToken);
 
     // Player Functions
-    const [deviceId, setDeviceId] = useState(null)
     const [playbackState, setPlaybackState] = useState(null);
 
     const handleScriptCreate = () => {

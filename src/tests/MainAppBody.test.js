@@ -1,5 +1,6 @@
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
+import ReactDOM from 'react-dom';
 import MainAppBody from '../components/MainAppBody';
 
 const { act } = TestRenderer;
@@ -36,13 +37,13 @@ afterEach(() => {
 
 it('renders the Main App Body component', () => {
     act(() => {
-        TestRenderer.render(<MainAppBody />);
+        ReactDOM.render(<MainAppBody />, container);
     });
 });
 
 it('should start with a list of playlists', () => {
     act(() => {
-        TestRenderer.render(<MainAppBody/>);
+        ReactDOM.render(<MainAppBody/>, container);
     })
 });
 
