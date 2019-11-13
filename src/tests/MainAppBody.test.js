@@ -1,7 +1,13 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import MainAppBody from '../components/MainAppBody';
-import { act } from 'react-dom/test-utils';
+import ReactDOM from 'react-dom';
+import TestRenderer from 'react-test-renderer';
+import ReactTestUtils from 'react-dom/test-utils';
+import { Grid, Paper, Typography } from '@material-ui/core';
+
+const { act } = TestRenderer;
+
+
 
 // This test suite uses a distinct testing technique called _snapshot testing_. Go take
 // a peek at the code then come back here for more commentary.
@@ -34,14 +40,41 @@ afterEach(() => {
 });
 
 it('renders the Main App Body component', async () => {
-    await act(async () => {
+    await ReactTestUtils.act(async () => {
         ReactDOM.render(<MainAppBody />, container);
     });
 });
 
-it('renders the Main App Body component', async () => {
-    await act(async () => {
-        ReactDOM.render(<MainAppBody />, container);
+it('should start with a list of playlists', async () => {
+     await act(async() => {
+         const component = await TestRenderer.create(<MainAppBody/>);
+         const tree = component.toJSON();
+         expect(tree).toMatchSnapshot();
     });
 });
 
+describe('the MainAppBody', () => {
+    it('should have four MUI Grid elements', async () => {
+        await act(async () => {
+            const component = await TestRenderer.create(<MainAppBody/>);
+            const componentCount = component.root.findAllByType(Grid).length;
+            expect(componentCount).toBe(4)
+        });
+    });
+
+    it('should have one MUI Paper element', async () => {
+        await act(async () => {
+            const component = await TestRenderer.create(<MainAppBody/>);
+            const componentCount = component.root.findAllByType(Paper).length;
+            expect(componentCount).toBe(1)
+        });
+    });
+
+    it('should have one MUI Typography element', async () => {
+        await act(async () => {
+            const component = await TestRenderer.create(<MainAppBody/>);
+            const componentCount = component.root.findAllByType(Typography).length;
+            expect(componentCount).toBe(1)
+        });
+    });
+});

@@ -2,7 +2,6 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import SettingsButton from './SettingsButton';
 import '../stylesheets/AppHeader.scss';
 
 const AppHeader = () => {
@@ -16,7 +15,9 @@ const AppHeader = () => {
                 <Typography variant="h6" className="title">
                     Applotify
                 </Typography>
-                <SettingsButton className="settingsButton" />
+                {/* not neeeded until adding Apple Music/SoundCloud
+                    <SettingsButton className="settingsButton" />
+                */}
             </Toolbar>
         </AppBar>
     );

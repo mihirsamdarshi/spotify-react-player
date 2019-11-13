@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Grid, Modal, Paper, Typography } from '@material-ui/core';
+import { Grid, Paper, Typography } from '@material-ui/core';
 import Script from 'react-load-script';
 
 import Playlists from './Playlists';
@@ -109,6 +109,7 @@ const MainAppBody = props => {
 
     const getNowPlaying = (value) => {
         playSong(value.uri, token);
+        //TODO: figure out how to do play, pause, previous, etc. from here
         setSongPlaying(value);
         setShowNowPlaying(true);
     };
@@ -136,11 +137,7 @@ const MainAppBody = props => {
         </GetSongListDispatch.Provider>
     );
 
-    const displayError = () => (
-        <Modal open>
-            <p>{errorString}</p>
-        </Modal>
-    );
+    //TODO: configure error display handling
 
     const displaySongs = () => (
         <Paper className="paper" style={blackOverride}>
@@ -187,7 +184,7 @@ const MainAppBody = props => {
             <Grid container className="gridContainer">
                 <Grid item xs={4} style={heightWidthStyle}>
                     <Paper className="paper" style={blackOverride}>
-                        {showPlaylists && !errorString ? displayPlaylists() : displayError()}
+                        {showPlaylists && !errorString ? displayPlaylists() : null}
                     </Paper>
                 </Grid>
                 <Grid item xs={4} style={heightWidthStyle}>

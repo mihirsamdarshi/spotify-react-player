@@ -40,7 +40,7 @@
       "!**/coverage/**",
       "!**/build/**",
       "!**/src/index.js",
-      "!**/src/scripts/"
+      "!**/src/scripts/**"
     ]
   },
   "browserslist": {
