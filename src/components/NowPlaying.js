@@ -1,46 +1,44 @@
-import React from 'react';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
+import React, { useState } from 'react';
+import { Card, CardContent, IconButton, Typography } from '@material-ui/core';
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
+import PauseIcon from '@material-ui/icons/Pause';
 import '../stylesheets/NowPlaying.scss';
+import { nextSong, pauseSong } from '../scripts/api';
+import { returnArtistAlbumString } from '../scripts/helpers';
 
 const NowPlaying = (props) => {
-    console.log(props);
-    const returnArtistAlbumString = (args) => {
-        const artistArray = args.artist;
-        const albumName = args.album;
-        let returnString = '';
-        if (artistArray.length === 1) {
-            returnString = artistArray[0].name;
-            return returnString;
-        }
-
-        artistArray.forEach((element) => {
-            if (element.name) {
-                returnString += (`${element.name}, `);
-            }
-        });
-
-        const len = returnString.length;
-        returnString = returnString.substring(0, len - 2);
-        return `${returnString} — ${albumName}`;
-    };
-
     const nowPlayingCard = {
         backgroundImage: `url(${props.nowPlaying.img.url})`,
         backgroundPosition: 'center',
-        minHeight: '100%',
+        maxWidth: '100%',
+        height: 'auto',
+    };
+
+    const [songPlaying, setSongPlaying] = useState(false);
+
+    const handlePlay = () => {
+        if (songPlaying) {
+            pauseSong();
+            setSongPlaying(false);
+        } else {
+            console.log('play func here');
+            setSongPlaying(true);
+        }
+    };
+
+    const handlePrevious = () => {
+        previousSong()
+    };
+
+    const handleNext = () => {
+        nextSong();
     };
 
     return (
         <Card>
-            <div className="bg-image">
-                <div style={nowPlayingCard} />
-            </div>
+            <div className="bg-image" style={nowPlayingCard} />
             <div className="nowPlayingDetails">
                 <CardContent className="nowPlayingContent">
                     <Typography component="h5" variant="h5">
@@ -51,13 +49,13 @@ const NowPlaying = (props) => {
                     </Typography>
                 </CardContent>
                 <div className="nowPlayingControls">
-                    <IconButton aria-label="previous">
+                    <IconButton aria-label="previous" onClick={handlePrevious}>
                         {<SkipPreviousIcon />}
                     </IconButton>
-                    <IconButton aria-label="play/pause">
-                        <PlayArrowIcon />
+                    <IconButton aria-label="play/pause" onClick={handlePlay}>
+                        {songPlaying ? <PauseIcon /> : <PlayArrowIcon />}
                     </IconButton>
-                    <IconButton aria-label="next">
+                    <IconButton aria-label="next" onClick={handleNext}>
                         {<SkipNextIcon />}
                     </IconButton>
                 </div>

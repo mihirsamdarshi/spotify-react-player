@@ -8,10 +8,10 @@ const clientId = "ccc1ea71746a4d4ea8468a7cc7d1d9f0";
 const redirectUri = "http://localhost:3000";
 const scopes = [
     "user-read-private",
+    "user-read-playback-state",
     "user-modify-playback-state",
     "streaming",
     "user-read-currently-playing",
-    "user-read-playback-state",
 ];
 
 const Hero = props => {

@@ -30,23 +30,64 @@ const query = (resource, id, token) => fetch(`${apiUrl}/${resource}/${id}`, {
             'Authorization': `Bearer ${token}`,
         }
     }).then(okCheck, emitNativeError)
-    .then(response => response.json());
-
-const playerAction = (action, uri, deviceId, token) => fetch(`${playerUrl}/${action}?device_id=${deviceId}`, {
-    method: 'PUT',
-    body: `{"uris": ["${uri}"]}`,
-    headers: {
-        'Authorization': `Bearer ${token}`,
-    }
-}).then(okCheck, emitNativeError)
-.then(data => console.log(data));
+    .then(response => response.json())
 
 const fetchUserPlaylists = (token) => query('me/playlists', '', token);
 const fetchPlaylistTracks = (id, token) => query('playlists',`${id}/tracks`, token);
 
+const makePrimaryPlayback = (id, token) => {
+    fetch(playerUrl, {
+        method: "PUT",
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            "device_ids": [ id ],
+            "play": true,
+        }),
+    });
+};
 
+const playerActions = (action, token, data) => {
+    let bodyString = '';
+    let httpMethod = ''
+    switch (action) {
+    case 'play':
+        bodyString = `{"uris": ["${data}"]}`;
+        httpMethod = 'PUT';
+        break;
+    case 'pause':
+        httpMethod = 'PUT';
+        break;
+    case 'next':
+        httpMethod = 'POST';
+        break;
+    case 'previous':
+        httpMethod = 'POST';
+        break;
+    }
+    fetch(`${playerUrl}/${action}`, {
+        method: httpMethod,
+        body: bodyString,
+        headers: {
+            'Authorization': `Bearer ${token}`,
+        }
+    }).then(okCheck, emitNativeError)
+        .then(data => console.log(data));
+};
+
+const playSong = (data, token) => playerActions('play', token, data);
+const pauseSong = token => playerActions('pause', token);
+const nextSong = token => playerActions('next', token);
+const previousSong = token => playerActions('previous', token);
 
 export {
     fetchUserPlaylists,
     fetchPlaylistTracks,
+    makePrimaryPlayback,
+    playSong,
+    pauseSong,
+    nextSong,
+    previousSong
 }

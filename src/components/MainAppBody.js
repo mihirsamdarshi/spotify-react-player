@@ -6,9 +6,9 @@ import Playlists from './Playlists';
 import Songs from './Songs';
 import NowPlaying from './NowPlaying';
 
-import { fetchPlaylistTracks, fetchUserPlaylists } from '../scripts/api';
+import { fetchPlaylistTracks, fetchUserPlaylists, makePrimaryPlayback } from '../scripts/api';
 import useWindowDimensions from '../scripts/WindowDimensions';
-import { GetNowPlayingDispatch, GetSongListDispatch } from '../scripts/callbacks';
+import { GetNowPlayingDispatch, GetSongListDispatch } from '../scripts/helpers';
 
 import '../stylesheets/MainAppBody.scss';
 
@@ -21,7 +21,7 @@ const MainAppBody = props => {
     };
 
     // Player Functions
-    const [deviceId, setDeviceId] = useState(null);
+    const [deviceId, setDeviceId] = useState('');
 
     const handleScriptCreate = () => {
         console.log("Script created");
@@ -53,11 +53,9 @@ const MainAppBody = props => {
         player.addListener('player_state_changed', state => { console.log(state); });
 
         // Ready
-        player.addListener('ready', data => {
-            let { device_id } = data;
+        player.addListener('ready', ({ device_id } ) => {
             console.log('Ready with Device ID', device_id);
-            console.log(setDeviceId);
-            setDeviceId(device_id);
+            makePrimaryPlayback(device_id, token);
         });
 
         // Not Ready

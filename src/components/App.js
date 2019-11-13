@@ -5,7 +5,7 @@ import AppHeader from './AppHeader';
 import Hero from './Hero';
 import MainAppBody from './MainAppBody';
 
-import { SetLoginDispatch } from '../scripts/callbacks';
+import { SetLoginDispatch } from '../scripts/helpers';
 
 const App = () => {
 
