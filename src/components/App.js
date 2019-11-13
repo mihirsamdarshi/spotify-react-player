@@ -5,7 +5,7 @@ import AppHeader from './AppHeader';
 import Hero from './Hero';
 import MainAppBody from './MainAppBody';
 
-import { SetLoginDispatch } from '../scripts/helpers';
+import { GlobalToken, SetLoginDispatch } from '../scripts/helpers';
 
 const App = () => {
 
@@ -18,7 +18,10 @@ const App = () => {
                     ? <SetLoginDispatch.Provider value={setAccessToken}>
                         <Hero />
                     </SetLoginDispatch.Provider>
-                    : <MainAppBody token={accessToken.access_token} /> }
+                    : <GlobalToken.Provider value={accessToken.access_token}>
+                        <MainAppBody />
+                    </GlobalToken.Provider>
+                }
         </div>
     );
 };

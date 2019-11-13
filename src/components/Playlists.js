@@ -3,7 +3,7 @@ import { Card, CardActionArea, CardContent, Typography } from '@material-ui/core
 import Image from 'react-bootstrap/Image';
 import { animated, useSpring } from 'react-spring';
 import '../stylesheets/Playlists.scss';
-import { GetSongListDispatch } from '../scripts/callbacks';
+import { GetSongListDispatch, GlobalToken } from '../scripts/helpers';
 
 const PlaylistBox = (props) => {
     const animation = useSpring({
@@ -12,10 +12,12 @@ const PlaylistBox = (props) => {
     });
 
     const GetSongList = useContext(GetSongListDispatch);
+    const token = useContext(GlobalToken);
+
 
     return (
         <animated.div style={animation}>
-            <Card className="card playlist" onClick={() => GetSongList(props.playlistId, props.token)}>
+            <Card className="card playlist" onClick={() => GetSongList(props.playlistId, token)}>
                 <div className="heightFix">
                     <Image
                         className="media"
@@ -46,8 +48,6 @@ const Playlists = (props) => {
     };
     */
 
-    const accessToken = props.token;
-
     return (
         props.playlists.map((element) => (
             <PlaylistBox
@@ -56,7 +56,6 @@ const Playlists = (props) => {
                 name={element.name}
                 numTracks={element.tracks.total}
                 imgSrc={element.images[0]}
-                token={accessToken}
             />
         ))
     );

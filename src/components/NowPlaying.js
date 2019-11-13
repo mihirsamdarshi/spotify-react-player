@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Card, CardContent, IconButton, Typography } from '@material-ui/core';
 import SkipPreviousIcon from '@material-ui/icons/SkipPrevious';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import SkipNextIcon from '@material-ui/icons/SkipNext';
-import PauseIcon from '@material-ui/icons/Pause';
 import '../stylesheets/NowPlaying.scss';
-import { nextSong, pauseSong } from '../scripts/api';
-import { returnArtistAlbumString } from '../scripts/helpers';
+import { nextSong, pauseSong, playSong, previousSong } from '../scripts/api';
+import { GlobalToken, returnArtistAlbumString } from '../scripts/helpers';
 
 const NowPlaying = (props) => {
     const nowPlayingCard = {
@@ -17,23 +16,22 @@ const NowPlaying = (props) => {
     };
 
     const [songPlaying, setSongPlaying] = useState(false);
+    const token = useContext(GlobalToken);
 
-    const handlePlay = () => {
+    const handlePlay = uri => {
         if (songPlaying) {
-            pauseSong();
-            setSongPlaying(false);
+            pauseSong(token);
         } else {
-            console.log('play func here');
-            setSongPlaying(true);
+            playSong(uri, token);
         }
     };
 
     const handlePrevious = () => {
-        previousSong()
+        previousSong(token)
     };
 
     const handleNext = () => {
-        nextSong();
+        nextSong(token);
     };
 
     return (
@@ -52,8 +50,8 @@ const NowPlaying = (props) => {
                     <IconButton aria-label="previous" onClick={handlePrevious}>
                         {<SkipPreviousIcon />}
                     </IconButton>
-                    <IconButton aria-label="play/pause" onClick={handlePlay}>
-                        {songPlaying ? <PauseIcon /> : <PlayArrowIcon />}
+                    <IconButton aria-label="play/pause" onClick={handlePlay(props.nowPlaying.uri)}>
+                        <PlayArrowIcon />
                     </IconButton>
                     <IconButton aria-label="next" onClick={handleNext}>
                         {<SkipNextIcon />}

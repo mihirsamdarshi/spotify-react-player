@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Grid, Modal, Paper, Typography } from '@material-ui/core';
 import Script from 'react-load-script';
 
@@ -8,7 +8,7 @@ import NowPlaying from './NowPlaying';
 
 import { fetchPlaylistTracks, fetchUserPlaylists, makePrimaryPlayback } from '../scripts/api';
 import useWindowDimensions from '../scripts/WindowDimensions';
-import { GetNowPlayingDispatch, GetSongListDispatch } from '../scripts/helpers';
+import { GetNowPlayingDispatch, GetSongListDispatch, GlobalToken } from '../scripts/helpers';
 
 import '../stylesheets/MainAppBody.scss';
 
@@ -20,8 +20,10 @@ const MainAppBody = props => {
         width: width - 84,
     };
 
+    const token = useContext(GlobalToken);
+
     // Player Functions
-    const [deviceId, setDeviceId] = useState('');
+    const [playbackState, setPlaybackState] = useState(null)
 
     const handleScriptCreate = () => {
         console.log("Script created");
@@ -33,6 +35,10 @@ const MainAppBody = props => {
 
     const handleScriptLoad = () => {
         console.log("Script loaded");
+    };
+
+    const onStateChange = state => {
+        setPlaybackState(state)
     };
 
     const handleLoadSuccess = (token) => {
@@ -50,7 +56,7 @@ const MainAppBody = props => {
         player.addListener('playback_error', ({ message }) => { console.error(message); });
 
         // Playback status updates
-        player.addListener('player_state_changed', state => { console.log(state); });
+        player.addListener('player_state_changed', state => onStateChange(state));
 
         // Ready
         player.addListener('ready', ({ device_id } ) => {
@@ -123,7 +129,7 @@ const MainAppBody = props => {
 
     const displayPlaylists = () => (
         <GetSongListDispatch.Provider value={getSongs}>
-            <Playlists playlists={playlistList} token={props.token} />
+            <Playlists playlists={playlistList} />
         </GetSongListDispatch.Provider>
     );
 
@@ -149,11 +155,11 @@ const MainAppBody = props => {
 
     // OnLoad Functions
     useEffect(() => {
-        getPlaylists(props.token);
+        getPlaylists(token);
         window.onSpotifyPlayerAPIReady = () => {
-            handleLoadSuccess(props.token);
+            handleLoadSuccess(token);
         }
-    }, [props]);
+    }, []);
 
     // Handler Functions
     const handleSongListClose = () => {

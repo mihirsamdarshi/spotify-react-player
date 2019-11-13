@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import '../stylesheets/Hero.scss';
 import { isEmpty } from 'lodash';
-import { SetLoginDispatch } from '../scripts/callbacks';
+import { SetLoginDispatch } from '../scripts/helpers';
 
 const authEndpoint = 'https://accounts.spotify.com/authorize';
 const clientId = "ccc1ea71746a4d4ea8468a7cc7d1d9f0";

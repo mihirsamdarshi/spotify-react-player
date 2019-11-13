@@ -5,29 +5,9 @@ import Image from 'react-bootstrap/Image';
 import Typography from '@material-ui/core/Typography';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import '../stylesheets/Songs.scss';
-import { GetNowPlayingDispatch } from '../scripts/callbacks';
+import { GetNowPlayingDispatch, returnArtistAlbumString } from '../scripts/helpers';
 
 const SongBox = (props) => {
-    const returnArtistAlbumString = (args) => {
-        const artistArray = args.artist;
-        const albumName = args.album;
-        let returnString = '';
-        if (artistArray.length === 1) {
-            returnString = artistArray[0].name;
-            return returnString;
-        }
-
-        artistArray.forEach((element) => {
-            if (element.name) {
-                returnString += (`${element.name}, `);
-            }
-        });
-
-        const len = returnString.length;
-        returnString = returnString.substring(0, len - 2);
-        return `${returnString} — ${albumName}`;
-    };
-
     const GetNowPlaying = useContext(GetNowPlayingDispatch);
 
     return (
@@ -68,7 +48,7 @@ const Songs = (props) => {
     };
 
     const editedSongArray = removeDuplicates(props.songs);
-    
+
     return (
         <div>
             {
@@ -80,6 +60,7 @@ const Songs = (props) => {
                         album={element.track.album.name}
                         img={element.track.album.images[0]}
                         isrc={element.track.external_ids.isrc}
+                        uri={element.track.uri}
                     />
                 ))
             }
