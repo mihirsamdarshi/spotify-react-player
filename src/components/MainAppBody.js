@@ -21,9 +21,7 @@ const MainAppBody = props => {
     };
 
     // Player Functions
-    const cb = token => {
-        return token;
-    };
+    const [deviceId, setDeviceId] = useState(null);
 
     const handleScriptCreate = () => {
         console.log("Script created");
@@ -38,13 +36,12 @@ const MainAppBody = props => {
     };
 
     const handleLoadSuccess = (token) => {
-        console.log("Script loaded");
+        console.log("Script loaded success");
         const accessToken = `${token}`;
         const player = new window.Spotify.Player({
             name: 'Applotify, The Player',
             getOAuthToken: cb => { cb(accessToken); }
         });
-        console.log(player);
 
         // Error handling
         player.addListener('initialization_error', ({ message }) => { console.error(message); });
@@ -56,8 +53,11 @@ const MainAppBody = props => {
         player.addListener('player_state_changed', state => { console.log(state); });
 
         // Ready
-        player.addListener('ready', ({ device_id }) => {
+        player.addListener('ready', data => {
+            let { device_id } = data;
             console.log('Ready with Device ID', device_id);
+            console.log(setDeviceId);
+            setDeviceId(device_id);
         });
 
         // Not Ready
@@ -67,7 +67,6 @@ const MainAppBody = props => {
 
         // Connect to the player!
         player.connect();
-        console.log('loaded')
     };
     // thanks https://stackoverflow.com/questions/54469738/adding-a-js-function-to-reactjs-spotify-web-playback-sdk
 
@@ -92,8 +91,6 @@ const MainAppBody = props => {
     };
 
     const getSongs = async (link, token) => {
-        console.log(link);
-        console.log(token);
         setError(null);
         try {
             const result = await fetchPlaylistTracks(link, token);
@@ -155,9 +152,9 @@ const MainAppBody = props => {
     // OnLoad Functions
     useEffect(() => {
         getPlaylists(props.token);
-        window.onSpotifyWebPlaybackSDKReady = () => {
+        window.onSpotifyPlayerAPIReady = () => {
             handleLoadSuccess(props.token);
-        };
+        }
     }, [props]);
 
     // Handler Functions
