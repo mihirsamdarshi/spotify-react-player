@@ -1,9 +1,7 @@
 import React from 'react';
-import TestRenderer from 'react-test-renderer';
 import ReactDOM from 'react-dom';
 import MainAppBody from '../components/MainAppBody';
-
-const { act } = TestRenderer;
+import { act } from 'react-dom/test-utils';
 
 // This test suite uses a distinct testing technique called _snapshot testing_. Go take
 // a peek at the code then come back here for more commentary.
