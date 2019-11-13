@@ -6,7 +6,8 @@ import Playlists from './Playlists';
 import Songs from './Songs';
 import NowPlaying from './NowPlaying';
 
-import { fetchPlaylistTracks, fetchUserPlaylists, makePrimaryPlayback } from '../scripts/api';
+import { fetchPlaylistTracks, fetchUserPlaylists, makePrimaryPlayback, playSong } from '../scripts/api';
+
 import useWindowDimensions from '../scripts/WindowDimensions';
 import { GetNowPlayingDispatch, GetSongListDispatch, GlobalToken } from '../scripts/helpers';
 
@@ -107,6 +108,7 @@ const MainAppBody = props => {
     };
 
     const getNowPlaying = (value) => {
+        playSong(value.uri, token);
         setSongPlaying(value);
         setShowNowPlaying(true);
     };

@@ -33,15 +33,15 @@ afterEach(() => {
     container = null;
 });
 
-it('renders the Main App Body component', () => {
-    act(() => {
+it('renders the Main App Body component', async () => {
+    await act(async () => {
         ReactDOM.render(<MainAppBody />, container);
     });
 });
 
-it('should start with a list of playlists', () => {
-    act(() => {
-        ReactDOM.render(<MainAppBody/>, container);
-    })
+it('renders the Main App Body component', async () => {
+    await act(async () => {
+        ReactDOM.render(<MainAppBody />, container);
+    });
 });
 

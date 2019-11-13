@@ -1,9 +1,7 @@
-import React, { useContext, useState } from 'react';
-import { Card, CardContent, IconButton, Typography } from '@material-ui/core';
-import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+import React from 'react';
+import { Card, CardContent, Typography } from '@material-ui/core';
 import '../stylesheets/NowPlaying.scss';
-import { nextSong, playSong, previousSong } from '../scripts/api';
-import { GlobalToken, returnArtistAlbumString } from '../scripts/helpers';
+import { returnArtistAlbumString } from '../scripts/helpers';
 
 const NowPlaying = (props) => {
     const nowPlayingCard = {
@@ -11,21 +9,6 @@ const NowPlaying = (props) => {
         backgroundPosition: 'center',
         maxWidth: '100%',
         height: 'auto',
-    };
-
-    const [songPlaying, setSongPlaying] = useState(false);
-    const token = useContext(GlobalToken);
-
-    const handlePlay = uri => {
-        playSong(uri, token);
-    };
-
-    const handlePrevious = () => {
-        previousSong(token)
-    };
-
-    const handleNext = () => {
-        nextSong(token);
     };
 
     return (
@@ -40,21 +23,19 @@ const NowPlaying = (props) => {
                         {returnArtistAlbumString(props.nowPlaying)}
                     </Typography>
                 </CardContent>
+                {/*
                 <div className="nowPlayingControls">
-                    {/*
                     <IconButton aria-label="previous" onClick={handlePrevious}>
                         {<SkipPreviousIcon />}
                     </IconButton>
-                    */}
-                    <IconButton aria-label="play/pause" onClick={handlePlay(props.nowPlaying.uri)}>
+                    <IconButton aria-label="play/pause">
                         <PlayArrowIcon />
                     </IconButton>
-                    {/*
                     <IconButton aria-label="next" onClick={handleNext}>
                         {<SkipNextIcon />}
                     </IconButton>
-                    */}
                 </div>
+                */}
             </div>
         </Card>
     );

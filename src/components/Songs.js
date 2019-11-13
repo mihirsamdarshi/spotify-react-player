@@ -16,7 +16,7 @@ const SongBox = (props) => {
                 <div className="songBox">
                     <Image
                         className="songCover"
-                        src={props.img.url}
+                        src={props.img.url !== undefined ? props.img.url : ''}
                     />
                     <CardContent className="songContent">
                         <Typography component="h5" variant="h5" noWrap>
