@@ -23,7 +23,8 @@ const MainAppBody = props => {
     const token = useContext(GlobalToken);
 
     // Player Functions
-    const [playbackState, setPlaybackState] = useState(null)
+    const [deviceId, setDeviceId] = useState(null)
+    const [playbackState, setPlaybackState] = useState(null);
 
     const handleScriptCreate = () => {
         console.log("Script created");
@@ -56,10 +57,11 @@ const MainAppBody = props => {
         player.addListener('playback_error', ({ message }) => { console.error(message); });
 
         // Playback status updates
-        player.addListener('player_state_changed', state => onStateChange(state));
+        player.addListener('player_state_changed', state => console.log(state));
 
         // Ready
-        player.addListener('ready', ({ device_id } ) => {
+        player.addListener('ready', async data => {
+            let { device_id } = data;
             console.log('Ready with Device ID', device_id);
             makePrimaryPlayback(device_id, token);
         });
@@ -159,7 +161,7 @@ const MainAppBody = props => {
         window.onSpotifyPlayerAPIReady = () => {
             handleLoadSuccess(token);
         }
-    }, []);
+    }, [token]);
 
     // Handler Functions
     const handleSongListClose = () => {
