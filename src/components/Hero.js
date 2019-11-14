@@ -5,7 +5,7 @@ import { getHashParams, SetLoginDispatch } from '../scripts/helpers';
 
 const authEndpoint = 'https://accounts.spotify.com/authorize';
 const clientId = "ccc1ea71746a4d4ea8468a7cc7d1d9f0";
-const redirectUri = "http://localhost:3000";
+const redirectUri = window.location.href;
 const scopes = [
     "user-read-private",
     "user-read-playback-state",
