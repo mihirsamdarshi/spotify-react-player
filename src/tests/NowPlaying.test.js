@@ -24,7 +24,7 @@ it('renders the Now Playing component', () => {
 });
 
 it('should start with fake now playing data', async () => {
-    await act(async() => {
+    await act(async () => {
         const component = await TestRenderer.create(<NowPlaying nowPlaying={fakeNowPlayingData} />);
         const tree = component.toJSON();
         expect(tree).toMatchSnapshot();

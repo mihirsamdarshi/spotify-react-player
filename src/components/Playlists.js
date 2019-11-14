@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Card, CardActionArea, CardContent, Typography } from '@material-ui/core';
+import { Card, CardActionArea, CardContent, Typography, } from '@material-ui/core';
 import Image from 'react-bootstrap/Image';
 import { animated, useSpring } from 'react-spring';
 import '../stylesheets/Playlists.scss';
@@ -39,8 +39,8 @@ const PlaylistBox = (props) => {
     );
 };
 
-const Playlists = (props) => {
-    /*
+const Playlists = (props) =>
+/*
     const [activeItem, setActiveItem] = useState(null);
 
     const handleClick = (key) => {
@@ -48,7 +48,7 @@ const Playlists = (props) => {
     };
     */
 
-    return (
+    (
         props.playlists.map((element) => (
             <PlaylistBox
                 key={element.id}
@@ -59,6 +59,4 @@ const Playlists = (props) => {
             />
         ))
     );
-};
-
 export default Playlists;

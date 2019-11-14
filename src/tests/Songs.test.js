@@ -13,8 +13,8 @@ it('renders the Songs component', () => {
 });
 
 it('should start with a song box', async () => {
-    await act(async() => {
-        const component = await TestRenderer.create(<Songs songs={fakeSongsData}/>);
+    await act(async () => {
+        const component = await TestRenderer.create(<Songs songs={fakeSongsData} />);
         const tree = component.toJSON();
         expect(tree).toMatchSnapshot();
     });

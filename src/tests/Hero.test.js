@@ -22,23 +22,23 @@ describe('the hero component', () => {
     beforeEach(() => {
         div = document.createElement('div');
         ReactTestUtils.act(() => {
-            ReactDOM.render(<Hero />, div)
-        })
+            ReactDOM.render(<Hero />, div);
+        });
     });
     afterEach(() => ReactDOM.unmountComponentAtNode(div));
 
     it('should have an h1 tag', () => {
-        const titleHeader = div.querySelector('h1')
+        const titleHeader = div.querySelector('h1');
         expect(titleHeader).toBeDefined();
     });
 
     it('should have an h3 tag', () => {
-        const subtitleHeader = div.querySelector('h3')
+        const subtitleHeader = div.querySelector('h3');
         expect(subtitleHeader).toBeDefined();
     });
 
     it('should have a p tag', () => {
-        const disclaimer = div.querySelector('p')
+        const disclaimer = div.querySelector('p');
         expect(disclaimer).toBeDefined();
     });
 
@@ -47,7 +47,7 @@ describe('the hero component', () => {
             const button = div.querySelector('a');
             ReactTestUtils.act(() => {
                 ReactTestUtils.Simulate.click(button);
-            })
+            });
         });
     });
 });

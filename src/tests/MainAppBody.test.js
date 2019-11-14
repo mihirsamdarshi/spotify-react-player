@@ -1,12 +1,11 @@
 import React from 'react';
-import MainAppBody from '../components/MainAppBody';
 import ReactDOM from 'react-dom';
 import TestRenderer from 'react-test-renderer';
 import ReactTestUtils from 'react-dom/test-utils';
 import { Grid, Paper, Typography } from '@material-ui/core';
+import MainAppBody from '../components/MainAppBody';
 
 const { act } = TestRenderer;
-
 
 
 // This test suite uses a distinct testing technique called _snapshot testing_. Go take
@@ -46,35 +45,35 @@ it('renders the Main App Body component', async () => {
 });
 
 it('should start with a list of playlists', async () => {
-     await act(async() => {
-         const component = await TestRenderer.create(<MainAppBody/>);
-         const tree = component.toJSON();
-         expect(tree).toMatchSnapshot();
+    await act(async () => {
+        const component = await TestRenderer.create(<MainAppBody />);
+        const tree = component.toJSON();
+        expect(tree).toMatchSnapshot();
     });
 });
 
 describe('the MainAppBody', () => {
     it('should have four MUI Grid elements', async () => {
         await act(async () => {
-            const component = await TestRenderer.create(<MainAppBody/>);
+            const component = await TestRenderer.create(<MainAppBody />);
             const componentCount = component.root.findAllByType(Grid).length;
-            expect(componentCount).toBe(4)
+            expect(componentCount).toBe(4);
         });
     });
 
     it('should have one MUI Paper element', async () => {
         await act(async () => {
-            const component = await TestRenderer.create(<MainAppBody/>);
+            const component = await TestRenderer.create(<MainAppBody />);
             const componentCount = component.root.findAllByType(Paper).length;
-            expect(componentCount).toBe(1)
+            expect(componentCount).toBe(1);
         });
     });
 
     it('should have one MUI Typography element', async () => {
         await act(async () => {
-            const component = await TestRenderer.create(<MainAppBody/>);
+            const component = await TestRenderer.create(<MainAppBody />);
             const componentCount = component.root.findAllByType(Typography).length;
-            expect(componentCount).toBe(1)
+            expect(componentCount).toBe(1);
         });
     });
 });

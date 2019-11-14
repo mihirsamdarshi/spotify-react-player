@@ -19,14 +19,14 @@ export default function SettingsButton() {
     const handleClickOpen = () => {
         setState({
             ...state,
-            open: true
+            open: true,
         });
     };
 
     const handleClose = () => {
         setState({
             ...state,
-            open: false
+            open: false,
         });
     };
 
@@ -35,14 +35,14 @@ export default function SettingsButton() {
         setState({
             ...state,
             playbackService: newPBS,
-            playlistService: newPLS
+            playlistService: newPLS,
         });
     };
 
     return (
         <div>
             <Fab size="small" className="settingsButton" onClick={handleClickOpen}>
-                <SettingsIcon/>
+                <SettingsIcon />
             </Fab>
             <Dialog open={state.open} onClose={handleClose} className="classes.modal">
                 <DialogTitle>Change Current Service</DialogTitle>

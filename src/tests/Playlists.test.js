@@ -13,8 +13,8 @@ it('renders the Playlists component', () => {
 });
 
 it('should start with a playlist box', async () => {
-    await act(async() => {
-        const component = await TestRenderer.create(<Playlists playlists={fakePlaylistData}/>);
+    await act(async () => {
+        const component = await TestRenderer.create(<Playlists playlists={fakePlaylistData} />);
         const tree = component.toJSON();
         expect(tree).toMatchSnapshot();
     });

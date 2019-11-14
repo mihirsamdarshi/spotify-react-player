@@ -6,14 +6,14 @@ import Playlists from './Playlists';
 import Songs from './Songs';
 import NowPlaying from './NowPlaying';
 
-import { fetchPlaylistTracks, fetchUserPlaylists, makePrimaryPlayback, playSong } from '../scripts/api';
+import { fetchPlaylistTracks, fetchUserPlaylists, makePrimaryPlayback, playSong, } from '../scripts/api';
 
 import useWindowDimensions from '../scripts/WindowDimensions';
 import { GetNowPlayingDispatch, GetSongListDispatch, GlobalToken } from '../scripts/helpers';
 
 import '../stylesheets/MainAppBody.scss';
 
-const MainAppBody = props => {
+const MainAppBody = () => {
     const { height, width } = useWindowDimensions();
     // subtract height of header + padding to make web app single page
     const heightWidthStyle = {
@@ -27,27 +27,27 @@ const MainAppBody = props => {
     const [playbackState, setPlaybackState] = useState(null);
 
     const handleScriptCreate = () => {
-        console.log("Script created");
+        console.log('Script created');
     };
 
     const handleScriptError = () => {
-        console.log("Script error");
+        console.log('Script error');
     };
 
     const handleScriptLoad = () => {
-        console.log("Script loaded");
+        console.log('Script loaded');
     };
 
-    const onStateChange = state => {
-        setPlaybackState(state)
+    const onStateChange = (state) => {
+        setPlaybackState(state);
     };
 
     const handleLoadSuccess = (token) => {
-        console.log("Script loaded success");
+        console.log('Script loaded success');
         const accessToken = `${token}`;
         const player = new window.Spotify.Player({
             name: 'Applotify, The Player',
-            getOAuthToken: cb => { cb(accessToken); }
+            getOAuthToken: (cb) => { cb(accessToken); },
         });
 
         // Error handling
@@ -57,11 +57,11 @@ const MainAppBody = props => {
         player.addListener('playback_error', ({ message }) => { console.error(message); });
 
         // Playback status updates
-        player.addListener('player_state_changed', state => console.log(state));
+        player.addListener('player_state_changed', (state) => console.log(state));
 
         // Ready
-        player.addListener('ready', async data => {
-            let { device_id } = data;
+        player.addListener('ready', async (data) => {
+            const { device_id } = data;
             console.log('Ready with Device ID', device_id);
             makePrimaryPlayback(device_id, token);
         });
@@ -109,7 +109,7 @@ const MainAppBody = props => {
 
     const getNowPlaying = (value) => {
         playSong(value.uri, token);
-        //TODO: figure out how to do play, pause, previous, etc. from here
+        // TODO: figure out how to do play, pause, previous, etc. from here
         setSongPlaying(value);
         setShowNowPlaying(true);
     };
@@ -137,7 +137,7 @@ const MainAppBody = props => {
         </GetSongListDispatch.Provider>
     );
 
-    //TODO: configure error display handling
+    // TODO: configure error display handling
 
     const displaySongs = () => (
         <Paper className="paper" style={blackOverride}>
@@ -161,7 +161,7 @@ const MainAppBody = props => {
     useEffect(() => {
         window.onSpotifyPlayerAPIReady = () => {
             handleLoadSuccess(token);
-        }
+        };
     }, []);
 
     // Handler Functions
