@@ -5,10 +5,6 @@ exports[`matches the snapshot 1`] = `
   className="App"
 >
   <AppHeader />
-  <ContextProvider
-    value={[Function]}
-  >
-    <Hero />
-  </ContextProvider>
+  <Hero />
 </div>
 `;

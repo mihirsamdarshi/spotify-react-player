@@ -10,7 +10,7 @@ export const returnArtistAlbumString = (args) => {
     const artistArray = args.artist;
     const albumName = args.album;
     let returnString = '';
-    if (artistArray.length === 1) {
+    if (artistArray.length <= 1) {
         returnString = artistArray[0].name;
         return returnString;
     }

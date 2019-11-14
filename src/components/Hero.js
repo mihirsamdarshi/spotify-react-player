@@ -1,7 +1,5 @@
-import React, { useContext, useEffect } from 'react';
+import React from 'react';
 import '../stylesheets/Hero.scss';
-import { isEmpty } from 'lodash';
-import { getHashParams, SetLoginDispatch } from '../scripts/helpers';
 
 const authEndpoint = 'https://accounts.spotify.com/authorize';
 const clientId = 'ccc1ea71746a4d4ea8468a7cc7d1d9f0';
@@ -15,15 +13,6 @@ const scopes = [
 ];
 
 const Hero = () => {
-    const setAccessToken = useContext(SetLoginDispatch);
-
-    useEffect(() => {
-        const token = getHashParams();
-        if (!isEmpty(token)) {
-            setAccessToken(token);
-        }
-    }, [setAccessToken]);
-
     return (
         <div className="fillWindow">
             <div className="heroInfo">

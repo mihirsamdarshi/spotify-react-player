@@ -19,16 +19,16 @@ it('matches the snapshot', () => {
 
 describe('the App', () => {
     it('should render Hero if no token present', () => {
-        const wrapper = mount(<App />);
         global.window = Object.create(window);
-        const url = '';
+        const url = 'https://helloworld.com';
         Object.defineProperty(window, 'location', {
             value: {
                 hash: url,
             },
             writable: true,
         });
-        expect(wrapper.find(Hero)).toHaveLength(0);
+        const wrapper = mount(<App />);
+        expect(wrapper.find(Hero)).toHaveLength(1);
     });
 
     it('should render MainAppBody if a token is present', async () => {
