@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should initialize with text 1`] = `
+<div
+  className="fillWindow"
+>
+  <div
+    className="heroInfo"
+  >
+    <h1>
+       Applotify 
+    </h1>
+    <h3>
+       Play Spotify Playlists* 
+    </h3>
+  </div>
+  <div
+    className="centeredBtn"
+  >
+    <a
+      className="spotifyLoginBtn"
+      href="https://accounts.spotify.com/authorize?response_type=token&client_id=ccc1ea71746a4d4ea8468a7cc7d1d9f0&redirect_uri=http://localhost:3000&scope=user-read-private%20user-read-playback-state%20user-modify-playback-state%20streaming%20user-read-currently-playing&show_dialog=true"
+    >
+      Login With Spotify
+    </a>
+  </div>
+  <p
+    className="asterisk"
+  >
+     * only available in Chrome and Firefox browsers and to users with Spotify Premium due to Spotify API limitations
+  </p>
+</div>
+`;

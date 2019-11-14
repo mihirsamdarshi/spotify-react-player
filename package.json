@@ -24,6 +24,9 @@
     "lint": "eslint \"**/*.js\" --fix"
   },
   "devDependencies": {
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.15.1",
+    "enzyme-to-json": "^3.4.3",
     "eslint": "^6.4.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-plugin-import": "^2.18.2",
@@ -34,6 +37,9 @@
     "sinon": "^7.4.2"
   },
   "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
     "collectCoverageFrom": [
       "**/*.{js,jsx}",
       "!**/node_modules/**",

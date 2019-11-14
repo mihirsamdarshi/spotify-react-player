@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import '../stylesheets/Hero.scss';
 import { isEmpty } from 'lodash';
-import { SetLoginDispatch } from '../scripts/helpers';
+import { getHashParams, SetLoginDispatch } from '../scripts/helpers';
 
 const authEndpoint = 'https://accounts.spotify.com/authorize';
 const clientId = "ccc1ea71746a4d4ea8468a7cc7d1d9f0";
@@ -15,19 +15,6 @@ const scopes = [
 ];
 
 const Hero = props => {
-    // from Spotify API example
-    const getHashParams = () => {
-        var hashParams = {};
-        var e, r = /([^&;=]+)=?([^&;]*)/g,
-            q = window.location.hash.substring(1);
-        e = r.exec(q)
-        while (e) {
-            hashParams[e[1]] = decodeURIComponent(e[2]);
-            e = r.exec(q);
-        }
-        return hashParams;
-    };
-
     const setAccessToken = useContext(SetLoginDispatch);
 
     useEffect(() => {

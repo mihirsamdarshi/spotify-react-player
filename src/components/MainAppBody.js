@@ -156,10 +156,13 @@ const MainAppBody = props => {
     // OnLoad Functions
     useEffect(() => {
         getPlaylists(token);
+    }, [token]);
+
+    useEffect(() => {
         window.onSpotifyPlayerAPIReady = () => {
             handleLoadSuccess(token);
         }
-    }, [token]);
+    }, []);
 
     // Handler Functions
     const handleSongListClose = () => {

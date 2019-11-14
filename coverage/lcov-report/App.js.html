@@ -20,31 +20,31 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>0/5</span>
+        <span class='fraction'>3/3</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/2</span>
+        <span class='fraction'>1/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/2</span>
+        <span class='fraction'>1/1</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>0/4</span>
+        <span class='fraction'>3/3</span>
       </div>
     </div>
     <p class="quiet">
       Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
     </p>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -74,7 +74,8 @@
 <a name='L26'></a><a href='#L26'>26</a>
 <a name='L27'></a><a href='#L27'>27</a>
 <a name='L28'></a><a href='#L28'>28</a>
-<a name='L29'></a><a href='#L29'>29</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -83,17 +84,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -102,29 +97,37 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useEffect, useState } from 'react';
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useState } from 'react';
 import '../stylesheets/App.scss';
 &nbsp;
 import AppHeader from './AppHeader';
-import Hero from '../pages/Hero';
-import MainAppBody from '../pages/MainAppBody';
+import Hero from './Hero';
+import MainAppBody from './MainAppBody';
 &nbsp;
-import { apiHost } from '../scripts/api';
+import { SetLoginDispatch, GlobalToken } from '../scripts/helpers';
 &nbsp;
-const App = <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >()</span> =&gt; {</span>
-    // Because App is the "uppermost" component (see index.js), code in the useEffect function
-    // is equivalent to an overall initialization routine. Note however that every component
-    // can have its own useEffect, and so initialization can be separated on a per-component
-    // basis.
-<span class="cstat-no" title="statement not covered" >    useEffect(<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >apiHost('http://api.giphy.com/v1/'))</span>;</span>
-    const [loggedIn, setClientLoggedIn] = <span class="cstat-no" title="statement not covered" >useState(false);</span>
+const App = () =&gt; {
 &nbsp;
-    // When React components are implemented as functions, their return value is the component’s
-    // content (i.e., what the render() method returns for class-based components).
-<span class="cstat-no" title="statement not covered" >    return (</span>
+    const [accessToken, setAccessToken] = useState(null);
+&nbsp;
+    return (
         &lt;div className="App"&gt;
             &lt;AppHeader /&gt;
-            {loggedIn ? &lt;MainAppBody /&gt; : &lt;Hero login={setClientLoggedIn} /&gt;}
+                {accessToken === null
+                    ? &lt;SetLoginDispatch.Provider value={setAccessToken}&gt;
+                        &lt;Hero /&gt;
+                    &lt;/SetLoginDispatch.Provider&gt;
+                    : <span class="branch-1 cbranch-no" title="branch not covered" >&lt;GlobalToken.Provider value={accessToken.access_token}&gt;</span>
+                        &lt;MainAppBody /&gt;
+                    &lt;/GlobalToken.Provider&gt;
+                }
         &lt;/div&gt;
     );
 };
@@ -136,7 +139,7 @@ export default App;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Wed Oct 30 2019 16:13:13 GMT-0700 (Pacific Daylight Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Thu Nov 14 2019 12:13:17 GMT-0800 (Pacific Standard Time)
 </div>
 </div>
 <script src="prettify.js"></script>
