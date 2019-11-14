@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from '../components/App';
-import { shallow } from 'enzyme';
-import ReactTestUtils from 'react-dom/test-utils';
-
+import Hero from '../components/Hero';
+import MainAppBody from '../components/MainAppBody';
+import { mount, shallow } from 'enzyme';
 
 it('renders without crashing', () => {
     const div = document.createElement('div');
@@ -17,16 +17,8 @@ it('matches the snapshot', () => {
 });
 
 describe('the App', () => {
-    let div;
-    beforeEach(() => {
-        div = document.createElement('div');
-        ReactTestUtils.act(() => {
-            ReactDOM.render(<App />, div)
-        })
-    });
-    afterEach(() => ReactDOM.unmountComponentAtNode(div));
-
     it('should render Hero if no token present', () => {
+        const wrapper = mount(<App/>);
         global.window = Object.create(window);
         const url = "";
         Object.defineProperty(window, "location", {
@@ -35,7 +27,7 @@ describe('the App', () => {
             },
             writable: true
         });
-        expect(div.find())
+        expect(wrapper.find(Hero)).toHaveLength(1);
     });
 
     it('should render MainAppBody if a token is present', () => {
@@ -48,6 +40,10 @@ describe('the App', () => {
             writable: true
         });
 
+        act(async() => {
+            const wrapper = await mount(<App/>);
+            expect(wrapper.find(MainAppBody)).toHaveLength(1);
+        });
     });
 });
 

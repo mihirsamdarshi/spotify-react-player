@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should start with fake now playing data 1`] = `
+<div
+  className="MuiPaper-root MuiPaper-elevation1 MuiCard-root MuiPaper-rounded"
+>
+  <div
+    className="bg-image"
+    style={
+      Object {
+        "backgroundImage": "url(test.com)",
+        "backgroundPosition": "center",
+        "height": "auto",
+        "maxWidth": "100%",
+      }
+    }
+  />
+  <div
+    className="nowPlayingDetails"
+  >
+    <div
+      className="MuiCardContent-root nowPlayingContent"
+    >
+      <h5
+        className="MuiTypography-root MuiTypography-h5"
+      />
+      <h6
+        className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorTextSecondary"
+      >
+        Testy McTestFace
+      </h6>
+    </div>
+  </div>
+</div>
+`;

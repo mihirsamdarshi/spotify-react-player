@@ -2,23 +2,9 @@ import ReactDOM from 'react-dom';
 import React from 'react';
 import TestRenderer from 'react-test-renderer';
 import Playlists from '../components/Playlists';
+import { fakePlaylistData } from './utils';
 
 const { act } = TestRenderer;
-
-const fakePlaylistData = [
-    {
-        id: 123456789,
-        name: 'Test',
-        tracks: {
-            total: 10,
-        },
-        images: [
-            {
-                url: 'test.com',
-            },
-        ],
-    },
-];
 
 it('renders the Playlists component', () => {
     const div = document.createElement('div');

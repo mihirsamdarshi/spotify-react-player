@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should start with a song box 1`] = `
+<div>
+  <div
+    className="MuiPaper-root MuiPaper-elevation1 MuiCard-root card MuiPaper-rounded"
+    onClick={[Function]}
+  >
+    <button
+      className="MuiButtonBase-root MuiCardActionArea-root"
+      disabled={false}
+      onBlur={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <div
+        className="songBox"
+      >
+        <img
+          className="songCover"
+          src="test.com"
+        />
+        <div
+          className="MuiCardContent-root songContent"
+        >
+          <h5
+            className="MuiTypography-root MuiTypography-h5 MuiTypography-noWrap"
+          >
+            Test
+          </h5>
+          <h6
+            className="MuiTypography-root MuiTypography-subtitle1 MuiTypography-colorTextSecondary MuiTypography-noWrap"
+          >
+            Testy McTestFace
+          </h6>
+        </div>
+      </div>
+      <span
+        className="MuiCardActionArea-focusHighlight"
+      />
+    </button>
+  </div>
+</div>
+`;
