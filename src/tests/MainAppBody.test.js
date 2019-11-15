@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TestRenderer from 'react-test-renderer';
 import ReactTestUtils from 'react-dom/test-utils';
+import { mount } from 'enzyme';
 import { Grid, Paper, Typography } from '@material-ui/core';
 import MainAppBody from '../components/MainAppBody';
 
@@ -42,36 +42,36 @@ it('renders the Main App Body component', async () => {
 });
 
 it('should start with a list of playlists', async () => {
-    await TestRenderer.act(async () => {
-        const component = await TestRenderer.create(<MainAppBody />);
-        const tree = component.toJSON();
-        expect(tree).toMatchSnapshot();
+    await ReactTestUtils.act(async () => {
+        const component = await mount(<MainAppBody />);
+        expect(component).toMatchSnapshot();
     });
 });
 
 describe('the MainAppBody', () => {
-    it('should have four MUI Grid elements', async () => {
-        await TestRenderer.act(async () => {
-            const component = await TestRenderer.create(<MainAppBody />);
-            const componentCount = component.root.findAllByType(Grid).length;
-            expect(componentCount).toBe(4);
+    let component;
+
+    beforeEach(async() => {
+        await ReactTestUtils.act(async () => {
+            component = await mount(<MainAppBody />);
         });
+    });
+
+    afterEach(() => {
+        component.unmount()
+    });
+
+
+    it('should have four MUI Grid elements', async () => {
+        expect(component.find(Grid)).toHaveLength(4);
     });
 
     it('should have no MUI Paper elements', async () => {
-        await TestRenderer.act(async () => {
-            const component = await TestRenderer.create(<MainAppBody />);
-            const componentCount = component.root.findAllByType(Paper).length;
-            expect(componentCount).toBe(0);
-        });
+        expect(component.find(Paper)).toHaveLength(0);
     });
 
     it('should have one MUI Typography element', async () => {
-        await TestRenderer.act(async () => {
-            const component = await TestRenderer.create(<MainAppBody />);
-            const componentCount = component.root.findAllByType(Typography).length;
-            expect(componentCount).toBe(1);
-        });
+        expect(component.find(Typography)).toHaveLength(1);
     });
 
     it('should not have rendered the playlist component yet', async () => {
@@ -103,7 +103,6 @@ describe('the MainAppBody', () => {
             await ReactTestUtils.act(async () => {
                 ReactDOM.render(<MainAppBody />, container);
                 const nowPlayingComponent = container.querySelector('.nowPlayingComponent');
-                console.log(nowPlayingComponent);
             });
         });
     });
