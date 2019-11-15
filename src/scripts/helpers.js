@@ -36,5 +36,6 @@ export const getHashParams = () => {
         hashParams[e[1]] = decodeURIComponent(e[2]);
         e = r.exec(q);
     }
+    console.log(hashParams);
     return hashParams;
 };

@@ -28,7 +28,6 @@ describe('the App', () => {
 
     it('should render Hero if no token present', () => {
         ReactTestUtils.act(() => {
-            global.window = Object.create(window);
             const url = 'https://helloworld.com';
             Object.defineProperty(window, 'location', {
                 value: {
@@ -39,8 +38,8 @@ describe('the App', () => {
             });
         });
 
-        ReactTestUtils.act(() => {
-            ReactDOM.render(<App />, div)
+        ReactTestUtils.act(async () => {
+            await ReactDOM.render(<App />, div)
         });
 
         expect(div.querySelector('.heroInfo') !== null).toBe(true);
@@ -48,7 +47,6 @@ describe('the App', () => {
 
     it('should render MainAppBody if a token is present', () => {
         ReactTestUtils.act(() => {
-            global.window = Object.create(window);
             const url = '#access_token=helloworld&token_type=Bearer&expires_in=69';
             Object.defineProperty(window, 'location', {
                 value: {
