@@ -133,9 +133,11 @@ const MainAppBody = listener => {
     );
 
     const displayPlaylists = () => (
-        <GetSongListDispatch.Provider value={getSongs}>
-            <Playlists playlists={playlistList} />
-        </GetSongListDispatch.Provider>
+        <Paper className="paper playlistComponent" style={blackOverride}>
+            <GetSongListDispatch.Provider value={getSongs}>
+                <Playlists playlists={playlistList} />
+            </GetSongListDispatch.Provider>
+        </Paper>
     );
 
     // TODO: configure error display handling
@@ -187,9 +189,7 @@ const MainAppBody = listener => {
             />
             <Grid container className="gridContainer">
                 <Grid item xs={4} style={heightWidthStyle}>
-                    <Paper className="paper playlistComponent" style={blackOverride}>
-                        {showPlaylists && !errorString ? displayPlaylists() : null}
-                    </Paper>
+                    {showPlaylists && !errorString ? displayPlaylists() : null}
                 </Grid>
                 <Grid item xs={4} style={heightWidthStyle}>
                     {showSongs ? displaySongs() : numPlaylists()}

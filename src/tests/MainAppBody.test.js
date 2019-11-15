@@ -61,11 +61,11 @@ describe('the MainAppBody', () => {
         });
     });
 
-    it('should have one MUI Paper element', async () => {
+    it('should have no MUI Paper elements', async () => {
         await act(async () => {
             const component = await TestRenderer.create(<MainAppBody />);
             const componentCount = component.root.findAllByType(Paper).length;
-            expect(componentCount).toBe(1);
+            expect(componentCount).toBe(0);
         });
     });
 
@@ -77,16 +77,37 @@ describe('the MainAppBody', () => {
         });
     });
 
+    it('should not have rendered the playlist component yet', async () => {
+        await ReactTestUtils.act(async () => {
+            ReactDOM.render(<MainAppBody />, container);
+            const playlistComponent = container.querySelector('.playlistComponent');
+            expect(playlistComponent !== null).toBe(false);
+        });
+    });
+
+    it('should not have rendered the songs component', async () => {
+        await ReactTestUtils.act(async () => {
+            ReactDOM.render(<MainAppBody />, container);
+            const songsComponent = container.querySelector('.songsComponent');
+            expect(songsComponent !== null).toBe(false);
+        });
+    });
+
+    it('should not have rendered the now playing component', async () => {
+        await ReactTestUtils.act(async () => {
+            ReactDOM.render(<MainAppBody />, container);
+            const nowPlayingComponent = container.querySelector('.nowPlayingComponent');
+            expect(nowPlayingComponent !== null).toBe(false);
+        });
+    });
+
     describe('upon clicking a Playlist', () => {
         it('should render a list of songs', async() => {
             await ReactTestUtils.act(async () => {
                 ReactDOM.render(<MainAppBody />, container);
+                const nowPlayingComponent = container.querySelector('.nowPlayingComponent');
+                console.log(nowPlayingComponent);
             });
-            expect()
-            let playlistButton = container.querySelector('.MuiCardActionArea-root');
-            await ReactTestUtils.act(async () => {
-                await ReactTestUtils.Simulate.click(playlistButton);
-            })
         });
     });
 });

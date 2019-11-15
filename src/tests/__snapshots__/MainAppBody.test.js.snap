@@ -15,16 +15,7 @@ exports[`should start with a list of playlists 1`] = `
           "width": 940,
         }
       }
-    >
-      <div
-        className="MuiPaper-root MuiPaper-elevation1 paper MuiPaper-rounded"
-        style={
-          Object {
-            "backgroundColor": "#EEE",
-          }
-        }
-      />
-    </div>
+    />
     <div
       className="MuiGrid-root MuiGrid-item MuiGrid-grid-xs-4"
       style={
