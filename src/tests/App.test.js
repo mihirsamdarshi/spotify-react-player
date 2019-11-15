@@ -1,10 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
-import TestRenderer from 'react-test-renderer';
+import { mount } from 'enzyme';
 import App from '../components/App';
-
-const { act } = TestRenderer;
 
 it('renders without crashing', () => {
     const div = document.createElement('div');
@@ -12,12 +10,11 @@ it('renders without crashing', () => {
     ReactDOM.unmountComponentAtNode(div);
 });
 
-it('matches the snapshot', async() => {
-    await act(async() => {
-        const component = await TestRenderer.create(<App />);
-        const tree = component.toJSON();
-        expect(tree).toMatchSnapshot();
-    })
+it('matches the snapshot', async () => {
+    await ReactTestUtils.act(async () => {
+        const component = await mount(<App/>);
+        expect(component).toMatchSnapshot();
+    });
 });
 
 describe('the App', () => {

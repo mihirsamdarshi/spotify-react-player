@@ -5,7 +5,7 @@ import Image from 'react-bootstrap/Image';
 import Typography from '@material-ui/core/Typography';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import '../stylesheets/Songs.scss';
-import { GetNowPlayingDispatch, returnArtistAlbumString } from '../scripts/helpers';
+import { GetNowPlayingDispatch, removeDuplicates, returnArtistAlbumString } from '../scripts/helpers';
 
 const SongBox = (props) => {
     const GetNowPlaying = useContext(GetNowPlayingDispatch);
@@ -33,20 +33,6 @@ const SongBox = (props) => {
 };
 
 const Songs = (props) => {
-    const checkDup = (element, array) => {
-        array.some((arrayElement) => element.track.id !== arrayElement.track.id);
-    };
-
-    const removeDuplicates = (songs) => {
-        const newArray = [];
-        songs.forEach((element) => {
-            if (checkDup) {
-                newArray.push(element);
-            }
-        });
-        return newArray;
-    };
-
     const editedSongArray = removeDuplicates(props.songs);
 
     return (

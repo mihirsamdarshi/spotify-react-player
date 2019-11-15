@@ -1,9 +1,7 @@
 import { createContext } from 'react';
 
 export const GetSongListDispatch = createContext(null);
-export const SetLoginDispatch = createContext(null);
 export const GetNowPlayingDispatch = createContext(null);
-
 export const GlobalToken = createContext(null);
 
 export const returnArtistAlbumString = (args) => {
@@ -36,6 +34,19 @@ export const getHashParams = () => {
         hashParams[e[1]] = decodeURIComponent(e[2]);
         e = r.exec(q);
     }
-    console.log(hashParams);
     return hashParams;
+};
+
+export const removeDuplicates = (songs) => {
+    const checkDup = (element, array) => {
+        array.some((arrayElement) => element.track.id !== arrayElement.track.id);
+    };
+
+    const newArray = [];
+    songs.forEach((element) => {
+        if (checkDup) {
+            newArray.push(element);
+        }
+    });
+    return newArray;
 };

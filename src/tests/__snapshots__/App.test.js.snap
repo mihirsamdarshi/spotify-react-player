@@ -1,55 +1,204 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`matches the snapshot 1`] = `
-<div
-  className="App"
->
-  <header
-    className="MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorPrimary"
-    style={
-      Object {
-        "backgroundColor": "black",
-      }
-    }
-  >
-    <div
-      className="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
-    >
-      <h6
-        className="MuiTypography-root title MuiTypography-h6"
-      >
-        Applotify
-      </h6>
-    </div>
-  </header>
+<App>
   <div
-    className="fillWindow"
+    className="App"
   >
-    <div
-      className="heroInfo"
-    >
-      <h1>
-         Applotify 
-      </h1>
-      <h3>
-         Play Spotify Playlists* 
-      </h3>
-    </div>
-    <div
-      className="centeredBtn"
-    >
-      <a
-        className="spotifyLoginBtn"
-        href="https://accounts.spotify.com/authorize?response_type=token&client_id=ccc1ea71746a4d4ea8468a7cc7d1d9f0&redirect_uri=http://localhost:3000&scope=user-read-private%20user-read-playback-state%20user-modify-playback-state%20streaming%20user-read-currently-playing&show_dialog=true"
+    <AppHeader>
+      <WithStyles(ForwardRef(AppBar))
+        position="static"
+        style={
+          Object {
+            "backgroundColor": "black",
+          }
+        }
       >
-        Login With Spotify
-      </a>
-    </div>
-    <p
-      className="asterisk"
-    >
-       * only available in Chrome and Firefox browsers and to users with Spotify Premium due to Spotify API limitations
-    </p>
+        <ForwardRef(AppBar)
+          classes={
+            Object {
+              "colorDefault": "MuiAppBar-colorDefault",
+              "colorPrimary": "MuiAppBar-colorPrimary",
+              "colorSecondary": "MuiAppBar-colorSecondary",
+              "positionAbsolute": "MuiAppBar-positionAbsolute",
+              "positionFixed": "MuiAppBar-positionFixed",
+              "positionRelative": "MuiAppBar-positionRelative",
+              "positionStatic": "MuiAppBar-positionStatic",
+              "positionSticky": "MuiAppBar-positionSticky",
+              "root": "MuiAppBar-root",
+            }
+          }
+          position="static"
+          style={
+            Object {
+              "backgroundColor": "black",
+            }
+          }
+        >
+          <WithStyles(ForwardRef(Paper))
+            className="MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorPrimary"
+            component="header"
+            elevation={4}
+            square={true}
+            style={
+              Object {
+                "backgroundColor": "black",
+              }
+            }
+          >
+            <ForwardRef(Paper)
+              className="MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorPrimary"
+              classes={
+                Object {
+                  "elevation0": "MuiPaper-elevation0",
+                  "elevation1": "MuiPaper-elevation1",
+                  "elevation10": "MuiPaper-elevation10",
+                  "elevation11": "MuiPaper-elevation11",
+                  "elevation12": "MuiPaper-elevation12",
+                  "elevation13": "MuiPaper-elevation13",
+                  "elevation14": "MuiPaper-elevation14",
+                  "elevation15": "MuiPaper-elevation15",
+                  "elevation16": "MuiPaper-elevation16",
+                  "elevation17": "MuiPaper-elevation17",
+                  "elevation18": "MuiPaper-elevation18",
+                  "elevation19": "MuiPaper-elevation19",
+                  "elevation2": "MuiPaper-elevation2",
+                  "elevation20": "MuiPaper-elevation20",
+                  "elevation21": "MuiPaper-elevation21",
+                  "elevation22": "MuiPaper-elevation22",
+                  "elevation23": "MuiPaper-elevation23",
+                  "elevation24": "MuiPaper-elevation24",
+                  "elevation3": "MuiPaper-elevation3",
+                  "elevation4": "MuiPaper-elevation4",
+                  "elevation5": "MuiPaper-elevation5",
+                  "elevation6": "MuiPaper-elevation6",
+                  "elevation7": "MuiPaper-elevation7",
+                  "elevation8": "MuiPaper-elevation8",
+                  "elevation9": "MuiPaper-elevation9",
+                  "root": "MuiPaper-root",
+                  "rounded": "MuiPaper-rounded",
+                }
+              }
+              component="header"
+              elevation={4}
+              square={true}
+              style={
+                Object {
+                  "backgroundColor": "black",
+                }
+              }
+            >
+              <header
+                className="MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorPrimary"
+                style={
+                  Object {
+                    "backgroundColor": "black",
+                  }
+                }
+              >
+                <WithStyles(ForwardRef(Toolbar))>
+                  <ForwardRef(Toolbar)
+                    classes={
+                      Object {
+                        "dense": "MuiToolbar-dense",
+                        "gutters": "MuiToolbar-gutters",
+                        "regular": "MuiToolbar-regular",
+                        "root": "MuiToolbar-root",
+                      }
+                    }
+                  >
+                    <div
+                      className="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+                    >
+                      <WithStyles(ForwardRef(Typography))
+                        className="title"
+                        variant="h6"
+                      >
+                        <ForwardRef(Typography)
+                          className="title"
+                          classes={
+                            Object {
+                              "alignCenter": "MuiTypography-alignCenter",
+                              "alignJustify": "MuiTypography-alignJustify",
+                              "alignLeft": "MuiTypography-alignLeft",
+                              "alignRight": "MuiTypography-alignRight",
+                              "body1": "MuiTypography-body1",
+                              "body2": "MuiTypography-body2",
+                              "button": "MuiTypography-button",
+                              "caption": "MuiTypography-caption",
+                              "colorError": "MuiTypography-colorError",
+                              "colorInherit": "MuiTypography-colorInherit",
+                              "colorPrimary": "MuiTypography-colorPrimary",
+                              "colorSecondary": "MuiTypography-colorSecondary",
+                              "colorTextPrimary": "MuiTypography-colorTextPrimary",
+                              "colorTextSecondary": "MuiTypography-colorTextSecondary",
+                              "displayBlock": "MuiTypography-displayBlock",
+                              "displayInline": "MuiTypography-displayInline",
+                              "gutterBottom": "MuiTypography-gutterBottom",
+                              "h1": "MuiTypography-h1",
+                              "h2": "MuiTypography-h2",
+                              "h3": "MuiTypography-h3",
+                              "h4": "MuiTypography-h4",
+                              "h5": "MuiTypography-h5",
+                              "h6": "MuiTypography-h6",
+                              "noWrap": "MuiTypography-noWrap",
+                              "overline": "MuiTypography-overline",
+                              "paragraph": "MuiTypography-paragraph",
+                              "root": "MuiTypography-root",
+                              "srOnly": "MuiTypography-srOnly",
+                              "subtitle1": "MuiTypography-subtitle1",
+                              "subtitle2": "MuiTypography-subtitle2",
+                            }
+                          }
+                          variant="h6"
+                        >
+                          <h6
+                            className="MuiTypography-root title MuiTypography-h6"
+                          >
+                            Applotify
+                          </h6>
+                        </ForwardRef(Typography)>
+                      </WithStyles(ForwardRef(Typography))>
+                    </div>
+                  </ForwardRef(Toolbar)>
+                </WithStyles(ForwardRef(Toolbar))>
+              </header>
+            </ForwardRef(Paper)>
+          </WithStyles(ForwardRef(Paper))>
+        </ForwardRef(AppBar)>
+      </WithStyles(ForwardRef(AppBar))>
+    </AppHeader>
+    <Hero>
+      <div
+        className="fillWindow"
+      >
+        <div
+          className="heroInfo"
+        >
+          <h1>
+             Applotify 
+          </h1>
+          <h3>
+             Play Spotify Playlists* 
+          </h3>
+        </div>
+        <div
+          className="centeredBtn"
+        >
+          <a
+            className="spotifyLoginBtn"
+            href="https://accounts.spotify.com/authorize?response_type=token&client_id=ccc1ea71746a4d4ea8468a7cc7d1d9f0&redirect_uri=http://localhost:3000&scope=user-read-private%20user-read-playback-state%20user-modify-playback-state%20streaming%20user-read-currently-playing&show_dialog=true"
+          >
+            Login With Spotify
+          </a>
+        </div>
+        <p
+          className="asterisk"
+        >
+           * only available in Chrome and Firefox browsers and to users with Spotify Premium due to Spotify API limitations
+        </p>
+      </div>
+    </Hero>
   </div>
-</div>
+</App>
 `;

@@ -1,5 +1,6 @@
 import { isEmpty } from 'lodash';
-import { getHashParams } from '../scripts/helpers';
+import { emptySongsData, fakeSongsData } from './utils';
+import { getHashParams, returnArtistAlbumString } from '../scripts/helpers';
 
 
 describe('the getHashParams function', () => {
@@ -22,7 +23,11 @@ describe('the getHashParams function', () => {
 });
 
 describe('the returnArtistAlbumString', () => {
-    it('should return an empty string', () => {
+    xit('should return an empty string', () => {
+        expect(returnArtistAlbumString(emptySongsData)).toBe('')
+    });
 
+    xit('should return a string', () => {
+        expect(returnArtistAlbumString(fakeSongsData)).toBe('')
     });
 });

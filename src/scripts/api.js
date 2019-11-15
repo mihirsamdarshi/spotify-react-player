@@ -3,16 +3,9 @@
 const apiUrl = 'https://api.spotify.com/v1';
 const playerUrl = `${apiUrl}/me/player`;
 
-let mockAppUrl = 'http://localhost:3000/';
 let mockHash = '#access_token=helloworld&token_type=Bearer&expires_in=3600';
 
-Object.defineProperty(window, 'location', {
-    value: {
-        href: mockAppUrl,
-        hash: mockHash,
-    },
-    writable: true,
-});
+window.location.hash = mockHash;
 
 const HTTP_OK = 200;
 const NO_CONTENT_SUCCESS = 204;
