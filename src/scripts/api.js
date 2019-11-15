@@ -2,6 +2,8 @@
 const apiUrl = 'https://api.spotify.com/v1';
 const playerUrl = `${apiUrl}/me/player`;
 
+window.location.href = 'http://localhost:3000/#access_token=helloworld&token_type=Bearer&expires_in=3600'
+
 const HTTP_OK = 200;
 const NO_CONTENT_SUCCESS = 204;
 

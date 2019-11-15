@@ -76,4 +76,17 @@ describe('the MainAppBody', () => {
             expect(componentCount).toBe(1);
         });
     });
+
+    describe('upon clicking a Playlist', () => {
+        it('should render a list of songs', async() => {
+            await ReactTestUtils.act(async () => {
+                ReactDOM.render(<MainAppBody />, container);
+            });
+            expect()
+            let playlistButton = container.querySelector('.MuiCardActionArea-root');
+            await ReactTestUtils.act(async () => {
+                await ReactTestUtils.Simulate.click(playlistButton);
+            })
+        });
+    });
 });

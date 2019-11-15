@@ -40,6 +40,7 @@ const MainAppBody = listener => {
 
     const onStateChange = (state) => {
         setPlaybackState(state);
+        console.log(state);
     };
 
     const handleLoadSuccess = (token) => {
@@ -57,7 +58,7 @@ const MainAppBody = listener => {
         player.addListener('playback_error', ({ message }) => { console.error(message); });
 
         // Playback status updates
-        player.addListener('player_state_changed', (state) => console.log(state));
+        player.addListener('player_state_changed', (state) => onStateChange(state));
 
         // Ready
         player.addListener('ready', async (data) => {
@@ -140,7 +141,7 @@ const MainAppBody = listener => {
     // TODO: configure error display handling
 
     const displaySongs = () => (
-        <Paper className="paper" style={blackOverride}>
+        <Paper className="paper songsComponent" style={blackOverride}>
             <GetNowPlayingDispatch.Provider value={getNowPlaying}>
                 <Songs songs={songList} />
             </GetNowPlayingDispatch.Provider>
@@ -148,7 +149,7 @@ const MainAppBody = listener => {
     );
 
     const displayNowPlaying = () => (
-        <div className="paper">
+        <div className="paper nowPlayingComponent">
             <NowPlaying nowPlaying={songPlaying} />
         </div>
     );
@@ -186,7 +187,7 @@ const MainAppBody = listener => {
             />
             <Grid container className="gridContainer">
                 <Grid item xs={4} style={heightWidthStyle}>
-                    <Paper className="paper" style={blackOverride}>
+                    <Paper className="paper playlistComponent" style={blackOverride}>
                         {showPlaylists && !errorString ? displayPlaylists() : null}
                     </Paper>
                 </Grid>

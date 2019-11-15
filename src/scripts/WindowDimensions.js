@@ -25,4 +25,4 @@ export default function useWindowDimensions() {
     return windowDimensions;
 }
 
-// thank you stack overflow: https://stackoverflow.com/questions/36862334/get-viewport-window-height-in-reactjs
+// thank you: https://stackoverflow.com/questions/36862334/get-viewport-window-height-in-reactjs
