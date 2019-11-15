@@ -3,7 +3,10 @@ import ReactDOM from 'react-dom';
 import ReactTestUtils from 'react-dom/test-utils';
 import { mount } from 'enzyme';
 import { Grid, Paper, Typography } from '@material-ui/core';
+import sinon from 'sinon';
+import * as api from '../scripts/api';
 import MainAppBody from '../components/MainAppBody';
+import { bodyPlaylistData } from './utils';
 
 // This test suite uses a distinct testing technique called _snapshot testing_. Go take
 // a peek at the code then come back here for more commentary.
@@ -58,7 +61,7 @@ describe('the MainAppBody', () => {
     });
 
     afterEach(() => {
-        component.unmount()
+        component.unmount();
     });
 
 
@@ -75,35 +78,29 @@ describe('the MainAppBody', () => {
     });
 
     it('should not have rendered the playlist component yet', async () => {
-        await ReactTestUtils.act(async () => {
-            ReactDOM.render(<MainAppBody />, container);
-            const playlistComponent = container.querySelector('.playlistComponent');
-            expect(playlistComponent !== null).toBe(false);
-        });
+        expect(component.find('.playlistComponent')).toHaveLength(0);
     });
 
     it('should not have rendered the songs component', async () => {
-        await ReactTestUtils.act(async () => {
-            ReactDOM.render(<MainAppBody />, container);
-            const songsComponent = container.querySelector('.songsComponent');
-            expect(songsComponent !== null).toBe(false);
-        });
+        expect(component.find('.songsComponent')).toHaveLength(0);
+
     });
 
     it('should not have rendered the now playing component', async () => {
-        await ReactTestUtils.act(async () => {
-            ReactDOM.render(<MainAppBody />, container);
-            const nowPlayingComponent = container.querySelector('.nowPlayingComponent');
-            expect(nowPlayingComponent !== null).toBe(false);
-        });
+        expect(component.find('.nowPlayingComponent')).toHaveLength(0);
     });
 
     describe('upon clicking a Playlist', () => {
+
         it('should render a list of songs', async() => {
+            const div = document.createElement('div');
+            sinon.stub(api, 'fetchUserPlaylists');
+            api.fetchUserPlaylists.returns(Promise.resolve(bodyPlaylistData));
             await ReactTestUtils.act(async () => {
-                ReactDOM.render(<MainAppBody />, container);
-                const nowPlayingComponent = container.querySelector('.nowPlayingComponent');
-            });
+                await ReactDOM.render(<MainAppBody />, div);
+                const playlist = div.querySelector('.playlistComponent');
+                expect(playlist).toBeNull();
+            })
         });
     });
 });

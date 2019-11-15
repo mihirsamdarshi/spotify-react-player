@@ -51,34 +51,40 @@ const makePrimaryPlayback = (id, token) => {
 
 async function playerActions (action, token, data) {
     let bodyString = '';
-    let httpMethod = ''
+    let httpMethod = '';
     switch (action) {
-    case 'play':
-        bodyString = `{"uris": ["${data}"]}`;
-        httpMethod = 'PUT';
-        break;
-    case 'pause':
-        httpMethod = 'PUT';
-        break;
-    case 'next':
-        httpMethod = 'POST';
-        break;
-    case 'previous':
-        httpMethod = 'POST';
-        break;
-    default:
-        break;
-    }
+        case 'primaryPlayback':
+            bodyString = `{"device_ids": ["${data}"], "play": false,}`;
+            httpMethod = 'PUT';
+            break;
+        case 'play':
+            bodyString = `{"uris": ["${data}"]}`;
+            httpMethod = 'PUT';
+            break;
+        case 'pause':
+            httpMethod = 'PUT';
+            break;
+        case 'next':
+            httpMethod = 'POST';
+            break;
+        case 'previous':
+            httpMethod = 'POST';
+            break;
+        default:
+            break;
+    };
     return fetch(`${playerUrl}/${action}`, {
         method: httpMethod,
         body: bodyString,
         headers: {
             'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
         }
     }).then(okCheck, emitNativeError)
         .then(data => console.log(data));
 };
 
+const makePrimaryPlayback = (data, token) => playerActions('primaryPlayback', token, data);
 const playSong = (data, token) => playerActions('play', token, data);
 const pauseSong = token => playerActions('pause', token);
 const nextSong = token => playerActions('next', token);

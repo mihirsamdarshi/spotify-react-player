@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Grid, Paper, Typography } from '@material-ui/core';
+import { Modal } from 'react-bootstrap';
 import Script from 'react-load-script';
 
 import Playlists from './Playlists';
@@ -93,7 +94,7 @@ const MainAppBody = listener => {
             setPlaylistList(result.items);
             setShowPlaylists(true);
         } catch (error) {
-            setError('Sorry, but something went wrong.');
+            setError(`Sorry, but something went wrong.\n ${error}`);
         }
     };
 
@@ -104,15 +105,19 @@ const MainAppBody = listener => {
             setSongList(result.items);
             setShowSongs(true);
         } catch (error) {
-            setError('Sorry, but something went wrong.');
+            setError(`Sorry, but something went wrong.\n ${error}`);
         }
     };
 
     const getNowPlaying = (value) => {
-        playSong(value.uri, token);
+        try {
+            playSong(value.uri, token);
+            setSongPlaying(value);
+            setShowNowPlaying(true);
+        } catch (error) {
+            setError(`Sorry, but something went wrong.\n ${error}`);
+        };
         // TODO: figure out how to do play, pause, previous, etc. from here
-        setSongPlaying(value);
-        setShowNowPlaying(true);
     };
 
     // Display Functions
@@ -140,7 +145,16 @@ const MainAppBody = listener => {
         </Paper>
     );
 
-    // TODO: configure error display handling
+    const displayError = () => (
+        <Modal>
+            <Modal.Header closeButton>
+                <Modal.Title>Error</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <p>{errorString}</p>
+            </Modal.Body>
+        </Modal>
+    );
 
     const displaySongs = () => (
         <Paper className="paper songsComponent" style={blackOverride}>
@@ -188,8 +202,9 @@ const MainAppBody = listener => {
                 onLoad={handleScriptLoad}
             />
             <Grid container className="gridContainer">
+                {errorString ? displayError() : null}
                 <Grid item xs={4} style={heightWidthStyle}>
-                    {showPlaylists && !errorString ? displayPlaylists() : null}
+                    {showPlaylists ? displayPlaylists() : null}
                 </Grid>
                 <Grid item xs={4} style={heightWidthStyle}>
                     {showSongs ? displaySongs() : numPlaylists()}

@@ -1,11 +1,9 @@
 /* eslint-disable */
-
 const apiUrl = 'https://api.spotify.com/v1';
 const playerUrl = `${apiUrl}/me/player`;
 
-let mockHash = '#access_token=helloworld&token_type=Bearer&expires_in=3600';
-
-window.location.hash = mockHash;
+let mockAppUrl = 'http://localhost:3000/#access_token=helloworld&token_type=Bearer&expires_in=3600'
+window.location.assign(mockAppUrl);
 
 const HTTP_OK = 200;
 const NO_CONTENT_SUCCESS = 204;
@@ -8903,50 +8901,42 @@ const fetchPlaylistTracks = (link) => Promise.resolve({
     "total": 33
 });
 
-const makePrimaryPlayback = (id, token) => {
-    fetch(playerUrl, {
-        method: "PUT",
-        headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            "device_ids": [ id ],
-            "play": false,
-        }),
-    });
-};
-
 async function playerActions (action, token, data) {
     let bodyString = '';
-    let httpMethod = ''
+    let httpMethod = '';
     switch (action) {
-    case 'play':
-        bodyString = `{"uris": ["${data}"]}`;
-        httpMethod = 'PUT';
-        break;
-    case 'pause':
-        httpMethod = 'PUT';
-        break;
-    case 'next':
-        httpMethod = 'POST';
-        break;
-    case 'previous':
-        httpMethod = 'POST';
-        break;
-    default:
-        break;
-    }
+        case 'primaryPlayback':
+            bodyString = `{"device_ids": ["${data}"], "play": false,}`;
+            httpMethod = 'PUT';
+            break;
+        case 'play':
+            bodyString = `{"uris": ["${data}"]}`;
+            httpMethod = 'PUT';
+            break;
+        case 'pause':
+            httpMethod = 'PUT';
+            break;
+        case 'next':
+            httpMethod = 'POST';
+            break;
+        case 'previous':
+            httpMethod = 'POST';
+            break;
+        default:
+            break;
+    };
     return fetch(`${playerUrl}/${action}`, {
         method: httpMethod,
         body: bodyString,
         headers: {
             'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
         }
     }).then(okCheck, emitNativeError)
         .then(data => console.log(data));
 };
 
+const makePrimaryPlayback = (data, token) => playerActions('primaryPlayback', token, data);
 const playSong = (data, token) => playerActions('play', token, data);
 const pauseSong = token => playerActions('pause', token);
 const nextSong = token => playerActions('next', token);
