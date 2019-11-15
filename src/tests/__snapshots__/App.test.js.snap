@@ -4,7 +4,52 @@ exports[`matches the snapshot 1`] = `
 <div
   className="App"
 >
-  <AppHeader />
-  <Hero />
+  <header
+    className="MuiPaper-root MuiPaper-elevation4 MuiAppBar-root MuiAppBar-positionStatic MuiAppBar-colorPrimary"
+    style={
+      Object {
+        "backgroundColor": "black",
+      }
+    }
+  >
+    <div
+      className="MuiToolbar-root MuiToolbar-regular MuiToolbar-gutters"
+    >
+      <h6
+        className="MuiTypography-root title MuiTypography-h6"
+      >
+        Applotify
+      </h6>
+    </div>
+  </header>
+  <div
+    className="fillWindow"
+  >
+    <div
+      className="heroInfo"
+    >
+      <h1>
+         Applotify 
+      </h1>
+      <h3>
+         Play Spotify Playlists* 
+      </h3>
+    </div>
+    <div
+      className="centeredBtn"
+    >
+      <a
+        className="spotifyLoginBtn"
+        href="https://accounts.spotify.com/authorize?response_type=token&client_id=ccc1ea71746a4d4ea8468a7cc7d1d9f0&redirect_uri=http://localhost:3000&scope=user-read-private%20user-read-playback-state%20user-modify-playback-state%20streaming%20user-read-currently-playing&show_dialog=true"
+      >
+        Login With Spotify
+      </a>
+    </div>
+    <p
+      className="asterisk"
+    >
+       * only available in Chrome and Firefox browsers and to users with Spotify Premium due to Spotify API limitations
+    </p>
+  </div>
 </div>
 `;

@@ -1,10 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { mount, shallow } from 'enzyme';
 import ReactTestUtils from 'react-dom/test-utils';
+import TestRenderer from 'react-test-renderer';
 import App from '../components/App';
-import Hero from '../components/Hero';
-import MainAppBody from '../components/MainAppBody';
 
 it('renders without crashing', () => {
     const div = document.createElement('div');
@@ -13,37 +11,57 @@ it('renders without crashing', () => {
 });
 
 it('matches the snapshot', () => {
-    const component = shallow(<App />);
-    expect(component).toMatchSnapshot();
+    const component = TestRenderer.create(<App />);
+    const tree = component.toJSON()
+    expect(tree).toMatchSnapshot();
 });
 
 describe('the App', () => {
-    it('should render Hero if no token present', () => {
-        global.window = Object.create(window);
-        const url = 'https://helloworld.com';
-        Object.defineProperty(window, 'location', {
-            value: {
-                hash: url,
-            },
-            writable: true,
-        });
-        const wrapper = mount(<App />);
-        expect(wrapper.find(Hero)).toHaveLength(1);
+    let div;
+    beforeEach(() => {
+        div = document.createElement('div');
     });
 
-    it('should render MainAppBody if a token is present', async () => {
-        global.window = Object.create(window);
-        const url = '#access_token=helloworld&token_type=Bearer&expires_in=69';
-        Object.defineProperty(window, 'location', {
-            value: {
-                hash: url,
-            },
-            writable: true,
+    afterEach(() => {
+        ReactDOM.unmountComponentAtNode(div);
+    });
+
+    it('should render Hero if no token present', () => {
+        ReactTestUtils.act(() => {
+            global.window = Object.create(window);
+            const url = 'https://helloworld.com';
+            Object.defineProperty(window, 'location', {
+                value: {
+                    href: url,
+                    hash: '',
+                },
+                writable: true,
+            });
         });
 
-        await ReactTestUtils.act(async () => {
-            const wrapper = await mount(<App />);
-            expect(wrapper.find(MainAppBody)).toHaveLength(1);
+        ReactTestUtils.act(() => {
+            ReactDOM.render(<App />, div)
         });
+
+        expect(div.querySelector('.heroInfo') !== null).toBe(true);
+    });
+
+    it('should render MainAppBody if a token is present', () => {
+        ReactTestUtils.act(() => {
+            global.window = Object.create(window);
+            const url = '#access_token=helloworld&token_type=Bearer&expires_in=69';
+            Object.defineProperty(window, 'location', {
+                value: {
+                    hash: url,
+                },
+                writable: true,
+            });
+        });
+
+        ReactTestUtils.act(() => {
+            ReactDOM.render(<App />, div)
+        });
+
+        expect(div.querySelector('.gridContainer') !== null).toBe(true);
     });
 });

@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should match the snapshot 1`] = `
+<div>
+  <WithStyles(ForwardRef(Fab))
+    className="settingsButton"
+    onClick={[Function]}
+    size="small"
+  >
+    <SettingsIcon />
+  </WithStyles(ForwardRef(Fab))>
+  <WithStyles(ForwardRef(Dialog))
+    className="classes.modal"
+    onClose={[Function]}
+    open={false}
+  >
+    <WithStyles(ForwardRef(DialogTitle))>
+      Change Current Service
+    </WithStyles(ForwardRef(DialogTitle))>
+    <WithStyles(ForwardRef(DialogContent))>
+      <div
+        className="serviceDialogContainer"
+      >
+        <span>
+          Music Playlists Come From:
+           
+          Apple Music
+        </span>
+        <span>
+          Music Plays From:
+           
+          Spotify
+        </span>
+      </div>
+      <WithStyles(ForwardRef(Button))
+        className="handleSwitchButton"
+        color="primary"
+        onClick={[Function]}
+      >
+        Switch Services
+      </WithStyles(ForwardRef(Button))>
+    </WithStyles(ForwardRef(DialogContent))>
+    <WithStyles(ForwardRef(DialogActions))>
+      <WithStyles(ForwardRef(Button))
+        color="primary"
+        onClick={[Function]}
+      >
+        Exit
+      </WithStyles(ForwardRef(Button))>
+    </WithStyles(ForwardRef(DialogActions))>
+  </WithStyles(ForwardRef(Dialog))>
+</div>
+`;

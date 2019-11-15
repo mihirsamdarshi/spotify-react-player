@@ -13,7 +13,7 @@ import { GetNowPlayingDispatch, GetSongListDispatch, GlobalToken } from '../scri
 
 import '../stylesheets/MainAppBody.scss';
 
-const MainAppBody = () => {
+const MainAppBody = listener => {
     const { height, width } = useWindowDimensions();
     // subtract height of header + padding to make web app single page
     const heightWidthStyle = {

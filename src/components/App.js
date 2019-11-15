@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { isEmpty } from 'lodash';
 import '../stylesheets/App.scss';
 
 import AppHeader from './AppHeader';
@@ -6,7 +7,6 @@ import Hero from './Hero';
 import MainAppBody from './MainAppBody';
 
 import { getHashParams, GlobalToken } from '../scripts/helpers';
-import { isEmpty } from 'lodash';
 
 const App = () => {
     const [accessToken, setAccessToken] = useState(null);
