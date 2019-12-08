@@ -12,25 +12,25 @@ const scopes = [
     'user-read-currently-playing',
 ];
 
-const Hero = () => {
-    return (
-        <div className="fillWindow">
-            <div className="heroInfo">
-                <h1> Applotify </h1>
-                <h3> Play Spotify Playlists&#42; </h3>
-            </div>
-            <div className="centeredBtn">
-                <a
-                    className="spotifyLoginBtn"
-                    href={`${authEndpoint}?response_type=token&client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join('%20')}&show_dialog=true`}
-                >
-                    Login With Spotify
-                </a>
-            </div>
-
-            <p className="asterisk"> &#42; only available in Chrome and Firefox browsers and to users with Spotify Premium due to Spotify API limitations</p>
+const Hero = () => (
+    <div className="fillWindow">
+        <div className="heroInfo">
+            <h1> Applotify </h1>
+            <h3> Play Spotify Playlists&#42; </h3>
         </div>
-    );
-};
+        <div className="centeredBtn">
+            <a
+                className="spotifyLoginBtn"
+                href={`${authEndpoint}?response_type=token&client_id=${clientId}&redirect_uri=${redirectUri}&scope=${scopes.join('%20')}&show_dialog=true`} //eslint-disable-line
+            >
+                    Login With Spotify
+            </a>
+        </div>
+
+        <p className="asterisk">
+            &#42; {'only available in Chrome and Firefox browsers and to users with Spotify Premium due to Spotify API limitations'}
+        </p>
+    </div>
+);
 
 export default Hero;

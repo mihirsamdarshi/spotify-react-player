@@ -6,6 +6,7 @@ import Script from 'react-load-script';
 import Playlists from './Playlists';
 import Songs from './Songs';
 import NowPlaying from './NowPlaying';
+import ScrollWheel from './ScrollWheel';
 
 import { fetchPlaylistTracks, fetchUserPlaylists, makePrimaryPlayback, playSong, } from '../scripts/api';
 
@@ -14,7 +15,7 @@ import { GetNowPlayingDispatch, GetSongListDispatch, GlobalToken } from '../scri
 
 import '../stylesheets/MainAppBody.scss';
 
-const MainAppBody = listener => {
+const MainAppBody = () => {
     const { height, width } = useWindowDimensions();
     // subtract height of header + padding to make web app single page
     const heightWidthStyle = {
@@ -41,7 +42,7 @@ const MainAppBody = listener => {
 
     const onStateChange = (state) => {
         setPlaybackState(state);
-        console.log(state);
+        // console.log(playbackState); //eslint-disable-line
     };
 
     const handleLoadSuccess = (token) => {
@@ -53,10 +54,10 @@ const MainAppBody = listener => {
         });
 
         // Error handling
-        player.addListener('initialization_error', ({ message }) => { console.error(message); });
-        player.addListener('authentication_error', ({ message }) => { console.error(message); });
-        player.addListener('account_error', ({ message }) => { console.error(message); });
-        player.addListener('playback_error', ({ message }) => { console.error(message); });
+        player.addListener('initialization_error', ({ message }) => { setError(message); });
+        player.addListener('authentication_error', ({ message }) => { setError(message); });
+        player.addListener('account_error', ({ message }) => { setError(message); });
+        player.addListener('playback_error', ({ message }) => { setError(message); });
 
         // Playback status updates
         player.addListener('player_state_changed', (state) => onStateChange(state));
@@ -64,13 +65,13 @@ const MainAppBody = listener => {
         // Ready
         player.addListener('ready', async (data) => {
             const { device_id } = data;
-            console.log('Ready with Device ID', device_id);
+            console.log('Ready with Device ID', device_id); //eslint-disable-line
             makePrimaryPlayback(device_id, token);
         });
 
         // Not Ready
         player.addListener('not_ready', ({ device_id }) => {
-            console.log('Device ID has gone offline', device_id);
+            console.log('Device ID has gone offline', device_id); //eslint-disable-line
         });
 
         // Connect to the player!
@@ -86,6 +87,8 @@ const MainAppBody = listener => {
     const [songList, setSongList] = useState('');
     const [songPlaying, setSongPlaying] = useState('');
     const [errorString, setError] = useState(null);
+    const [playlistIds, setPlaylistIds] = useState([]);
+    const [selectedPlaylist, setSelectedPlaylist] = useState('');
 
     const getPlaylists = async (token) => {
         setError(null);
@@ -93,6 +96,7 @@ const MainAppBody = listener => {
             const result = await fetchUserPlaylists(token);
             setPlaylistList(result.items);
             setShowPlaylists(true);
+            result.items.forEach(element => setPlaylistIds(playlistIds => [...playlistIds, element.id]));
         } catch (error) {
             setError(`Sorry, but something went wrong.\n ${error}`);
         }
@@ -116,12 +120,17 @@ const MainAppBody = listener => {
             setShowNowPlaying(true);
         } catch (error) {
             setError(`Sorry, but something went wrong.\n ${error}`);
-        };
+        }
         // TODO: figure out how to do play, pause, previous, etc. from here
     };
 
+    // Style Override Object
+    const blackOverride = {
+        backgroundColor: '#EEE',
+    };
+
     // Display Functions
-    const numPlaylists = () => (
+    const displayNumPlaylists = () => (
         <div className="numTracksWrapper">
             <Typography className="playlistsAvailable">
                 {`${playlistList.length} playlists available`}
@@ -129,7 +138,7 @@ const MainAppBody = listener => {
         </div>
     );
 
-    const numSongs = () => (
+    const displayNumSongs = () => (
         <div className="numTracksWrapper">
             <Typography className="playlistsAvailable">
                 {`${songList.length} songs available`}
@@ -140,7 +149,7 @@ const MainAppBody = listener => {
     const displayPlaylists = () => (
         <Paper className="paper playlistComponent" style={blackOverride}>
             <GetSongListDispatch.Provider value={getSongs}>
-                <Playlists playlists={playlistList} />
+                <Playlists playlists={playlistList} selected={selectedPlaylist} />
             </GetSongListDispatch.Provider>
         </Paper>
     );
@@ -188,9 +197,8 @@ const MainAppBody = listener => {
         }
     };
 
-    // Style Override Object
-    const blackOverride = {
-        backgroundColor: '#EEE',
+    const handleOnChange = (id) => {
+        setSelectedPlaylist(id);
     };
 
     return (
@@ -207,11 +215,12 @@ const MainAppBody = listener => {
                     {showPlaylists ? displayPlaylists() : null}
                 </Grid>
                 <Grid item xs={4} style={heightWidthStyle}>
-                    {showSongs ? displaySongs() : numPlaylists()}
+                    {showSongs ? displaySongs() : displayNumPlaylists()}
                 </Grid>
                 <Grid item xs={4} style={heightWidthStyle} onClick={handleSongListClose}>
+                    <ScrollWheel dataList={playlistIds} onChange={handleOnChange}/>
                     {showNowPlaying ? displayNowPlaying() : null}
-                    {!showNowPlaying && showSongs ? numSongs() : null}
+                    {!showNowPlaying && showSongs ? displayNumSongs() : null}
                 </Grid>
             </Grid>
         </div>

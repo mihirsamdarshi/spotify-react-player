@@ -1,3 +1,4 @@
+//eslint-disable
 export const fakeSongsData = [
     {
         track: {
@@ -26,6 +27,8 @@ export const fakeSongsData = [
     },
 ];
 
+
+
 export const fakePlaylistData = [
     {
         id: 123456789,
@@ -40,6 +43,41 @@ export const fakePlaylistData = [
         ],
     },
 ];
+
+export const bodySongData = {
+    id: 123456789,
+    name: 'Test',
+    artists: [
+        {
+            name: 'Testy McTestFace',
+        },
+    ],
+    tracks: {
+        total: 10,
+    },
+    external_ids: {
+        isrc: 123456789,
+    },
+    album: {
+        name: 'Test - The LP',
+        images: [
+            {
+                url: 'test.com',
+            },
+        ],
+    },
+};
+
+export const emptySongData = {
+    artist: [
+        {
+            name: '',
+        },
+    ],
+    album: {
+        name: '',
+    },
+};
 
 export const bodyPlaylistData = {
     href: 'https://api.spotify.com/v1/users/123411097/playlists?offset=0&limit=20',

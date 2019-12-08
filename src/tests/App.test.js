@@ -12,7 +12,7 @@ it('renders without crashing', () => {
 
 it('matches the snapshot', async () => {
     await ReactTestUtils.act(async () => {
-        const component = await mount(<App/>);
+        const component = await mount(<App />);
         expect(component).toMatchSnapshot();
     });
 });
@@ -27,7 +27,7 @@ describe('the App', () => {
         ReactDOM.unmountComponentAtNode(div);
     });
 
-    it('should render Hero if no token present', async() => {
+    it('should render Hero if no token present', async () => {
         ReactTestUtils.act(() => {
             const url = 'https://helloworld.com';
             Object.defineProperty(window, 'location', {
@@ -39,14 +39,14 @@ describe('the App', () => {
             });
         });
 
-        await ReactTestUtils.act(async() => {
-            await ReactDOM.render(<App />, div)
+        await ReactTestUtils.act(async () => {
+            await ReactDOM.render(<App />, div);
         });
 
         expect(div.querySelector('.heroInfo') !== null).toBe(true);
     });
 
-    it('should render MainAppBody if a token is present', async() => {
+    it('should render MainAppBody if a token is present', async () => {
         ReactTestUtils.act(() => {
             const url = '#access_token=helloworld&token_type=Bearer&expires_in=69';
             Object.defineProperty(window, 'location', {
@@ -57,8 +57,8 @@ describe('the App', () => {
             });
         });
 
-        await ReactTestUtils.act(async() => {
-            await ReactDOM.render(<App />, div)
+        await ReactTestUtils.act(async () => {
+            await ReactDOM.render(<App />, div);
         });
 
         expect(div.querySelector('.gridContainer') !== null).toBe(true);

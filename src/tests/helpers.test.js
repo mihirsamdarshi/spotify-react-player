@@ -24,10 +24,10 @@ describe('the getHashParams function', () => {
 
 describe('the returnArtistAlbumString', () => {
     xit('should return an empty string', () => {
-        expect(returnArtistAlbumString(emptySongsData)).toBe('')
+        expect(returnArtistAlbumString(emptySongsData)).toBe('');
     });
 
     xit('should return a string', () => {
-        expect(returnArtistAlbumString(fakeSongsData)).toBe('')
+        expect(returnArtistAlbumString(fakeSongsData)).toBe('');
     });
 });

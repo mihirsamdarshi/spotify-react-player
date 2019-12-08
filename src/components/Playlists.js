@@ -14,6 +14,9 @@ const PlaylistBox = (props) => {
     const GetSongList = useContext(GetSongListDispatch);
     const token = useContext(GlobalToken);
 
+    const highlighted = {
+        backgroundColor: '#007AFF',
+    };
 
     return (
         <animated.div style={animation}>
@@ -25,7 +28,7 @@ const PlaylistBox = (props) => {
                     />
                 </div>
                 <CardActionArea>
-                    <CardContent className="details">
+                    <CardContent style={props.selected ? highlighted : null} className="details">
                         <Typography gutterBottom variant="h5" component="h2">
                             {props.name}
                         </Typography>
@@ -39,24 +42,29 @@ const PlaylistBox = (props) => {
     );
 };
 
-const Playlists = (props) =>
-/*
-    const [activeItem, setActiveItem] = useState(null);
+const Playlists = (props) => {
 
-    const handleClick = (key) => {
-        setActiveItem(key);
+    const activeItem = props.selected;
+    const isSelected = (element) => {
+        return activeItem === element.id;
     };
-    */
 
-    (
-        props.playlists.map((element) => (
-            <PlaylistBox
-                key={element.id}
-                playlistId={element.id}
-                name={element.name}
-                numTracks={element.tracks.total}
-                imgSrc={element.images[0]}
-            />
-        ))
+    return (
+
+        <div>
+            {
+            props.playlists.map((element) => (
+                <PlaylistBox
+                    key={element.id}
+                    playlistId={element.id}
+                    name={element.name}
+                    numTracks={element.tracks.total}
+                    imgSrc={element.images[0]}
+                    selected={isSelected(element)}
+                />
+            ))
+        }
+        </div>
     );
+};
 export default Playlists;

@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
-import SettingsButton from '../components/SettingsButton';
 import React from 'react';
 import { shallow } from 'enzyme';
+import SettingsButton from '../components/SettingsButton';
 
 it('renders the Settings Button component', () => {
     const div = document.createElement('div');
@@ -10,6 +10,6 @@ it('renders the Settings Button component', () => {
 });
 
 it('should match the snapshot', () => {
-        const component = shallow(<SettingsButton />);
-        expect(component).toMatchSnapshot();
+    const component = shallow(<SettingsButton />);
+    expect(component).toMatchSnapshot();
 });

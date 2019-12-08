@@ -54,7 +54,7 @@ it('should start with a list of playlists', async () => {
 describe('the MainAppBody', () => {
     let component;
 
-    beforeEach(async() => {
+    beforeEach(async () => {
         await ReactTestUtils.act(async () => {
             component = await mount(<MainAppBody />);
         });
@@ -83,7 +83,6 @@ describe('the MainAppBody', () => {
 
     it('should not have rendered the songs component', async () => {
         expect(component.find('.songsComponent')).toHaveLength(0);
-
     });
 
     it('should not have rendered the now playing component', async () => {
@@ -91,8 +90,7 @@ describe('the MainAppBody', () => {
     });
 
     describe('upon clicking a Playlist', () => {
-
-        it('should render a list of songs', async() => {
+        it('should render a list of songs', async () => {
             const div = document.createElement('div');
             sinon.stub(api, 'fetchUserPlaylists');
             api.fetchUserPlaylists.returns(Promise.resolve(bodyPlaylistData));
@@ -100,7 +98,7 @@ describe('the MainAppBody', () => {
                 await ReactDOM.render(<MainAppBody />, div);
                 const playlist = div.querySelector('.playlistComponent');
                 expect(playlist).toBeNull();
-            })
+            });
         });
     });
 });

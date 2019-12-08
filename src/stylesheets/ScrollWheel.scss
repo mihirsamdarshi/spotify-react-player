@@ -1,0 +1,66 @@
+.container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+}
+
+.circle {
+  position: absolute;
+  background-color: #000000;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+}
+
+.arrowContainer {
+  width: 25px;
+  height: 25px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: -20px;
+}
+
+i {
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.arrow {
+  position: absolute;
+}
+
+.up {
+  transform: rotate(-135deg);
+  right: 44px;
+  top: -28px
+}
+
+.down {
+  transform: rotate(45deg);
+  right: 44px;
+  top: 120px
+}
+
+.left {
+  transform: rotate(135deg);
+  left: -28px;
+  top: 44px
+}
+
+.right {
+  transform: rotate(-45deg);
+  right: -28px;
+  top: 44px
+}
+
+.middleButton {
+  margin-top: 25%;
+  margin-left: 25%;
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  background-color: #ffffff;
+  border-radius: 50%;
+}
