@@ -1,6 +1,169 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1573804065600" clover="3.2.0">
-  <project timestamp="1573804065600" name="All files">
-    <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0" elements="0" coveredelements="0" complexity="0" loc="0" ncloc="0" packages="0" files="0" classes="0"/>
+<coverage generated="1573805161783" clover="3.2.0">
+  <project timestamp="1573805161783" name="All files">
+    <metrics statements="130" coveredstatements="85" conditionals="24" coveredconditionals="14" methods="44" coveredmethods="19" elements="198" coveredelements="118" complexity="0" loc="130" ncloc="130" packages="2" files="9" classes="9"/>
+    <package name="components">
+      <metrics statements="125" coveredstatements="80" conditionals="24" coveredconditionals="14" methods="44" coveredmethods="19"/>
+      <file name="App.js" path="/Users/mihir/Documents/School/Interaction Design/front-end-development-mihirsamdarshi/src/components/App.js">
+        <metrics statements="7" coveredstatements="7" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="6" type="stmt"/>
+        <line num="14" count="6" type="stmt"/>
+        <line num="15" count="4" type="stmt"/>
+        <line num="16" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="17" count="3" type="stmt"/>
+        <line num="21" count="6" type="stmt"/>
+      </file>
+      <file name="AppHeader.js" path="/Users/mihir/Documents/School/Interaction Design/front-end-development-mihirsamdarshi/src/components/AppHeader.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="8" count="8" type="stmt"/>
+        <line num="12" count="8" type="stmt"/>
+      </file>
+      <file name="Hero.js" path="/Users/mihir/Documents/School/Interaction Design/front-end-development-mihirsamdarshi/src/components/Hero.js">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="16" count="10" type="stmt"/>
+      </file>
+      <file name="MainAppBody.js" path="/Users/mihir/Documents/School/Interaction Design/front-end-development-mihirsamdarshi/src/components/MainAppBody.js">
+        <metrics statements="80" coveredstatements="41" conditionals="16" coveredconditionals="8" methods="27" coveredmethods="7"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="20" count="36" type="stmt"/>
+        <line num="22" count="36" type="stmt"/>
+        <line num="27" count="36" type="stmt"/>
+        <line num="30" count="36" type="stmt"/>
+        <line num="32" count="36" type="stmt"/>
+        <line num="33" count="2" type="stmt"/>
+        <line num="36" count="36" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="40" count="36" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="44" count="36" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="49" count="36" type="stmt"/>
+        <line num="50" count="0" type="stmt"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="52" count="0" type="stmt"/>
+        <line num="54" count="0" type="stmt"/>
+        <line num="58" count="0" type="stmt"/>
+        <line num="59" count="0" type="stmt"/>
+        <line num="60" count="0" type="stmt"/>
+        <line num="61" count="0" type="stmt"/>
+        <line num="64" count="0" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
+        <line num="68" count="0" type="stmt"/>
+        <line num="69" count="0" type="stmt"/>
+        <line num="70" count="0" type="stmt"/>
+        <line num="74" count="0" type="stmt"/>
+        <line num="75" count="0" type="stmt"/>
+        <line num="79" count="0" type="stmt"/>
+        <line num="84" count="36" type="stmt"/>
+        <line num="85" count="36" type="stmt"/>
+        <line num="86" count="36" type="stmt"/>
+        <line num="87" count="36" type="stmt"/>
+        <line num="88" count="36" type="stmt"/>
+        <line num="89" count="36" type="stmt"/>
+        <line num="90" count="36" type="stmt"/>
+        <line num="92" count="36" type="stmt"/>
+        <line num="93" count="12" type="stmt"/>
+        <line num="94" count="12" type="stmt"/>
+        <line num="95" count="12" type="stmt"/>
+        <line num="96" count="12" type="stmt"/>
+        <line num="97" count="12" type="stmt"/>
+        <line num="99" count="0" type="stmt"/>
+        <line num="103" count="36" type="stmt"/>
+        <line num="104" count="0" type="stmt"/>
+        <line num="105" count="0" type="stmt"/>
+        <line num="106" count="0" type="stmt"/>
+        <line num="107" count="0" type="stmt"/>
+        <line num="108" count="0" type="stmt"/>
+        <line num="110" count="0" type="stmt"/>
+        <line num="114" count="36" type="stmt"/>
+        <line num="115" count="0" type="stmt"/>
+        <line num="116" count="0" type="stmt"/>
+        <line num="117" count="0" type="stmt"/>
+        <line num="118" count="0" type="stmt"/>
+        <line num="120" count="0" type="stmt"/>
+        <line num="126" count="36" type="stmt"/>
+        <line num="131" count="36" type="stmt"/>
+        <line num="132" count="36" type="stmt"/>
+        <line num="139" count="36" type="stmt"/>
+        <line num="140" count="0" type="stmt"/>
+        <line num="147" count="36" type="stmt"/>
+        <line num="148" count="12" type="stmt"/>
+        <line num="155" count="36" type="stmt"/>
+        <line num="156" count="0" type="stmt"/>
+        <line num="166" count="36" type="stmt"/>
+        <line num="167" count="0" type="stmt"/>
+        <line num="174" count="36" type="stmt"/>
+        <line num="175" count="0" type="stmt"/>
+        <line num="181" count="36" type="stmt"/>
+        <line num="182" count="12" type="stmt"/>
+        <line num="185" count="36" type="stmt"/>
+        <line num="186" count="12" type="stmt"/>
+        <line num="187" count="0" type="stmt"/>
+        <line num="192" count="36" type="stmt"/>
+        <line num="193" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="194" count="0" type="stmt"/>
+        <line num="198" count="36" type="stmt"/>
+      </file>
+      <file name="NowPlaying.js" path="/Users/mihir/Documents/School/Interaction Design/front-end-development-mihirsamdarshi/src/components/NowPlaying.js">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+      </file>
+      <file name="Playlists.js" path="/Users/mihir/Documents/School/Interaction Design/front-end-development-mihirsamdarshi/src/components/Playlists.js">
+        <metrics statements="9" coveredstatements="8" conditionals="2" coveredconditionals="1" methods="4" coveredmethods="3"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="11" count="168" type="stmt"/>
+        <line num="16" count="168" type="stmt"/>
+        <line num="17" count="168" type="stmt"/>
+        <line num="20" count="168" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="44" count="3" type="stmt"/>
+        <line num="54" count="14" type="stmt"/>
+        <line num="55" count="168" type="stmt"/>
+      </file>
+      <file name="SettingsButton.js" path="/Users/mihir/Documents/School/Interaction Design/front-end-development-mihirsamdarshi/src/components/SettingsButton.js">
+        <metrics statements="9" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="1"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="33" count="2" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="42" count="2" type="stmt"/>
+      </file>
+      <file name="Songs.js" path="/Users/mihir/Documents/School/Interaction Design/front-end-development-mihirsamdarshi/src/components/Songs.js">
+        <metrics statements="8" coveredstatements="7" conditionals="2" coveredconditionals="1" methods="4" coveredmethods="3"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="35" count="3" type="stmt"/>
+        <line num="36" count="2" type="stmt"/>
+        <line num="38" count="2" type="stmt"/>
+        <line num="42" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="tests">
+      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="utils.js" path="/Users/mihir/Documents/School/Interaction Design/front-end-development-mihirsamdarshi/src/tests/utils.js">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="2" count="4" type="stmt"/>
+        <line num="32" count="4" type="stmt"/>
+        <line num="47" count="4" type="stmt"/>
+        <line num="71" count="4" type="stmt"/>
+        <line num="82" count="4" type="stmt"/>
+      </file>
+    </package>
   </project>
 </coverage>
