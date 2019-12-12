@@ -149,10 +149,14 @@ const MainAppBody = () => {
         </div>
     );
 
+    const selectPlaylist = () => {
+        console.log(angle);
+    };
+
     const displayPlaylists = () => (
         <Paper className="paper playlistComponent" style={blackOverride}>
             <GetSongListDispatch.Provider value={getSongs}>
-                <Playlists playlists={playlistList} selected={selectedPlaylist} />
+                <Playlists playlists={playlistList} selected={selectPlaylist()} />
             </GetSongListDispatch.Provider>
         </Paper>
     );
@@ -188,7 +192,7 @@ const MainAppBody = () => {
     }, [token]);
 
     useEffect(() => {
-        setAngleIncrement(Math.ceil(360 / listLength));
+        setAngleIncrement(Math.floor(360 / listLength));
     }, [listLength]);
 
     useEffect(() => {

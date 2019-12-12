@@ -25,17 +25,20 @@ const ScrollWheel = props => {
             const mouseXPos = event.clientX;
             const mouseYPos = event.clientY;
             const angle = Math.round(getAngle(mouseXPos, mouseYPos, elementData));
-            onSlideMove(angle);
 
             if (snapAngle !== 0) {
-                const sm = snapAngle;
-                const delta = Math.abs(angle - (Math.round(angle / sm) * sm));
+                const delta = Math.abs(angle - (Math.round(angle / snapAngle) * snapAngle));
                 if (delta <= 5) {
-                    setDisplayAngle(Math.round(angle / sm) * sm);
+                    const newAngle = Math.round(angle / snapAngle) * snapAngle;
+                    if (newAngle !== displayAngle) {
+                        setDisplayAngle(newAngle);
+                        onSlideMove(newAngle);
+                    }
                 }
             } else {
                 setActualAngle(angle);
                 setDisplayAngle(angle);
+                onSlideMove(angle);
             }
         }
     };
