@@ -12,47 +12,25 @@
   height: 200px;
 }
 
-.arrowContainer {
-  width: 25px;
-  height: 25px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: -20px;
-}
-
-i {
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  display: inline-block;
-  padding: 3px;
-}
-
-.arrow {
+.circleContainer {
   position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2px;
+  margin-top: -1px;
 }
 
-.up {
-  transform: rotate(-135deg);
-  right: 44px;
-  top: -28px
-}
-
-.down {
-  transform: rotate(45deg);
-  right: 44px;
-  top: 120px
-}
-
-.left {
-  transform: rotate(135deg);
-  left: -28px;
-  top: 44px
-}
-
-.right {
-  transform: rotate(-45deg);
-  right: -28px;
-  top: 44px
+.grabbableCircle {
+  cursor: default;
+  position: absolute;
+  right: -15px;
+  transform: translateY(-50%);
+  height: 30px;
+  width: 30px;
+  border-radius: 100%;
+  background: linear-gradient(180deg, #FFFFFF, #efefef);
+  box-shadow: rgba(0, 0, 0, 0.3) 0 1px 10px 0;
 }
 
 .middleButton {

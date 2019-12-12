@@ -89,6 +89,7 @@ const MainAppBody = () => {
     const [errorString, setError] = useState(null);
     const [playlistIds, setPlaylistIds] = useState([]);
     const [selectedPlaylist, setSelectedPlaylist] = useState('');
+    const [angle, setAngle] = useState(0);
 
     const getPlaylists = async (token) => {
         setError(null);
@@ -197,10 +198,7 @@ const MainAppBody = () => {
         }
     };
 
-    const handleOnChange = (id) => {
-        setSelectedPlaylist(id);
-    };
-
+    // const selectedPlaylist = ......(angle)
     return (
         <div className="root">
             <Script
@@ -218,7 +216,7 @@ const MainAppBody = () => {
                     {showSongs ? displaySongs() : displayNumPlaylists()}
                 </Grid>
                 <Grid item xs={4} style={heightWidthStyle} onClick={handleSongListClose}>
-                    <ScrollWheel dataList={playlistIds} onChange={handleOnChange}/>
+                    <ScrollWheel func={setAngle}/>
                     {showNowPlaying ? displayNowPlaying() : null}
                     {!showNowPlaying && showSongs ? displayNumSongs() : null}
                 </Grid>
