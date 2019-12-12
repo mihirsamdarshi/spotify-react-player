@@ -87,7 +87,6 @@ const MainAppBody = () => {
     const [songList, setSongList] = useState('');
     const [songPlaying, setSongPlaying] = useState('');
     const [errorString, setError] = useState(null);
-    const [playlistIds, setPlaylistIds] = useState([]);
     const [selectedPlaylist, setSelectedPlaylist] = useState('');
     const [angle, setAngle] = useState(0);
 
@@ -97,7 +96,6 @@ const MainAppBody = () => {
             const result = await fetchUserPlaylists(token);
             setPlaylistList(result.items);
             setShowPlaylists(true);
-            result.items.forEach(element => setPlaylistIds(playlistIds => [...playlistIds, element.id]));
         } catch (error) {
             setError(`Sorry, but something went wrong.\n ${error}`);
         }
@@ -129,6 +127,8 @@ const MainAppBody = () => {
     const blackOverride = {
         backgroundColor: '#EEE',
     };
+
+    console.log(angle);
 
     // Display Functions
     const displayNumPlaylists = () => (
@@ -216,7 +216,7 @@ const MainAppBody = () => {
                     {showSongs ? displaySongs() : displayNumPlaylists()}
                 </Grid>
                 <Grid item xs={4} style={heightWidthStyle} onClick={handleSongListClose}>
-                    <ScrollWheel func={setAngle}/>
+                    <ScrollWheel handler={setAngle}/>
                     {showNowPlaying ? displayNowPlaying() : null}
                     {!showNowPlaying && showSongs ? displayNumSongs() : null}
                 </Grid>
