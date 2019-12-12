@@ -128,8 +128,6 @@ const MainAppBody = () => {
         backgroundColor: '#EEE',
     };
 
-    console.log(angle);
-
     // Display Functions
     const displayNumPlaylists = () => (
         <div className="numTracksWrapper">
@@ -216,10 +214,10 @@ const MainAppBody = () => {
                     {showSongs ? displaySongs() : displayNumPlaylists()}
                 </Grid>
                 <Grid item xs={4} style={heightWidthStyle} onClick={handleSongListClose}>
-                    <ScrollWheel handler={setAngle} snapAngle={45}/>
                     {showNowPlaying ? displayNowPlaying() : null}
                     {!showNowPlaying && showSongs ? displayNumSongs() : null}
                 </Grid>
+                <ScrollWheel dragHandler={setAngle} snapAngle={45} startPos={'top'}/>
             </Grid>
         </div>
     );
