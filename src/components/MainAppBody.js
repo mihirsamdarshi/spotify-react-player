@@ -79,7 +79,7 @@ const MainAppBody = () => {
     };
     // thanks https://stackoverflow.com/questions/54469738/adding-a-js-function-to-reactjs-spotify-web-playback-sdk
 
-    // Getter Functions
+    // state
     const [showPlaylists, setShowPlaylists] = useState(false);
     const [showSongs, setShowSongs] = useState(false);
     const [showNowPlaying, setShowNowPlaying] = useState(false);
@@ -89,13 +89,17 @@ const MainAppBody = () => {
     const [errorString, setError] = useState(null);
     const [selectedPlaylist, setSelectedPlaylist] = useState('');
     const [angle, setAngle] = useState(0);
+    const [listLength, setListLength] = useState(0);
+    const [angleIncrement, setAngleIncrement] = useState(0);
 
+    // Getter Functions
     const getPlaylists = async (token) => {
         setError(null);
         try {
             const result = await fetchUserPlaylists(token);
             setPlaylistList(result.items);
             setShowPlaylists(true);
+            setListLength(result.items.length);
         } catch (error) {
             setError(`Sorry, but something went wrong.\n ${error}`);
         }
@@ -184,6 +188,10 @@ const MainAppBody = () => {
     }, [token]);
 
     useEffect(() => {
+        setAngleIncrement(Math.ceil(360 / listLength));
+    }, [listLength]);
+
+    useEffect(() => {
         window.onSpotifyPlayerAPIReady = () => {
             handleLoadSuccess(token);
         };
@@ -214,10 +222,10 @@ const MainAppBody = () => {
                     {showSongs ? displaySongs() : displayNumPlaylists()}
                 </Grid>
                 <Grid item xs={4} style={heightWidthStyle} onClick={handleSongListClose}>
+                    <ScrollWheel onSlideMove={setAngle} snapAngle={angleIncrement} />
                     {showNowPlaying ? displayNowPlaying() : null}
                     {!showNowPlaying && showSongs ? displayNumSongs() : null}
                 </Grid>
-                <ScrollWheel dragHandler={setAngle} snapAngle={45} startPos={'top'}/>
             </Grid>
         </div>
     );
