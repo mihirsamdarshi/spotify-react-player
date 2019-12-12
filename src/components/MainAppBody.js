@@ -84,10 +84,10 @@ const MainAppBody = () => {
     const [showSongs, setShowSongs] = useState(false);
     const [showNowPlaying, setShowNowPlaying] = useState(false);
     const [playlistList, setPlaylistList] = useState('');
+    const [playlistIds, setPlaylistIds] = useState([]);
     const [songList, setSongList] = useState('');
     const [songPlaying, setSongPlaying] = useState('');
     const [errorString, setError] = useState(null);
-    const [selectedPlaylist, setSelectedPlaylist] = useState('');
     const [angle, setAngle] = useState(0);
     const [listLength, setListLength] = useState(0);
     const [angleIncrement, setAngleIncrement] = useState(0);
@@ -100,6 +100,7 @@ const MainAppBody = () => {
             setPlaylistList(result.items);
             setShowPlaylists(true);
             setListLength(result.items.length);
+            result.items.forEach(element => setPlaylistIds(playlistIds => [...playlistIds, element.id]));
         } catch (error) {
             setError(`Sorry, but something went wrong.\n ${error}`);
         }
@@ -150,7 +151,8 @@ const MainAppBody = () => {
     );
 
     const selectPlaylist = () => {
-        console.log(angle);
+        const index = (((angle + 360) % 360) / 360) * listLength;
+        return playlistIds[index];
     };
 
     const displayPlaylists = () => (

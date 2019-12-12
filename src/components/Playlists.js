@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import { Card, CardActionArea, CardContent, Typography, } from '@material-ui/core';
 import Image from 'react-bootstrap/Image';
 import { animated, useSpring } from 'react-spring';
@@ -11,6 +11,8 @@ const PlaylistBox = (props) => {
         from: { opacity: 0 },
     });
 
+    const scrollElement = useRef(null);
+
     const GetSongList = useContext(GetSongListDispatch);
     const token = useContext(GlobalToken);
 
@@ -18,9 +20,16 @@ const PlaylistBox = (props) => {
         backgroundColor: '#007AFF',
     };
 
+    useEffect(() => {
+        if (props.selected) {
+            scrollElement.current.focus();
+            scrollElement.current.scrollIntoView();
+        }
+    });
+
     return (
         <animated.div style={animation}>
-            <Card className="card playlist" onClick={() => GetSongList(props.playlistId, token)}>
+            <Card className="card playlist" onClick={() => GetSongList(props.playlistId, token)} ref={scrollElement}>
                 <div className="heightFix">
                     <Image
                         className="media"
@@ -42,11 +51,10 @@ const PlaylistBox = (props) => {
     );
 };
 
-const Playlists = (props) => {
+const Playlists = props => {
 
-    const activeItem = props.selected;
     const isSelected = (element) => {
-        return activeItem === element.id;
+        return props.selected === element.id;
     };
 
     return (
