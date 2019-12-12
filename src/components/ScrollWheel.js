@@ -7,7 +7,8 @@ const STATE_DRAGGING = 'dragging';
 const ScrollWheel = props => {
     const { handler } = props;
 
-    const [angle, setAngle] = useState(0);
+    const [actualAngle, setActualAngle] = useState(0);
+    const [displayAngle, setDisplayAngle] = useState(0);
     const [status, setStatus] = useState(STATE_IDLE);
 
     const elementPosition = useRef(null);
@@ -23,12 +24,20 @@ const ScrollWheel = props => {
 
             const mouseXPos = event.clientX;
             const mouseYPos = event.clientY;
-            const angle = getAngle(mouseXPos, mouseYPos, elementData);
+            const angle = Math.round(getAngle(mouseXPos, mouseYPos, elementData));
 
-            setAngle(angle);
+            setActualAngle(angle);
 
-            if (handler) {
+            if (props.snapAngle) {
+                const sm = props.snapAngle;
+                const delta = Math.abs(angle - (Math.round(angle / sm) * sm));
+                if (delta <= 5) {
+                    setDisplayAngle(Math.round(angle / sm) * sm);
+                }
+            } else {
+                setDisplayAngle(angle);
                 handler(angle);
+
             }
         }
     };
@@ -51,12 +60,12 @@ const ScrollWheel = props => {
             document.removeEventListener('mousemove', handleRotate);
             document.removeEventListener('mouseup', handleDragStatus);
         }
-    });
+    }, );
 
     return (
         <div className="container" onMouseDown={handleDragStatus}>
             <div className="circle" ref={elementPosition}>
-                <div className="circleContainer" style={{transform: [`rotate(${angle}deg)`]}}>
+                <div className="circleContainer" style={{transform: [`rotate(${displayAngle}deg)`]}}>
                     <div className="grabbableCircle" />
                 </div>
                 <div className="middleButton" />
